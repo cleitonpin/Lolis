@@ -23,7 +23,7 @@ client.on("message", async message => {
     
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const comando = args.shift().toLowerCase();
-    const emojiList = message.guild.emojis.map(e=>e.toString()).join("624320671660507156");
+    const emojiList = client.emojis.get("624323979619991582")
     const aatrox = new Discord.RichEmbed()
     .setColor('#0099ff')
     .setAuthor('Aatrox')
