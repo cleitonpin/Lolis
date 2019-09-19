@@ -34,7 +34,7 @@ client.on("message", async message => {
     .addField('**Velocidade Movimento:**', '345' ,true)
     .addField('**Armadura:**', '38 (+3.25 por nível)', true)
     .addField('**Regeneração de vida:**', '3 (+1 por nível)', true)
-    .addField(`**Resistência Mágica:**\n32.1 (+1.25 por nível)\n\nPode ser obtido em baús hextech ou comprando na loja por 6300 Essência azul ou por 975 de ${emojiList}`, 'Splash Art:')
+    .addField(`**Resistência Mágica:**\n32.1 (+1.25 por nível)\n\nPode ser obtido em baús hextecs ou comprando na loja por 6300 Essência azul ou por 975 de ${emojiList}`, 'Splash Art:')
     .setImage('https://i.imgur.com/cGxClRZ.jpg')
 
     const ahri = new Discord.RichEmbed()
