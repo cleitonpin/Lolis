@@ -1,7 +1,6 @@
 {
   "name": "c",
   "version": "1.0.0",
-  "description": "",
   "main": "lol.js",
   "dependencies": {
     "discord.js": "^11.5.1"
@@ -20,5 +19,7 @@
   "bugs": {
     "url": "https://github.com/cleitonpin/Lolis/issues"
   },
-  "homepage": "https://github.com/cleitonpin/Lolis#readme"
+  "homepage": "https://github.com/cleitonpin/Lolis#readme",
+  "keywords": [],
+  "description": ""
 }
