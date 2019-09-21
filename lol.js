@@ -29,7 +29,7 @@ client.on("message", async message => {
     .setAuthor('Aatrox')
     .setThumbnail('https://i.imgur.com/9ML0ruQ.png')
     .addField('**Vida:**', '580 (+90 por nível)', true)
-    .addField('**Dano de Atasque:**', '60 (+5 por nível)', true)
+    .addField('**Dano de Ataque:**', '60 (+5 por nível)', true)
     .addField('**Velocidade de ataque:**', 'NaN (+2.5% por nível)', true)
     .addField('**Velocidade Movimento:**', '345' ,true)
     .addField('**Armadura:**', '38 (+3.25 por nível)', true)
