@@ -30,10 +30,11 @@ exports.run = async (client, message, args) => {
     
     if(args[0]== 'cham')
     {
-        kayn.DDragon.SummonerSpell.list()
-        .version('9.19.1') /* Explicit */
-        .callback(function(error, SummonerSpell) {
-        console.log(SummonerSpell)
+        kayn.Matchlist.by.accountID('AzhYVKv_aUyJFdfcQixW3_F5t6qzyuE8pMREAhAk5eZNsN0')
+        .callback(function(error, Matchlist) {
+        console.log(Matchlist['startIndex'])
+        message.channel.send(Matchlist['endIndex'])
+
     })
 }
 }
