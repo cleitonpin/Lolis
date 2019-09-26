@@ -37,7 +37,7 @@ exports.run = async (client, message, args) => {
             const embed = new Discord.RichEmbed()
             .setColor('#0099ff')
             .addField('**Nome do invocador: **', summoner['name'])
-            .addField('**Level do invocador:**', summoner['summonerLevel'])
+            .addField('**LeveI do invocador:**', summoner['summonerLevel'])
             .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
             message.channel.send(embed)
         })

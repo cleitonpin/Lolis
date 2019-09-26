@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
         .setThumbnail('')
         .setTitle('Comandos para exibir os mapas')
         .addField('**Twisted Treeline**', '[mapa 1')
-        .addField('**Summoners Rift**', '[mapa 2')
+        .addField('**Summoner;s Rift**', '[mapa 2')
         .addField('**Howling Abyss**', '[mapa 3')
         .addField('**Teamfight Tactics**', '[mapa 4')
         message.channel.send(embed)

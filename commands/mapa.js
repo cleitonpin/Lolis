@@ -78,6 +78,6 @@ exports.run = async (client, message, args) => {
         })
     }
     else{
-        message.channel.send('Digite de 1 á 4')
+        message.channel.send('Digite de 1, 2, 3 ou 4')
     }
 }
