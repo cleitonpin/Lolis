@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "lol.js",
   "dependencies": {
+    "discord": "^0.8.2",
     "discord.js": "^11.5.1",
     "kayn": "^0.10.2",
     "lowdb": "^1.0.0"
