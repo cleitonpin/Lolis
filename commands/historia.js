@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 
 const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn('RGAPI-05005c77-cdd4-43df-8f06-272ce39bfb35')({
+const kayn = Kayn('RGAPI-2179202a-1c74-4e4f-b2e9-ff3a4f884802')({
     region: REGIONS.BRAZIL,
     apiURLPrefix: 'https://%s.api.riotgames.com',
     locale: 'pt_BR',
