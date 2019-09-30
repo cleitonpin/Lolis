@@ -1,6 +1,7 @@
 
+const key = require('./Update.json')
 const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn('RGAPI-05005c77-cdd4-43df-8f06-272ce39bfb35')({
+const kayn = Kayn(key.key)({
     region: REGIONS.BRAZIL,
     apiURLPrefix: 'https://%s.api.riotgames.com',
     locale: 'pt_BR',
@@ -28,12 +29,12 @@ const kayn = Kayn('RGAPI-05005c77-cdd4-43df-8f06-272ce39bfb35')({
 
 exports.run = async (client, message, args) => {
     
-    if(args[0])
+    if(args[0]== 'x')
     {
         
-        kayn.DDragon.Champion.get(`${args[0]}`)
-        .callback(function(error, Champion) {
-        console.log(Champion['data'][`${args[0]}`]['skins'][7]['id'])
+        kayn.ChampionMastery.list('SqEDanykSJ-d_Axzv8QOD74ZovT0cdioF9oULPOcuidBg2I')
+        .callback(function(error, ChampionMastery) {
+        console.log(ChampionMastery[0])
 
         
 
