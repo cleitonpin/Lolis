@@ -193,7 +193,7 @@ exports.run = async (client, message, args) => {
                 .addField('**Nível de maestria**', ChampionMastery[0]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[0]['championPoints'],true)
                 .addField('**Duração da útima partida**', `${ChampionMastery[0]['lastPlayTime']/(60*1000*1000*1000).toFixed(2)} minutos`,true)
-                .addField('**Tokens adquiridos\npara próxima maestria**', ChampionMastery[0]['tokensEarned'],true)
+                .addField('**Fragmentos adquiridos\npara próxima maestria**', ChampionMastery[0]['tokensEarned'],true)
                 .setThumbnail(masteryImgURL)
                 message.channel.send(embed)
             })//fim info das maestrias
