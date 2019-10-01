@@ -1,0 +1,81 @@
+'use strict';
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+const processMatch = (championIdMap, summonerId, match) => {
+  const { participantId } = match.participantIdentities.find(pi => pi.player.summonerId === summonerId);
+  const participant = match.participants.find(p => p.participantId === participantId);
+  const champion = championIdMap.data[participant.championId];
+  return {
+    gameCreation: match.gameCreation,
+    seasonId: match.seasonId,
+    didWin: participant.teamId === match.teams.find(({ win }) => win === 'Win').teamId,
+    championName: champion.name
+  };
+};
+
+const main = (() => {
+  var _ref = _asyncToGenerator(function* (kayn) {
+    const championIdMap = yield kayn.DDragon.Champion.listDataByIdWithParentAsId();
+    const { id, accountId } = yield kayn.Summoner.by.name('Jeongsik Oh');
+    const { matches } = yield kayn.Matchlist.by.accountID(accountId).query({ queue: 420 });
+    const gameIds = matches.slice(0, 10).map(function ({ gameId }) {
+      return gameId;
+    });
+    const matchDtos = yield Promise.all(gameIds.map(kayn.Match.get));
+    // `processor` is a helper function to make the subsequent `map` cleaner.
+    const processor = function (match) {
+      return processMatch(championIdMap, id, match);
+    };
+    const results = yield Promise.all(matchDtos.map(processor));
+    console.log(results);
+    /* may look like this =>
+    [ { gameCreation: 1544249052770,
+    seasonId: 11,
+    didWin: true,
+    championName: 'Talon' },
+    { gameCreation: 1544245697414,
+    seasonId: 11,
+    didWin: false,
+    championName: 'Zed' },
+    { gameCreation: 1544244002044,
+    seasonId: 11,
+    didWin: false,
+    championName: 'Talon' },
+    { gameCreation: 1544241775356,
+    seasonId: 11,
+    didWin: true,
+    championName: 'Talon' },
+    { gameCreation: 1542980219253,
+    seasonId: 11,
+    didWin: true,
+    championName: 'Talon' },
+    { gameCreation: 1542978026353,
+    seasonId: 11,
+    didWin: false,
+    championName: 'Zed' },
+    { gameCreation: 1542976177203,
+    seasonId: 11,
+    didWin: true,
+    championName: 'Talon' },
+    { gameCreation: 1542889504566,
+    seasonId: 11,
+    didWin: true,
+    championName: 'Talon' },
+    { gameCreation: 1542887191822,
+    seasonId: 11,
+    didWin: false,
+    championName: 'Zed' },
+    { gameCreation: 1542885211670,
+    seasonId: 11,
+    didWin: false,
+    championName: 'Malzahar' } ]
+    */
+  });
+
+  return function main(_x) {
+    return _ref.apply(this, arguments);
+  };
+})();
+
+module.exports = main;

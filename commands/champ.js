@@ -29,21 +29,15 @@ const kayn = Kayn(key.key)({
 
 exports.run = async (client, message, args) => {
     
-    if(args[0]){
-        userID=""
-        kayn.Summoner.by.name(`${args[0]}`)
-        .callback(function(err, summoner) {
-            userID = summoner['id']
-        })
-    }
     if(args[0])
     {
-        
-        kayn.ChampionMastery.get(userID)('107')
+        var sum = kayn.Summoner.by.name(`${args[0]}`)
+            .callback(function(err, summoner) {
+            sum = (summoner['id'])
+        })
+        kayn.ChampionMastery.list(sum)
         .callback(function(error, ChampionMastery) {
-        console.log(ChampionMastery[0])
-
-        
+        console.log(ChampionMastery)
 
     })
 }
