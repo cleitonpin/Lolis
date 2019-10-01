@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
         kayn.DDragon.Champion.get(`${args[0]}`).region('br')
         .version('9.19.1') /* Explicit */
         .callback(function(error, champion) {
-        console.log(champion['data']['spells'])
+        console.log(champion['data'][`${args[0]}`])
 
         const embed = new Discord.RichEmbed()
         .setColor('#660000')
