@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
                     },
                     fields: [
                         {
-                            name: '● **[champ** + nome do ...\n● **[info** + nome do campeão\n● **[historia** + nome do campeão\n● **[mapa** + (1-4)\n● **[mapas** + (1-4)\n● **[spells** + nome do feitiço em inglês\n● **[player** + nome do jogador\n● **[maestria + nome do jogador + número 1 a 3**',
+                            name: '● **[champ** + nome do ...\n● **[info** + nome do campeão\n● **[historia** + nome do campeão\n● **[mapa** + (1-4)\n● **[mapas** + (1-4)\n● **[spells** + nome do feitiço em inglês\n● **[player** + nome do jogador\n● **[maestria** + nome do jogador + número 1 a 3',
                             value: '\u200b',
                             inline: true,
                         }, 
