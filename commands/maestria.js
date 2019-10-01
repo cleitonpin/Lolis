@@ -193,7 +193,7 @@ exports.run = async (client, message, args) => {
                 .addField('**Nível de maestria**', ChampionMastery[0]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[0]['championPoints'],true)
                 .addField('**Duração da útima partida**', `${ChampionMastery[0]['lastPlayTime']/(60*1000*1000*1000).toFixed(2)} minutos`,true)
-                .addField('**Fragmentos adquiridos\npara próxima maestria**', ChampionMastery[0]['tokensEarned'],true)
+                .addField('**Fragmentos de maestria adquiridos**', ChampionMastery[0]['tokensEarned'],true)
                 .setThumbnail(masteryImgURL)
                 message.channel.send(embed)
             })//fim info das maestrias
@@ -366,7 +366,7 @@ exports.run = async (client, message, args) => {
                 .addField('**Nível de maestria**', ChampionMastery[1]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[1]['championPoints'],true)
                 .addField('**Duração da útima partida**', `${ChampionMastery[1]['lastPlayTime']/(60*1000*1000*1000).toFixed(2)} minutos`,true)
-                .addField('**Fragmentos adquiridos\npara próxima maestria**', ChampionMastery[1]['tokensEarned'],true)
+                .addField('**Fragmentos de maestria adquiridos**', ChampionMastery[0]['tokensEarned'],true)
                 .setThumbnail(masteryImgURL)
                 message.channel.send(embed)
             })//fim info das maestrias
@@ -539,7 +539,7 @@ exports.run = async (client, message, args) => {
                 .addField('**Nível de maestria**', ChampionMastery[2]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[2]['championPoints'],true)
                 .addField('**Duração da útima partida**', `${ChampionMastery[2]['lastPlayTime']/(60*1000*1000*1000).toFixed(2)} minutos`,true)
-                .addField('**Fragmentos adquiridos\npara próxima maestria**', ChampionMastery[2]['tokensEarned'],true)
+                .addField('**Fragmentos de maestria adquiridos**', ChampionMastery[0]['tokensEarned'],true)
                 .setThumbnail(masteryImgURL)
                 message.channel.send(embed)
             })//fim info das maestrias
