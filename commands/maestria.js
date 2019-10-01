@@ -175,6 +175,11 @@ exports.run = async (client, message, args) => {
                         case 267: return "Nami"; break;
                         case 59: return "Jarvan IV"; break;
                         case 81: return "Ezreal"; break;
+                        case 517: return "Sylas"; break;
+                        case 518: return "Neeko"; break;
+                        case 517: return "Sylas"; break;
+                        case 246: return "Qiyana"; break;
+                        case 350: return "Yuumi"; break;
                     }
                 }//fim nome dos champs
 
@@ -348,6 +353,11 @@ exports.run = async (client, message, args) => {
                         case 267: return "Nami"; break;
                         case 59: return "Jarvan IV"; break;
                         case 81: return "Ezreal"; break;
+                        case 517: return "Sylas"; break;
+                        case 518: return "Neeko"; break;
+                        case 517: return "Sylas"; break;
+                        case 246: return "Qiyana"; break;
+                        case 350: return "Yuumi"; break;
                     }
                 }//fim nome dos champs
 
@@ -521,6 +531,11 @@ exports.run = async (client, message, args) => {
                         case 267: return "Nami"; break;
                         case 59: return "Jarvan IV"; break;
                         case 81: return "Ezreal"; break;
+                        case 517: return "Sylas"; break;
+                        case 518: return "Neeko"; break;
+                        case 517: return "Sylas"; break;
+                        case 246: return "Qiyana"; break;
+                        case 350: return "Yuumi"; break;
                     }
                 }//fim nome dos champs
 
