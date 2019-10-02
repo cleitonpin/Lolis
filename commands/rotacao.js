@@ -2170,7 +2170,6 @@ exports.run = async (client, message, args) => {
             const freerotarions = new Discord.RichEmbed()
             .setColor('#170B3B')
             .setTitle('***Rotação semanal de campeões***')
-            .addField('**Campeões**', Champion1(), true)
             .addField('\u200b', Champion2(), true)
             .addField('\u200b', Champion3(), true)
             .addField('\u200b', Champion4(), true)
