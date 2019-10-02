@@ -29,6 +29,9 @@ const kayn = Kayn(key.key)({
 
 exports.run = async (client, message, args) => {
     
+    
+
+
     if(args[0] && args[1]==1){
         //pegar o id do jogador
         kayn.Summoner.by.name(`${args[0]}`)
@@ -193,14 +196,14 @@ exports.run = async (client, message, args) => {
 
                 if(ChampionMastery[2]['chestGranted']== true) var SimorNot = 'Sim' 
                 if(ChampionMastery[2]['chestGranted']== false) var SimorNot = 'Não' 
-                var calculo = Math.round(ChampionMastery[0]['lastPlayTime']/60000000000)
+                //var calculo = Math.round(ChampionMastery[0]['lastPlayTime']/60000000000)
                 const embed = new Discord.RichEmbed()
                 .setColor('#170B3B')
                 .setTitle(`Nome do invocador: ***${summoner['name']}***`, '\u200b')
                 .addField('**Campeão**', IDtoName(),true)
                 .addField('**Nível de maestria**', ChampionMastery[0]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[0]['championPoints'],true)
-                .addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
+                //.addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
                 .addField('**Fragmentos de maestria**', ChampionMastery[0]['tokensEarned'],true)
                 .addField('**Já conseguiu báu hextech nessa season?**', SimorNot, true)
                 .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${IDtoName()}_0.jpg`)
@@ -376,14 +379,14 @@ exports.run = async (client, message, args) => {
 
                 if(ChampionMastery[2]['chestGranted']== true) var SimorNot = 'Sim' 
                 if(ChampionMastery[2]['chestGranted']== false) var SimorNot = 'Não' 
-                var calculo = Math.round(ChampionMastery[0]['lastPlayTime']/60000000000)
+                //var calculo = Math.round(ChampionMastery[0]['lastPlayTime']/60000000000)
                 const embed = new Discord.RichEmbed()
                 .setColor('#170B3B')
                 .setTitle(`Nome do invocador: ***${summoner['name']}***`, '\u200b')
                 .addField('**Campeão**', IDtoName(),true)
                 .addField('**Nível de maestria**', ChampionMastery[1]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[1]['championPoints'],true)
-                .addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
+                //.addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
                 .addField('**Fragmentos de maestria**', ChampionMastery[1]['tokensEarned'],true)
                 .addField('**Já conseguiu báu hextech nessa season?**', SimorNot)
                 .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${IDtoName()}_0.jpg`)
@@ -566,7 +569,7 @@ exports.run = async (client, message, args) => {
                 .addField('**Campeão**', IDtoName(),true)
                 .addField('**Nível de maestria**', ChampionMastery[2]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[2]['championPoints'],true)
-                .addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
+                //.addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
                 .addField('**Fragmentos de maestria**', ChampionMastery[2]['tokensEarned'],true)
                 .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${IDtoName()}_0.jpg`)          
                 .addField('**Já conseguiu báu hextech nessa season?**', SimorNot)
@@ -575,6 +578,8 @@ exports.run = async (client, message, args) => {
             })//fim info das maestrias
         })// fim id do jogador
     }
-
+    else{
+        message.channel.send('**Digite o nome do invocador e a numeração de 1-3**')
+    }
 
 }

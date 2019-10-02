@@ -44,6 +44,8 @@ exports.run = async (client, message, args) => {
         message.channel.send(champion['data'][`${args[0]}`]['lore'])
     })
     }
-
+    else{
+        message.channel.send('**Digite o nome do campeão!**')
+    }
     
 }

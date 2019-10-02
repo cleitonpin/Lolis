@@ -29,6 +29,8 @@ const kayn = Kayn(key.key)({
 
 exports.run = async (client, message, args) => {
 
+
+    
     if(args[0]){
         kayn.Summoner.by.name(`${args[0]}`)
         .region(REGIONS.BRAZIL)
@@ -41,5 +43,8 @@ exports.run = async (client, message, args) => {
             .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
             message.channel.send(embed)
         })
+    }
+    else{
+        message.channel.send('**Digite o nome do jogador!**')
     }
 }

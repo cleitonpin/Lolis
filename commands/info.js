@@ -29,6 +29,8 @@ const kayn = Kayn(key.key)({
 
 exports.run = async (client, message, args) => {
 
+    
+
     //const emojiList = client.emojis.get("624323979619991582")
     if(args[0]){
         kayn.DDragon.Champion.get(`${args[0]}`).region('br')
@@ -53,6 +55,9 @@ exports.run = async (client, message, args) => {
         .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${args[0]}_0.jpg`)
         message.channel.send(embed)
     })
+    }
+    else{
+        message.channel.send('**Digite o nome do campeão!**')
     }
 
     

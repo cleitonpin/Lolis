@@ -29,6 +29,8 @@ const kayn = Kayn(key.key)({
 
 
 exports.run = async (client, message, args) => {
+
+    
     
     if(args[0])
     {
@@ -78,6 +80,9 @@ exports.run = async (client, message, args) => {
         message.channel.send(skill4)
         
     })
-}
-    if(!args[0]) return message.channel.send('Você não digitou nada, digite o nome do campeão!')
+    }
+    else{
+        message.channel.send('**Digite o nome do campeão!**')
+    }
+
 }

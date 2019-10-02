@@ -29,6 +29,8 @@ const kayn = Kayn(key.key)({
 
 exports.run = async (client, message, args) => {
 
+    
+
     if(args[0] == '1'){
         kayn.DDragon.Map.list()
         .region(REGIONS.BRAZIL)
@@ -78,6 +80,6 @@ exports.run = async (client, message, args) => {
         })
     }
     else{
-        message.channel.send('Digite de 1, 2, 3 ou 4')
+        message.channel.send('**Digite a numeração (1-4)**')
     }
 }
