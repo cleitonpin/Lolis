@@ -1,8 +1,8 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-
+const key = require('./Update.json')
 const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn('RGAPI-2179202a-1c74-4e4f-b2e9-ff3a4f884802')({
+const kayn = Kayn(key.key)({
     region: REGIONS.BRAZIL,
     apiURLPrefix: 'https://%s.api.riotgames.com',
     locale: 'pt_BR',
@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
                     },
                     fields: [
                         {
-                            name: '● **[champ** + nome do ...\n● **[info** + nome do campeão\n● **[historia** + nome do campeão\n● **[mapa** + (1-4)\n● **[mapas** + (1-4)\n● **[spells** + nome do feitiço em inglês\n● **[player** + nome do jogador\n● **[maestria** + nome do jogador + (1-3)',
+                            name: '● **[champ** + nome do ...\n● **[info** + nome do campeão\n● **[historia** + nome do campeão\n● **[mapa** + (1-4)\n● **[mapas** + (1-4)\n● **[spells** + nome do feitiço em inglês\n● **[player** + nome do jogador\n● **[maestria** + nome do jogador + (1-3)\n● **[skills** + nome do campeão',
                             value: '\u200b',
                             inline: true,
                         }, 

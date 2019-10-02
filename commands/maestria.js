@@ -190,15 +190,20 @@ exports.run = async (client, message, args) => {
                 else if(ChampionMastery[0]['championLevel']==3) masteryImgURL = "https://imgur.com/b8crQMG.png"
                 else if(ChampionMastery[0]['championLevel']==2) masteryImgURL = "https://imgur.com/UHNjYTw.png"
                 else if(ChampionMastery[0]['championLevel']==1) masteryImgURL = "https://imgur.com/9pGhB9z.png"
+
+                if(ChampionMastery[2]['chestGranted']== true) var SimorNot = 'Sim' 
+                if(ChampionMastery[2]['chestGranted']== false) var SimorNot = 'Não' 
+                var calculo = Math.round(ChampionMastery[0]['lastPlayTime']/60000000000)
                 const embed = new Discord.RichEmbed()
-                .setColor('#0099ff')
-                .setTitle(`${summoner['name']}`, '\u200b')
-                .addField('\u200b', '\u200b')
+                .setColor('#170B3B')
+                .setTitle(`Nome do invocador: ***${summoner['name']}***`, '\u200b')
                 .addField('**Campeão**', IDtoName(),true)
                 .addField('**Nível de maestria**', ChampionMastery[0]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[0]['championPoints'],true)
-                .addField('**Duração da útima partida**', `${ChampionMastery[0]['lastPlayTime']/(60*1000*1000*1000).toFixed(2)} minutos`,true)
-                .addField('**Fragmentos de maestria adquiridos**', ChampionMastery[0]['tokensEarned'],true)
+                .addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
+                .addField('**Fragmentos de maestria**', ChampionMastery[0]['tokensEarned'],true)
+                .addField('**Já conseguiu báu hextech nessa season?**', SimorNot, true)
+                .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${IDtoName()}_0.jpg`)
                 .setThumbnail(masteryImgURL)
                 message.channel.send(embed)
             })//fim info das maestrias
@@ -368,15 +373,20 @@ exports.run = async (client, message, args) => {
                 else if(ChampionMastery[1]['championLevel']==3) masteryImgURL = "https://imgur.com/b8crQMG.png"
                 else if(ChampionMastery[1]['championLevel']==2) masteryImgURL = "https://imgur.com/UHNjYTw.png"
                 else if(ChampionMastery[1]['championLevel']==1) masteryImgURL = "https://imgur.com/9pGhB9z.png"
+
+                if(ChampionMastery[2]['chestGranted']== true) var SimorNot = 'Sim' 
+                if(ChampionMastery[2]['chestGranted']== false) var SimorNot = 'Não' 
+                var calculo = Math.round(ChampionMastery[0]['lastPlayTime']/60000000000)
                 const embed = new Discord.RichEmbed()
-                .setColor('#0099ff')
-                .setTitle(`${summoner['name']}`, '\u200b')
-                .addField('\u200b', '\u200b')
+                .setColor('#170B3B')
+                .setTitle(`Nome do invocador: ***${summoner['name']}***`, '\u200b')
                 .addField('**Campeão**', IDtoName(),true)
                 .addField('**Nível de maestria**', ChampionMastery[1]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[1]['championPoints'],true)
-                .addField('**Duração da útima partida**', `${ChampionMastery[1]['lastPlayTime']/(60*1000*1000*1000).toFixed(2)} minutos`,true)
-                .addField('**Fragmentos de maestria adquiridos**', ChampionMastery[0]['tokensEarned'],true)
+                .addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
+                .addField('**Fragmentos de maestria**', ChampionMastery[1]['tokensEarned'],true)
+                .addField('**Já conseguiu báu hextech nessa season?**', SimorNot)
+                .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${IDtoName()}_0.jpg`)
                 .setThumbnail(masteryImgURL)
                 message.channel.send(embed)
             })//fim info das maestrias
@@ -546,15 +556,20 @@ exports.run = async (client, message, args) => {
                 else if(ChampionMastery[2]['championLevel']==3) masteryImgURL = "https://imgur.com/b8crQMG.png"
                 else if(ChampionMastery[2]['championLevel']==2) masteryImgURL = "https://imgur.com/UHNjYTw.png"
                 else if(ChampionMastery[2]['championLevel']==1) masteryImgURL = "https://imgur.com/9pGhB9z.png"
+
+                if(ChampionMastery[2]['chestGranted']== true) var SimorNot = 'Sim' 
+                if(ChampionMastery[2]['chestGranted']== false) var SimorNot = 'Não'    
+                var calculo = Math.round(ChampionMastery[0]['lastPlayTime']/60000000000)        
                 const embed = new Discord.RichEmbed()
-                .setColor('#0099ff')
-                .setTitle(`${summoner['name']}`, '\u200b')
-                .addField('\u200b', '\u200b')
+                .setColor('#170B3B')
+                .setTitle(`Nome do invocador: ***${summoner['name']}***`, '\u200b')
                 .addField('**Campeão**', IDtoName(),true)
                 .addField('**Nível de maestria**', ChampionMastery[2]['championLevel'],true)
                 .addField('**Pontos**', ChampionMastery[2]['championPoints'],true)
-                .addField('**Duração da útima partida**', `${ChampionMastery[2]['lastPlayTime']/(60*1000*1000*1000).toFixed(2)} minutos`,true)
-                .addField('**Fragmentos de maestria adquiridos**', ChampionMastery[0]['tokensEarned'],true)
+                .addField('**Duração da útima partida**', `${calculo.toFixed(2)} minutos`,true)
+                .addField('**Fragmentos de maestria**', ChampionMastery[2]['tokensEarned'],true)
+                .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${IDtoName()}_0.jpg`)          
+                .addField('**Já conseguiu báu hextech nessa season?**', SimorNot)
                 .setThumbnail(masteryImgURL)
                 message.channel.send(embed)
             })//fim info das maestrias
