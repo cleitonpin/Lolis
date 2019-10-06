@@ -1,9 +1,9 @@
 
 const Discord = require('discord.js')
 const client = new Discord.Client()
-
+const key = require('./Update.json')
 const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn('RGAPI-05005c77-cdd4-43df-8f06-272ce39bfb35')({
+const kayn = Kayn(key.key)({
     region: REGIONS.BRAZIL,
     apiURLPrefix: 'https://%s.api.riotgames.com',
     locale: 'pt_BR',
@@ -34,19 +34,20 @@ exports.run = async (client, message, args) => {
     if(args[0])
     {
         
-        kayn.DDragon.Champion.get(`${args[0]}`)
-        .callback(function(error, Champion) {
-        console.log(Champion['data'][`${args[0]}`]['skins'][0]['name'])
-
-        const Skins = new Discord.RichEmbed()
-        .setColor('#660000') 
-        .addField('**Nome da skin:**', Champion['data'][`${args[0]}`]['skins'][0]['name'])
-        .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${args[0]}_0.jpg`)
-        
-        
         try {
+                const main  = async () =>{ 
+
+                const sentessage = await kayn.DDragon.Champion.get(`${args[0]}`)
+                .callback(function(error, Champion) {
+                console.log(Champion['data'][`${args[0]}`])
         
-                const sentMessage = await message.channel.send(Skins);
+                const Skins = new Discord.RichEmbed()
+                .setColor('#660000') 
+                .addField('**Nome da skin:**', Champion['data'][`${args[0]}`]['skins'][0]['name'])
+                .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${args[0]}_0.jpg`)
+
+                const sentMessage = await message.channel.send(Skins)
+                
                 await sentMessage.react(':zero:')
                 await sentMessage.react(':one:').then(() => sentMessage.react(':two:'));
                 await sentMessage.react(':three:').then(() => sentMessage.react(':four:'))
@@ -98,11 +99,11 @@ exports.run = async (client, message, args) => {
                     
                 })
 
-                
-                
+            })
+            }
             } catch (error) {
                 console.error('One of the emojis failed to react.')
             }    
-    })
+    
 }
 }

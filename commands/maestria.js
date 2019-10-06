@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const key = require('./Update.json')
+const champ = require('./campeoes.json')
 const { Kayn, REGIONS } = require('kayn')
 const kayn = Kayn(key.key)({
     region: REGIONS.BRAZIL,
