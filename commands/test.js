@@ -39,13 +39,20 @@ exports.run = async (client, message, args) => {
             kayn.CurrentGame.by.summonerID(summoner.id)
             .region(REGIONS.BRAZIL)
             .callback(function(err, CurrentGame) {
-                console.log(CurrentGame.participants)
-
+                console.log(CurrentGame)
+                if(CurrentGame== null) return message.channel.send('O jogador não esta em partida')
 
                 //pegar nome dos champs dos players
                 function Player1(ID1){
                     switch(CurrentGame.participants[0].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
+                        case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
                         case 412: return "Thresh"; break;
                         case 23: return "Tryndamere"; break;
@@ -184,11 +191,16 @@ exports.run = async (client, message, args) => {
                         case 517: return "Sylas"; break;
                         case 246: return "Qiyana"; break;
                         case 350: return "Yuumi"; break;
-                        case 516: return "Ornn"; break;
                     }
                 }
                 function Player2(ID2){
                     switch(CurrentGame.participants[1].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -333,6 +345,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player3(ID3){
                     switch(CurrentGame.participants[2].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -477,6 +495,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player4(ID4){
                     switch(CurrentGame.participants[3].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -621,6 +645,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player5(ID5){
                     switch(CurrentGame.participants[4].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -765,6 +795,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player6(ID6){
                     switch(CurrentGame.participants[5].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -909,6 +945,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player7(ID7){
                     switch(CurrentGame.participants[6].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -1053,6 +1095,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player8(ID8){
                     switch(CurrentGame.participants[7].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -1197,6 +1245,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player9(ID9){
                     switch(CurrentGame.participants[8].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -1341,6 +1395,12 @@ exports.run = async (client, message, args) => {
                 }
                 function Player10(ID10){
                     switch(CurrentGame.participants[9].championId){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
                         case 555: return "Pyke"; break;
                         case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
@@ -1485,7 +1545,7 @@ exports.run = async (client, message, args) => {
                 }
                 //fim nome dos champs dos players
 
-                //pegar o nome das spells
+                //SPELLS 1
                 function Jogador1(spl1){
                     switch(CurrentGame.participants[0].spell1Id){
                         case 21: return "Barreira"; break;
@@ -2081,6 +2141,7 @@ exports.run = async (client, message, args) => {
                 .addField(`__**${CurrentGame.participants[8].summonerName}**__\n`, `${Jogador9()} e ${JogadorI()}`,true)
                 .addField(`__**${CurrentGame.participants[9].summonerName}**__\n`, `${Jogador10()} e ${JogadorJ()}`,true)
                 message.channel.send(embed)
+                
             })
         })
     }

@@ -36,6 +36,14 @@ exports.run = async (client, message, args) => {
             //pegar nome dos champs
             function Champion1(CH){
                 switch(Champion['freeChampionIds'][0]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -178,6 +186,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion2(CH){
                 switch(Champion['freeChampionIds'][1]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -320,6 +336,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion3(CH){
                 switch(Champion['freeChampionIds'][2]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -462,6 +486,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion4(CH){
                 switch(Champion['freeChampionIds'][3]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -604,6 +636,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion5(CH){
                 switch(Champion['freeChampionIds'][4]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -746,6 +786,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion6(CH){
                 switch(Champion['freeChampionIds'][5]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -888,6 +936,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion7(CH){
                 switch(Champion['freeChampionIds'][6]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -1030,6 +1086,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion8(CH){
                 switch(Champion['freeChampionIds'][7]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -1172,6 +1236,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion9(CH){
                 switch(Champion['freeChampionIds'][8]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -1314,6 +1386,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion10(CH){
                 switch(Champion['freeChampionIds'][9]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -1456,6 +1536,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion11(CH){
                 switch(Champion['freeChampionIds'][10]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -1598,6 +1686,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion12(CH){
                 switch(Champion['freeChampionIds'][11]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -1740,6 +1836,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion13(CH){
                 switch(Champion['freeChampionIds'][12]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -1882,6 +1986,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion14(CH){
                 switch(Champion['freeChampionIds'][13]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;
@@ -2024,6 +2136,14 @@ exports.run = async (client, message, args) => {
             }
             function Champion15(CH){
                 switch(Champion['freeChampionIds'][14]){
+                    case 164: return "Camille"; break; 
+                    case 497: return "Rakan"; break;
+                    case 498: return "Xayah"; break;
+                    case 142: return "Zoe"; break;
+                    case 145: return "Kaisa"; break;
+                    case 141: return "Kayn"; break;
+                    case 555: return "Pyke"; break;
+                    case 516: return "Ornn"; break;
                     case 266: return "Aatrox"; break;
                     case 412: return "Thresh"; break;
                     case 23: return "Tryndamere"; break;

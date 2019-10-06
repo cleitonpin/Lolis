@@ -46,6 +46,14 @@ exports.run = async (client, message, args) => {
                 //pegar nome dos champs
                 function IDtoName(ID){
                     switch(ChampionMastery[0]['championId']){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
+                        case 555: return "Pyke"; break;
+                        case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
                         case 412: return "Thresh"; break;
                         case 23: return "Tryndamere"; break;
@@ -229,6 +237,14 @@ exports.run = async (client, message, args) => {
                 //pegar nome dos champs
                 function IDtoName(ID){
                     switch(ChampionMastery[1]['championId']){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
+                        case 555: return "Pyke"; break;
+                        case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
                         case 412: return "Thresh"; break;
                         case 23: return "Tryndamere"; break;
@@ -412,6 +428,14 @@ exports.run = async (client, message, args) => {
                 //pegar nome dos champs
                 function IDtoName(ID){
                     switch(ChampionMastery[2]['championId']){
+                        case 164: return "Camille"; break; 
+                        case 497: return "Rakan"; break;
+                        case 498: return "Xayah"; break;
+                        case 142: return "Zoe"; break;
+                        case 145: return "Kaisa"; break;
+                        case 141: return "Kayn"; break;
+                        case 555: return "Pyke"; break;
+                        case 516: return "Ornn"; break;
                         case 266: return "Aatrox"; break;
                         case 412: return "Thresh"; break;
                         case 23: return "Tryndamere"; break;
