@@ -40,14 +40,6 @@ exports.run = async (client, message, args) => {
             .region(REGIONS.BRAZIL)
             .callback(function(err, CurrentGame) {
                 console.log(CurrentGame)
-                if(CurrentGame == null) {
-                    const emb = new Discord.RichEmbed()
-                    .setColor('0x0099ff')
-                    .setTitle('O jogador não está em partida')
-
-                    message.channel.send(emb)
-                }
-
                 //pegar nome dos champs dos players
                 function Player1(ID1){
                     switch(CurrentGame.participants[0].championId){
@@ -1550,635 +1542,301 @@ exports.run = async (client, message, args) => {
                     }
                 }
                 //fim nome dos champs dos players
+                if(CurrentGame == null) {
+                    const emb = new Discord.RichEmbed()
+                    .setColor('0x0099ff')
+                    .setTitle('O jogador não está em partida')
+
+                    message.channel.send(emb)
+                }
+
+                
 
                 //SPELLS 1
-                function Jogador1(spl1){
-                    switch(CurrentGame.participants[0].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
+                // function Jogador1(spl1){
+                //     switch(CurrentGame.participants[0].spell1Id){
+                //         case 21: return "Barreira"; break;
+                //         case 1: return "Purificar"; break;
+                //         case 14: return "Incendiar"; break;
+                //         case 3: return "Exaustão"; break;
+                //         case 4: return "Flash"; break;
+                //         case 6: return "Fantasma"; break;
+                //         case 7: return "Curar"; break;
+                //         case 13: return "Clareza"; break;
+                //         case 52: return "Distorção"; break;
+                //         case 50: return "Ressuscitar"; break;
+                //         case 30: return "Ao Rei!"; break;
+                //         case 31: return "Arremesso de Poro"; break;
+                //         case 11: return "Golpear"; break;
+                //         case 32: return "Bola de neve"; break;
+                //         case 12: return "Teleporte"; break;
 
-                    }
-                    switch(CurrentGame.participants[0].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
+                //     }
+                //     switch(CurrentGame.participants[0].spell2Id){
+                //         case 21: return "Barreira"; break;
+                //         case 1: return "Purificar"; break;
+                //         case 14: return "Incendiar"; break;
+                //         case 3: return "Exaustão"; break;
+                //         case 4: return "Flash"; break;
+                //         case 6: return "Fantasma"; break;
+                //         case 7: return "Curar"; break;
+                //         case 13: return "Clareza"; break;
+                //         case 52: return "Distorção"; break;
+                //         case 50: return "Ressuscitar"; break;
+                //         case 30: return "Ao Rei!"; break;
+                //         case 31: return "Arremesso de Poro"; break;
+                //         case 11: return "Golpear"; break;
+                //         case 32: return "Bola de neve"; break;
+                //         case 12: return "Teleporte"; break;
 
-                    }
-                }
-                function Jogador2(spl2){
-                    switch(CurrentGame.participants[1].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[1].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador3(spl3){
-                    switch(CurrentGame.participants[2].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[2].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador4(spl4){
-                    switch(CurrentGame.participants[3].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[3].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador5(spl5){
-                    switch(CurrentGame.participants[4].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[4].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador6(spl6){
-                    switch(CurrentGame.participants[5].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[5].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador7(spl7){
-                    switch(CurrentGame.participants[6].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[6].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador8(spl8){
-                    switch(CurrentGame.participants[7].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[7].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador9(spl9){
-                    switch(CurrentGame.participants[8].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                    switch(CurrentGame.participants[8].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
-                function Jogador10(spl10){
-                    switch(CurrentGame.participants[9].spell1Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-                    }
-                    
-                }
-                function JogadorJ(spl2){
-                    switch(CurrentGame.participants[9].spell2Id){
-                        case 21: return "Barreira"; break;
-                        case 1: return "Purificar"; break;
-                        case 14: return "Incendiar"; break;
-                        case 3: return "Exaustão"; break;
-                        case 4: return "Flash"; break;
-                        case 6: return "Fantasma"; break;
-                        case 7: return "Curar"; break;
-                        case 13: return "Clareza"; break;
-                        case 52: return "Distorção"; break;
-                        case 50: return "Ressuscitar"; break;
-                        case 30: return "Ao Rei!"; break;
-                        case 31: return "Arremesso de Poro"; break;
-                        case 11: return "Golpear"; break;
-                        case 32: return "Bola de neve"; break;
-                        case 12: return "Teleporte"; break;
-
-                    }
-                }
+                //     }
+                // }
                 
                 //fim pegar nome das spells
                 //else if(CurrentGame.participants[0].spell1Id == 30) var AoRei = client.emojis.get("630576055454793728")
                 //else if(CurrentGame.participants[0].spell1Id == 31) var Arremesso = client.emojis.get("630576055454793728")
                 
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[0].spell1Id == 1) var spell1 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[0].spell1Id == 7) var spell1 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[0].spell1Id == 3) var spell1 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[0].spell1Id == 4) var spell1 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[0].spell1Id == 6) var spell1 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[0].spell1Id == 11) var spell1 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[0].spell1Id == 12) var spell1 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[0].spell1Id == 13) var spell1 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[0].spell1Id == 14) var spell1 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[0].spell1Id == 21) var spell1 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[0].spell1Id == 32) var spell1 = client.emojis.get("630607188154646529")
+                else{
+                    if(CurrentGame.participants[0].spell1Id == 1) var spell1 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[0].spell1Id == 7) var spell1 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[0].spell1Id == 3) var spell1 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[0].spell1Id == 4) var spell1 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[0].spell1Id == 6) var spell1 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[0].spell1Id == 11) var spell1 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[0].spell1Id == 12) var spell1 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[0].spell1Id == 13) var spell1 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[0].spell1Id == 14) var spell1 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[0].spell1Id == 21) var spell1 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[0].spell1Id == 32) var spell1 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[0].spell2Id == 1) var spell2 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[0].spell2Id == 7) var spell2 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[0].spell2Id == 3) var spell2 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[0].spell2Id == 4) var spell2 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[0].spell2Id == 6) var spell2 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[0].spell2Id == 11) var spell2 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[0].spell2Id == 12) var spell2 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[0].spell2Id == 13) var spell2 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[0].spell2Id == 14) var spell2 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[0].spell2Id == 21) var spell2 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[0].spell2Id == 32) var spell2 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[0].spell2Id == 1) var spell2 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[0].spell2Id == 7) var spell2 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[0].spell2Id == 3) var spell2 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[0].spell2Id == 4) var spell2 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[0].spell2Id == 6) var spell2 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[0].spell2Id == 11) var spell2 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[0].spell2Id == 12) var spell2 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[0].spell2Id == 13) var spell2 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[0].spell2Id == 14) var spell2 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[0].spell2Id == 21) var spell2 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[0].spell2Id == 32) var spell2 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[1].spell1Id == 1) var PLAY1 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[1].spell1Id == 7) var PLAY1 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[1].spell1Id == 3) var PLAY1 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[1].spell1Id == 4) var PLAY1 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[1].spell1Id == 6) var PLAY1 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[1].spell1Id == 11) var PLAY1 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[1].spell1Id == 12) var PLAY1 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[1].spell1Id == 13) var PLAY1 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[1].spell1Id == 14) var PLAY1 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[1].spell1Id == 21) var PLAY1 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[1].spell1Id == 32) var PLAY1 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[1].spell1Id == 1) var PLAY1 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[1].spell1Id == 7) var PLAY1 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[1].spell1Id == 3) var PLAY1 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[1].spell1Id == 4) var PLAY1 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[1].spell1Id == 6) var PLAY1 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[1].spell1Id == 11) var PLAY1 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[1].spell1Id == 12) var PLAY1 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[1].spell1Id == 13) var PLAY1 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[1].spell1Id == 14) var PLAY1 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[1].spell1Id == 21) var PLAY1 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[1].spell1Id == 32) var PLAY1 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[1].spell2Id == 1) var PLAY12 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[1].spell2Id == 7) var PLAY12 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[1].spell2Id == 3) var PLAY12 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[1].spell2Id == 4) var PLAY12 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[1].spell2Id == 6) var PLAY12 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[1].spell2Id == 11) var PLAY12 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[1].spell2Id == 12) var PLAY12 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[1].spell2Id == 13) var PLAY12 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[1].spell2Id == 14) var PLAY12 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[1].spell2Id == 21) var PLAY12 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[1].spell2Id == 32) var PLAY12 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[1].spell2Id == 1) var PLAY12 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[1].spell2Id == 7) var PLAY12 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[1].spell2Id == 3) var PLAY12 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[1].spell2Id == 4) var PLAY12 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[1].spell2Id == 6) var PLAY12 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[1].spell2Id == 11) var PLAY12 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[1].spell2Id == 12) var PLAY12 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[1].spell2Id == 13) var PLAY12 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[1].spell2Id == 14) var PLAY12 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[1].spell2Id == 21) var PLAY12 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[1].spell2Id == 32) var PLAY12 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[2].spell1Id == 1) var spellp3 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[2].spell1Id == 7) var spellp3 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[2].spell1Id == 3) var spellp3 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[2].spell1Id == 4) var spellp3 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[2].spell1Id == 6) var spellp3 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[2].spell1Id == 11) var spellp3 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[2].spell1Id == 12) var spellp3 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[2].spell1Id == 13) var spellp3 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[2].spell1Id == 14) var spellp3 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[2].spell1Id == 21) var spellp3 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[2].spell1Id == 32) var spellp3 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[2].spell1Id == 1) var spellp3 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[2].spell1Id == 7) var spellp3 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[2].spell1Id == 3) var spellp3 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[2].spell1Id == 4) var spellp3 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[2].spell1Id == 6) var spellp3 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[2].spell1Id == 11) var spellp3 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[2].spell1Id == 12) var spellp3 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[2].spell1Id == 13) var spellp3 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[2].spell1Id == 14) var spellp3 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[2].spell1Id == 21) var spellp3 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[2].spell1Id == 32) var spellp3 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[2].spell2Id == 1) var spellpp3 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[2].spell2Id == 7) var spellpp3 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[2].spell2Id == 3) var spellpp3 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[2].spell2Id == 4) var spellpp3 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[2].spell2Id == 6) var spellpp3 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[2].spell2Id == 11) var spellpp3 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[2].spell2Id == 12) var spellpp3 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[2].spell2Id == 13) var spellpp3 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[2].spell2Id == 14) var spellpp3 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[2].spell2Id == 21) var spellpp3 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[2].spell2Id == 32) var spellpp3 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[2].spell2Id == 1) var spellpp3 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[2].spell2Id == 7) var spellpp3 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[2].spell2Id == 3) var spellpp3 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[2].spell2Id == 4) var spellpp3 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[2].spell2Id == 6) var spellpp3 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[2].spell2Id == 11) var spellpp3 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[2].spell2Id == 12) var spellpp3 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[2].spell2Id == 13) var spellpp3 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[2].spell2Id == 14) var spellpp3 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[2].spell2Id == 21) var spellpp3 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[2].spell2Id == 32) var spellpp3 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[3].spell1Id == 1) var spellp4 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[3].spell1Id == 7) var spellp4 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[3].spell1Id == 3) var spellp4 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[3].spell1Id == 4) var spellp4 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[3].spell1Id == 6) var spellp4 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[3].spell1Id == 11) var spellp4 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[3].spell1Id == 12) var spellp4 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[3].spell1Id == 13) var spellp4 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[3].spell1Id == 14) var spellp4 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[3].spell1Id == 21) var spellp4 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[3].spell1Id == 32) var spellp4 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[3].spell1Id == 1) var spellp4 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[3].spell1Id == 7) var spellp4 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[3].spell1Id == 3) var spellp4 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[3].spell1Id == 4) var spellp4 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[3].spell1Id == 6) var spellp4 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[3].spell1Id == 11) var spellp4 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[3].spell1Id == 12) var spellp4 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[3].spell1Id == 13) var spellp4 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[3].spell1Id == 14) var spellp4 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[3].spell1Id == 21) var spellp4 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[3].spell1Id == 32) var spellp4 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[3].spell2Id == 1) var spellpp4 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[3].spell2Id == 7) var spellpp4 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[3].spell2Id == 3) var spellpp4 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[3].spell2Id == 4) var spellpp4 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[3].spell2Id == 6) var spellpp4 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[3].spell2Id == 11) var spellpp4 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[3].spell2Id == 12) var spellpp4 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[3].spell2Id == 13) var spellpp4 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[3].spell2Id == 14) var spellpp4 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[3].spell2Id == 21) var spellpp4 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[3].spell2Id == 32) var spellpp4 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[3].spell2Id == 1) var spellpp4 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[3].spell2Id == 7) var spellpp4 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[3].spell2Id == 3) var spellpp4 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[3].spell2Id == 4) var spellpp4 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[3].spell2Id == 6) var spellpp4 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[3].spell2Id == 11) var spellpp4 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[3].spell2Id == 12) var spellpp4 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[3].spell2Id == 13) var spellpp4 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[3].spell2Id == 14) var spellpp4 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[3].spell2Id == 21) var spellpp4 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[3].spell2Id == 32) var spellpp4 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[4].spell1Id == 1) var spellp5 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[4].spell1Id == 7) var spellp5 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[4].spell1Id == 3) var spellp5 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[4].spell1Id == 4) var spellp5 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[4].spell1Id == 6) var spellp5 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[4].spell1Id == 11) var spellp5 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[4].spell1Id == 12) var spellp5 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[4].spell1Id == 13) var spellp5 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[4].spell1Id == 14) var spellp5 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[4].spell1Id == 21) var spellp5 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[4].spell1Id == 32) var spellp5 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[4].spell1Id == 1) var spellp5 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[4].spell1Id == 7) var spellp5 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[4].spell1Id == 3) var spellp5 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[4].spell1Id == 4) var spellp5 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[4].spell1Id == 6) var spellp5 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[4].spell1Id == 11) var spellp5 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[4].spell1Id == 12) var spellp5 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[4].spell1Id == 13) var spellp5 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[4].spell1Id == 14) var spellp5 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[4].spell1Id == 21) var spellp5 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[4].spell1Id == 32) var spellp5 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[4].spell2Id == 1) var spellpp0 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[4].spell2Id == 7) var spellpp0 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[4].spell2Id == 3) var spellpp0 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[4].spell2Id == 4) var spellpp0 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[4].spell2Id == 6) var spellpp0 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[4].spell2Id == 11) var spellpp0 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[4].spell2Id == 12) var spellpp0 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[4].spell2Id == 13) var spellpp0 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[4].spell2Id == 14) var spellpp0 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[4].spell2Id == 21) var spellpp0 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[4].spell2Id == 32) var spellpp0 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[4].spell2Id == 1) var spellpp0 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[4].spell2Id == 7) var spellpp0 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[4].spell2Id == 3) var spellpp0 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[4].spell2Id == 4) var spellpp0 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[4].spell2Id == 6) var spellpp0 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[4].spell2Id == 11) var spellpp0 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[4].spell2Id == 12) var spellpp0 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[4].spell2Id == 13) var spellpp0 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[4].spell2Id == 14) var spellpp0 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[4].spell2Id == 21) var spellpp0 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[4].spell2Id == 32) var spellpp0 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[5].spell1Id == 1) var spellp6 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[5].spell1Id == 7) var spellp6 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[5].spell1Id == 3) var spellp6 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[5].spell1Id == 4) var spellp6 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[5].spell1Id == 6) var spellp6 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[5].spell1Id == 11) var spellp6 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[5].spell1Id == 12) var spellp6 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[5].spell1Id == 13) var spellp6 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[5].spell1Id == 14) var spellp6 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[5].spell1Id == 21) var spellp6 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[5].spell1Id == 32) var spellp6 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[5].spell1Id == 1) var spellp6 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[5].spell1Id == 7) var spellp6 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[5].spell1Id == 3) var spellp6 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[5].spell1Id == 4) var spellp6 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[5].spell1Id == 6) var spellp6 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[5].spell1Id == 11) var spellp6 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[5].spell1Id == 12) var spellp6 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[5].spell1Id == 13) var spellp6 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[5].spell1Id == 14) var spellp6 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[5].spell1Id == 21) var spellp6 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[5].spell1Id == 32) var spellp6 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[5].spell2Id == 1) var spellpp6 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[5].spell2Id == 7) var spellpp6 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[5].spell2Id == 3) var spellpp6 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[5].spell2Id == 4) var spellpp6 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[5].spell2Id == 6) var spellpp6 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[5].spell2Id == 11) var spellpp6 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[5].spell2Id == 12) var spellpp6 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[5].spell2Id == 13) var spellpp6 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[5].spell2Id == 14) var spellpp6 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[5].spell2Id == 21) var spellpp6 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[5].spell2Id == 32) var spellpp6 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[5].spell2Id == 1) var spellpp6 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[5].spell2Id == 7) var spellpp6 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[5].spell2Id == 3) var spellpp6 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[5].spell2Id == 4) var spellpp6 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[5].spell2Id == 6) var spellpp6 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[5].spell2Id == 11) var spellpp6 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[5].spell2Id == 12) var spellpp6 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[5].spell2Id == 13) var spellpp6 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[5].spell2Id == 14) var spellpp6 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[5].spell2Id == 21) var spellpp6 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[5].spell2Id == 32) var spellpp6 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[6].spell1Id == 1) var spellp7 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[6].spell1Id == 7) var spellp7 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[6].spell1Id == 3) var spellp7 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[6].spell1Id == 4) var spellp7 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[6].spell1Id == 6) var spellp7 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[6].spell1Id == 11) var spellp7 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[6].spell1Id == 12) var spellp7 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[6].spell1Id == 13) var spellp7 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[6].spell1Id == 14) var spellp7 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[6].spell1Id == 21) var spellp7 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[6].spell1Id == 32) var spellp7 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[6].spell1Id == 1) var spellp7 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[6].spell1Id == 7) var spellp7 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[6].spell1Id == 3) var spellp7 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[6].spell1Id == 4) var spellp7 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[6].spell1Id == 6) var spellp7 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[6].spell1Id == 11) var spellp7 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[6].spell1Id == 12) var spellp7 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[6].spell1Id == 13) var spellp7 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[6].spell1Id == 14) var spellp7 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[6].spell1Id == 21) var spellp7 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[6].spell1Id == 32) var spellp7 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[6].spell2Id == 1) var spellpp7 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[6].spell2Id == 7) var spellpp7 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[6].spell2Id == 3) var spellpp7 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[6].spell2Id == 4) var spellpp7 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[6].spell2Id == 6) var spellpp7 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[6].spell2Id == 11) var spellpp7 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[6].spell2Id == 12) var spellpp7 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[6].spell2Id == 13) var spellpp7 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[6].spell2Id == 14) var spellpp7 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[6].spell2Id == 21) var spellpp7 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[6].spell2Id == 32) var spellpp7 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[6].spell2Id == 1) var spellpp7 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[6].spell2Id == 7) var spellpp7 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[6].spell2Id == 3) var spellpp7 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[6].spell2Id == 4) var spellpp7 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[6].spell2Id == 6) var spellpp7 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[6].spell2Id == 11) var spellpp7 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[6].spell2Id == 12) var spellpp7 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[6].spell2Id == 13) var spellpp7 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[6].spell2Id == 14) var spellpp7 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[6].spell2Id == 21) var spellpp7 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[6].spell2Id == 32) var spellpp7 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[7].spell1Id == 1) var spellp8 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[7].spell1Id == 7) var spellp8 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[7].spell1Id == 3) var spellp8 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[7].spell1Id == 4) var spellp8 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[7].spell1Id == 6) var spellp8 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[7].spell1Id == 11) var spellp8 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[7].spell1Id == 12) var spellp8 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[7].spell1Id == 13) var spellp8 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[7].spell1Id == 14) var spellp8 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[7].spell1Id == 21) var spellp8 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[7].spell1Id == 32) var spellp8 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[7].spell1Id == 1) var spellp8 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[7].spell1Id == 7) var spellp8 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[7].spell1Id == 3) var spellp8 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[7].spell1Id == 4) var spellp8 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[7].spell1Id == 6) var spellp8 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[7].spell1Id == 11) var spellp8 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[7].spell1Id == 12) var spellp8 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[7].spell1Id == 13) var spellp8 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[7].spell1Id == 14) var spellp8 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[7].spell1Id == 21) var spellp8 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[7].spell1Id == 32) var spellp8 = client.emojis.get("630607188154646529")
                 // ---------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[7].spell2Id == 1) var spellpp8 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[7].spell2Id == 7) var spellpp8 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[7].spell2Id == 3) var spellpp8 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[7].spell2Id == 4) var spellpp8 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[7].spell2Id == 6) var spellpp8 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[7].spell2Id == 11) var spellpp8 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[7].spell2Id == 12) var spellpp8 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[7].spell2Id == 13) var spellpp8 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[7].spell2Id == 14) var spellpp8 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[7].spell2Id == 21) var spellpp8 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[7].spell2Id == 32) var spellpp8 = client.emojis.get("630607188154646529")
-                // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[8].spell1Id == 1) var spellp9 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[8].spell1Id == 7) var spellp9 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[8].spell1Id == 3) var spellp9 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[8].spell1Id == 4) var spellp9 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[8].spell1Id == 6) var spellp9 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[8].spell1Id == 11) var spellp9 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[8].spell1Id == 12) var spellp9 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[8].spell1Id == 13) var spellp9 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[8].spell1Id == 14) var spellp9 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[8].spell1Id == 21) var spellp9 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[8].spell1Id == 32) var spellp9 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[7].spell2Id == 1) var spellpp8 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[7].spell2Id == 7) var spellpp8 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[7].spell2Id == 3) var spellpp8 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[7].spell2Id == 4) var spellpp8 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[7].spell2Id == 6) var spellpp8 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[7].spell2Id == 11) var spellpp8 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[7].spell2Id == 12) var spellpp8 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[7].spell2Id == 13) var spellpp8 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[7].spell2Id == 14) var spellpp8 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[7].spell2Id == 21) var spellpp8 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[7].spell2Id == 32) var spellpp8 = client.emojis.get("630607188154646529")
+                    // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
+                    if(CurrentGame.participants[8].spell1Id == 1) var spellp9 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[8].spell1Id == 7) var spellp9 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[8].spell1Id == 3) var spellp9 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[8].spell1Id == 4) var spellp9 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[8].spell1Id == 6) var spellp9 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[8].spell1Id == 11) var spellp9 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[8].spell1Id == 12) var spellp9 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[8].spell1Id == 13) var spellp9 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[8].spell1Id == 14) var spellp9 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[8].spell1Id == 21) var spellp9 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[8].spell1Id == 32) var spellp9 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[8].spell2Id == 1) var spellpp9 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[8].spell2Id == 7) var spellpp9 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[8].spell2Id == 3) var spellpp9 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[8].spell2Id == 4) var spellpp9 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[8].spell2Id == 6) var spellpp9 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[8].spell2Id == 11) var spellpp9 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[8].spell2Id == 12) var spellpp9 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[8].spell2Id == 13) var spellpp9 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[8].spell2Id == 14) var spellpp9 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[8].spell2Id == 21) var spellpp9 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[8].spell2Id == 32) var spellpp9 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[8].spell2Id == 1) var spellpp9 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[8].spell2Id == 7) var spellpp9 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[8].spell2Id == 3) var spellpp9 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[8].spell2Id == 4) var spellpp9 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[8].spell2Id == 6) var spellpp9 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[8].spell2Id == 11) var spellpp9 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[8].spell2Id == 12) var spellpp9 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[8].spell2Id == 13) var spellpp9 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[8].spell2Id == 14) var spellpp9 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[8].spell2Id == 21) var spellpp9 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[8].spell2Id == 32) var spellpp9 = client.emojis.get("630607188154646529")
                 // --------------------- PEGANDO EMOJI DAS SPELLS USADAS NA PARTIDA ---------------------------//
-                if(CurrentGame.participants[9].spell1Id == 1) var spellp10 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[9].spell1Id == 7) var spellp10 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[9].spell1Id == 3) var spellp10 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[9].spell1Id == 4) var spellp10 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[9].spell1Id == 6) var spellp10 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[9].spell1Id == 11) var spellp10 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[9].spell1Id == 12) var spellp10 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[9].spell1Id == 13) var spellp10 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[9].spell1Id == 14) var spellp10 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[9].spell1Id == 21) var spellp10 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[9].spell1Id == 32) var spellp10 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[9].spell1Id == 1) var spellp10 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[9].spell1Id == 7) var spellp10 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[9].spell1Id == 3) var spellp10 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[9].spell1Id == 4) var spellp10 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[9].spell1Id == 6) var spellp10 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[9].spell1Id == 11) var spellp10 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[9].spell1Id == 12) var spellp10 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[9].spell1Id == 13) var spellp10 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[9].spell1Id == 14) var spellp10 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[9].spell1Id == 21) var spellp10 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[9].spell1Id == 32) var spellp10 = client.emojis.get("630607188154646529")
                 // ----------------------------------------------------------------------------------------------------//
-                if(CurrentGame.participants[9].spell2Id == 1) var spellpp10 = client.emojis.get("630607190595731482")
-                else if(CurrentGame.participants[9].spell2Id == 7) var spellpp10 = client.emojis.get("630619043681927168")
-                else if(CurrentGame.participants[9].spell2Id == 3) var spellpp10 = client.emojis.get("630607190310256701")
-                else if(CurrentGame.participants[9].spell2Id == 4) var spellpp10 = client.emojis.get("630607190583148544")
-                else if(CurrentGame.participants[9].spell2Id == 6) var spellpp10 = client.emojis.get("630607190151004171")
-                else if(CurrentGame.participants[9].spell2Id == 11) var spellpp10 = client.emojis.get("630607293217505280")
-                else if(CurrentGame.participants[9].spell2Id == 12) var spellpp10 = client.emojis.get("630607293377150986")
-                else if(CurrentGame.participants[9].spell2Id == 13) var spellpp10 = client.emojis.get("630607188422950932")
-                else if(CurrentGame.participants[9].spell2Id == 14) var spellpp10 = client.emojis.get("630607190255730711")
-                else if(CurrentGame.participants[9].spell2Id == 21) var spellpp10 = client.emojis.get("630607188456374312")         
-                else if(CurrentGame.participants[9].spell2Id == 32) var spellpp10 = client.emojis.get("630607188154646529")
+                    if(CurrentGame.participants[9].spell2Id == 1) var spellpp10 = client.emojis.get("630607190595731482")
+                        else if(CurrentGame.participants[9].spell2Id == 7) var spellpp10 = client.emojis.get("630619043681927168")
+                        else if(CurrentGame.participants[9].spell2Id == 3) var spellpp10 = client.emojis.get("630607190310256701")
+                        else if(CurrentGame.participants[9].spell2Id == 4) var spellpp10 = client.emojis.get("630607190583148544")
+                        else if(CurrentGame.participants[9].spell2Id == 6) var spellpp10 = client.emojis.get("630607190151004171")
+                        else if(CurrentGame.participants[9].spell2Id == 11) var spellpp10 = client.emojis.get("630607293217505280")
+                        else if(CurrentGame.participants[9].spell2Id == 12) var spellpp10 = client.emojis.get("630607293377150986")
+                        else if(CurrentGame.participants[9].spell2Id == 13) var spellpp10 = client.emojis.get("630607188422950932")
+                        else if(CurrentGame.participants[9].spell2Id == 14) var spellpp10 = client.emojis.get("630607190255730711")
+                        else if(CurrentGame.participants[9].spell2Id == 21) var spellpp10 = client.emojis.get("630607188456374312")         
+                        else if(CurrentGame.participants[9].spell2Id == 32) var spellpp10 = client.emojis.get("630607188154646529")
 
                 //pegar nome da cor do time
                 if(CurrentGame.participants[0].teamId == 100) var team = 'Vermelho'
@@ -2206,7 +1864,7 @@ exports.run = async (client, message, args) => {
                 .addField('----------------------------------', '\u200b')
 
                 .setFooter(`Jogando em ${mapa}`)
-                message.channel.send(embed)
+                message.channel.send(embed)}
                 
             })
         })
