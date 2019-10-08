@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
                             inline: true,
                         }, 
                         {
-                            name: '\n● **[rotação**',
+                            name: '\n● **[rotacao**',
                             value: '\u200b',
                             inline: true,
                         }

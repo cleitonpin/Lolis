@@ -33,10 +33,7 @@ exports.run = async (client, message, args) => {
     
     if(args[0]== 'x')
     {
-        
-        kayn.DDragon.Item.list()
-        .callback(function(error, Item) {
-        console.log(Item)
+    
 
         // const Skins = new Discord.RichEmbed()
         // .setColor('#660000') 
@@ -51,6 +48,7 @@ exports.run = async (client, message, args) => {
         //         await sentMessage.react(':one:').then(() => sentMessage.react(':two:'));
         //         await sentMessage.react(':three:').then(() => sentMessage.react(':four:'))
         //         await sentMessage.react(':five:').then(() => sentMessage.react(':six:'))
+
 
 
         //         const filter = (reaction, user) => reaction.emoji.name === ':one:' || reaction.emoji.name === ':two:' || reaction.emoji.name === ':three:' || reaction.emoji.name === ':four:' || reaction.emoji.name === ':five:' || reaction.emoji.name === ':six:' && user.id === message.author.id
@@ -103,6 +101,6 @@ exports.run = async (client, message, args) => {
         //     } catch (error) {
         //         console.error('One of the emojis failed to react.')
         //     }    
-    })
-}
+    
+    }
 }
