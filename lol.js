@@ -2,32 +2,6 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const config = require('./config.json')
 
-const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn('RGAPI-c44ae5c7-7c03-4150-888c-8221af5d5c62')({
-    region: REGIONS.LATIN_AMERICA_SOUTH,
-    apiURLPrefix: 'https://%s.api.riotgames.com',
-    locale: 'pt-BR',
-    debugOptions: {
-        isEnabled: true,
-        showKey: false,
-    },
-    requestOptions: {
-        shouldRetry: true,
-        numberOfRetriesBeforeAbort: 3,
-        delayBeforeRetry: 1000,
-        burst: false,
-        shouldExitOn403: false,
-    },
-    cacheOptions: {
-        cache: null,
-        timeToLives: {
-            useDefault: false,
-            byGroup: {},
-            byMethod: {},
-        },
-    },
-})
-
 client.on('ready', () => {
     console.log(`Bot foi iniciado, com ${client.users.size} usuários, em ${client.channels.size} canais, em ${client.guilds.size} servidores.`)
     client.user.setStatus('Availabe')
@@ -48,7 +22,7 @@ client.on("message", async message => {
     
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const comando = args.shift().toLowerCase();
-    const emojiList = client.emojis.get("624323979619991582")
+    //const emojiList = client.emojis.get("624323979619991582")
 
     try {
         let commands = require(`./commands/${comando}.js`);
