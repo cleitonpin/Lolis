@@ -35,10 +35,8 @@ exports.run = async (client, message, args) => {
     {
     
         kayn.League.Entries.bySummonerID('SqEDanykSJ-d_Axzv8QOD74ZovT0cdioF9oULPOcuidBg2I')
-        .version('9.19.1')
-        .region(REGIONS.BRAZIL)
-        .callback(function(err, Entries){
-            console.log(Entries)
+        .callback(function(err, summonerLeague){
+            console.log(summonerLeague)
         })
     
     }
