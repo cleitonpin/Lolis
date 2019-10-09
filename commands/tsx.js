@@ -28,13 +28,13 @@ const kayn = Kayn(key.key)({
 })
 exports.run = async (client, message, args) => {
 
-    if(args[0]== 'x'){
-    kayn.CurrentGame.by.summonerID('3zApc-QEkDKl-UtU23vbz1UwuWIYgMSe54yZkuu3UmsjCps')
-    .region(REGIONS.BRAZIL)
-    .callback(function(err, CurrentGame) {
-        console.log(CurrentGame)
+    if(args[0]== 'x')
+    {
+    
+        kayn.League.Entries.bySummonerID('SqEDanykSJ-d_Axzv8QOD74ZovT0cdioF9oULPOcuidBg2I')
+        .region(REGIONS.BRAZIL)
+        .then(error => console.error(error))
+        .catch(League => console.log(League))
+    }
+}
 
-        
-    })
-}
-}
