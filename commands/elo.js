@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
             .callback(function(err, summonerLeague) {
 
                 function tierNamePT(name){
-                    switch(summonerLeague[0]['tier']||summonerLeague[1]['tier']){
+                    switch(summonerLeague[0]['tier']&&summonerLeague[1]['tier']&&summonerLeague[2]['tier']){
                         case 'IRON': return "Ferro"; break;
                         case 'BRONZE': return "Bronze"; break;
                         case 'SILVER': return "Prata"; break;
@@ -57,47 +57,66 @@ exports.run = async (client, message, args) => {
                     else{ return "***Há pouco tempo no elo***"}
                     if(summonerLeague[1]['veteran']==true){ return "***Está há muito tempo nesse elo***"}
                     else{ return "***Há pouco tempo no elo***"}
+                    if(summonerLeague[2]['veteran']==true){ return "***Está há muito tempo nesse elo***"}
+                    else{ return "***Há pouco tempo no elo***"}
                 }
                 console.log(summonerLeague)
+                if(args[1] == 1){
+                    const embed = new Discord.RichEmbed()
+                    .setColor('#0099ff')
+                    .addField('**Nome do invocador: **', summoner['name'])
+                    .addField('\u200b','\u200b')
 
-                const embed = new Discord.RichEmbed()
-                .setColor('#0099ff')
-                .addField('**Nome do invocador: **', summoner['name'])
-                .addField('\u200b','\u200b')
-
-                .addField('**Elo**', tierNamePT()+` ${summonerLeague[1]['rank']}`, true)
-                .addField('**Tipo de ranqueada**', summonerLeague[1]['queueType'], true)
-                .addField('**PDLs**', summonerLeague[1]['leaguePoints'], true)
-                .addField('**Vitorias**', summonerLeague[1]['wins'], true)
-                .addField(tierTime(), '\u200b', true)
-                .addField('**Derrotas**', summonerLeague[1]['losses'], true)
-
-                .addField('\u200b','\u200b')
-
-                .addField('**Elo**', tierNamePT()+` ${summonerLeague[0]['rank']}`, true)
-                .addField('**Tipo de ranqueada**', summonerLeague[0]['queueType'], true)
-                .addField('**PDLs**', summonerLeague[0]['leaguePoints'], true)
-                .addField('**Vitorias**', summonerLeague[0]['wins'], true)
-                .addField(tierTime(), '\u200b', true)
-                .addField('**Derrotas**', summonerLeague[0]['losses'], true)
-
-                .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
-                
-                if(summonerLeague[3]){
-                    .addField('**Elo**', tierNamePT()+` ${summonerLeague[3]['rank']}`, true)
-                    .addField('**Tipo de ranqueada**', summonerLeague[3]['queueType'], true)
-                    .addField('**PDLs**', summonerLeague[3]['leaguePoints'], true)
-                    .addField('**Vitorias**', summonerLeague[3]['wins'], true)
+                    .addField('**Elo**', tierNamePT()+` ${summonerLeague[0]['rank']}`, true)
+                    .addField('**Tipo de ranqueada**', summonerLeague[0]['queueType'], true)
+                    .addField('**PDLs**', summonerLeague[0]['leaguePoints'], true)
+                    .addField('**Vitorias**', summonerLeague[0]['wins'], true)
                     .addField(tierTime(), '\u200b', true)
-                    .addField('**Derrotas**', summonerLeague[3]['losses'], true)
-                }
+                    .addField('**Derrotas**', summonerLeague[0]['losses'], true)
 
-                message.channel.send(embed)
+                    .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
+
+                    message.channel.send(embed)
+                }
+                if(args[1]==2){
+                    const embed = new Discord.RichEmbed()                
+                    .setColor('#0099ff')
+                    .addField('**Nome do invocador: **', summoner['name'])
+                    .addField('\u200b','\u200b')
+
+                    .addField('**Elo**', tierNamePT()+` ${summonerLeague[1]['rank']}`, true)
+                    .addField('**Tipo de ranqueada**', summonerLeague[1]['queueType'], true)
+                    .addField('**PDLs**', summonerLeague[1]['leaguePoints'], true)
+                    .addField('**Vitorias**', summonerLeague[1]['wins'], true)
+                    .addField(tierTime(), '\u200b', true)
+                    .addField('**Derrotas**', summonerLeague[1]['losses'], true)
+
+                    .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
+
+                    message.channel.send(embed)
+                }
+                if(args[1]==3){
+                    const embed = new Discord.RichEmbed()                
+                    .setColor('#0099ff')
+                    .addField('**Nome do invocador: **', summoner['name'])
+                    .addField('\u200b','\u200b')
+
+                    .addField('**Elo**', tierNamePT()+` ${summonerLeague[2]['rank']}`, true)
+                    .addField('**Tipo de ranqueada**', summonerLeague[2]['queueType'], true)
+                    .addField('**PDLs**', summonerLeague[2]['leaguePoints'], true)
+                    .addField('**Vitorias**', summonerLeague[2]['wins'], true)
+                    .addField(tierTime(), '\u200b', true)
+                    .addField('**Derrotas**', summonerLeague[2]['losses'], true)
+
+                    .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
+
+                    message.channel.send(embed)
+                }
 
             })
         })
     }
     else{
-        message.channel.send('**Digite o nome do jogador!**')
+        message.channel.send('**Digite o nome do jogador + [1-3]!**')
     }
 }
