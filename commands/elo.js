@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
                 if(args[1]){
                     cont=0
                     gameMode = args[1].toUpperCase()
-                    if(!summonerLeague[2]){
+                    if(gameMode){
                         for(; cont<=1; cont++){
                             // @@@ FUNÇÕES
 
@@ -68,32 +68,11 @@ exports.run = async (client, message, args) => {
                                 }
                             } //final da função para pegar os nomes dos elos traduzidos
 
-
                             // @@@ FIM FUNÇÕES
-
 
                             var sumLeague = summonerLeague[cont];
                             //verificar o MODO da PARTIDA #RANQUEADO SOLO/FLEX/TFT
-                            if(sumLeague.queueType == `RANKED_${gameMode}_5x5`){
-                                console.log(summonerLeague[cont])
-                                console.log("\n\nModo de jogo: "+sumLeague.queueType+"\n\n")
-
-                                const embed = new Discord.RichEmbed()
-                                .setColor('#0099ff')
-                                .addField('**Nome do invocador: **', summoner['name'])
-                                .addField('\u200b','\u200b')
-                                .addField('**Divisão**', tierNamePT()+` ${summonerLeague[cont].rank}`, true)
-                                .addField('**Fila ranqueada**', `${summonerLeague[cont].queueType}`, true)
-                                .addField('**PDLs**', summonerLeague[cont]['leaguePoints'], true)
-                                .addField('**Vitorias**', summonerLeague[cont]['wins'], true)
-                                .addField(tierTime(), '\u200b', true)
-                                .addField('**Derrotas**', summonerLeague[cont]['losses'], true)
-                                .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
-
-                                message.channel.send(embed)
-                                
-                            }
-                            if(sumLeague.queueType == `RANKED_${gameMode}_SR`){
+                            if(sumLeague.queueType == convertGameMode()){
                                 console.log(summonerLeague[cont])
                                 console.log("\n\nModo de jogo: "+sumLeague.queueType+"\n\n")
 
@@ -114,99 +93,19 @@ exports.run = async (client, message, args) => {
                             }
                         }
                     }
-                    else{
-                        for(; cont<=2; cont++){
-                            // @@@ FUNÇÕES
-
-                            function convertGameMode(mode){ 
-                                if(gameMode=="SOLO"){return "RANKED_SOLO_5x5";}
-                                if(gameMode=="FLEX"){return "RANKED_FLEX_SR";}
-                                if(gameMode=="TFT"){return "RANKED_TFT";}
-                            }
-                            function tierTime(time){
-                                if(summonerLeague[cont]['veteran']==true){ return "***Está há muito tempo nesse elo***"}
-                                else{ return "***Há pouco tempo no elo***"}
-                            }
-                            function tierNamePT(name){
-                                switch(summonerLeague[cont].tier){
-                                    case 'IRON': return "Ferro"; break;
-                                    case 'BRONZE': return "Bronze"; break;
-                                    case 'SILVER': return "Prata"; break;
-                                    case 'GOLD': return "Ouro"; break;
-                                    case 'PLATINUM': return "Platina"; break;
-                                    case 'DIAMOND': return "Diamante"; break;
-                                    case 'MASTER': return "Mestre"; break;
-                                    case 'GRANDMASTER': return "Grão Mestre"; break;
-                                    case 'CHALLENGER': return "Challenger"; break;
-                                }
-                            } //final da função para pegar os nomes dos elos traduzidos
-
-
-                            // @@@ FIM FUNÇÕES
-
-
-
-                            var sumLeague = summonerLeague[cont];
-                            //verificar o MODO da PARTIDA #RANQUEADO SOLO/FLEX/TFT e exibir os dados
-                            if(sumLeague.queueType == `RANKED_${gameMode}_5x5`){
-                                console.log(summonerLeague[cont])
-                                console.log("\n\nModo de jogo: "+sumLeague.queueType+"\n\n")
-
-                                const embed = new Discord.RichEmbed()
-                                .setColor('#0099ff')
-                                .addField('**Nome do invocador: **', summoner['name'])
-                                .addField('\u200b','\u200b')
-                                .addField('**Divisão**', tierNamePT()+` ${summonerLeague[cont].rank}`, true)
-                                .addField('**Fila ranqueada**', `${summonerLeague[cont].queueType}`, true)
-                                .addField('**PDLs**', summonerLeague[cont]['leaguePoints'], true)
-                                .addField('**Vitorias**', summonerLeague[cont]['wins'], true)
-                                .addField(tierTime(), '\u200b', true)
-                                .addField('**Derrotas**', summonerLeague[cont]['losses'], true)
-                                .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
-
-                                message.channel.send(embed)
-                                
-                            }
-                            if(sumLeague.queueType == `RANKED_${gameMode}`){
-                                console.log(summonerLeague[cont])
-                                console.log("\n\nModo de jogo: "+sumLeague.queueType+"\n\n")
-
-                                const embed = new Discord.RichEmbed()
-                                .setColor('#0099ff')
-                                .addField('**Nome do invocador: **', summoner['name'])
-                                .addField('\u200b','\u200b')
-                                .addField('**Divisão**', tierNamePT()+` ${summonerLeague[cont].rank}`, true)
-                                .addField('**Fila ranqueada**', `${summonerLeague[cont].queueType}`, true)
-                                .addField('**PDLs**', summonerLeague[cont]['leaguePoints'], true)
-                                .addField('**Vitorias**', summonerLeague[cont]['wins'], true)
-                                .addField(tierTime(), '\u200b', true)
-                                .addField('**Derrotas**', summonerLeague[cont]['losses'], true)
-                                .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
-
-                                message.channel.send(embed)
-
-                            }
-                            if(sumLeague.queueType == `RANKED_${gameMode}_SR`){
-                                console.log(summonerLeague[cont])
-                                console.log("\n\nModo de jogo: "+sumLeague.queueType+"\n\n")
-
-                                const embed = new Discord.RichEmbed()
-                                .setColor('#0099ff')
-                                .addField('**Nome do invocador: **', summoner['name'])
-                                .addField('\u200b','\u200b')
-                                .addField('**Divisão**', tierNamePT()+` ${summonerLeague[cont].rank}`, true)
-                                .addField('**Fila ranqueada**', `${summonerLeague[cont].queueType}`, true)
-                                .addField('**PDLs**', summonerLeague[cont]['leaguePoints'], true)
-                                .addField('**Vitorias**', summonerLeague[cont]['wins'], true)
-                                .addField(tierTime(), '\u200b', true)
-                                .addField('**Derrotas**', summonerLeague[cont]['losses'], true)
-                                .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
-
-                                message.channel.send(embed)
-
-                            }
-                        }
+                    if((!summonerLeague[2])&&summonerLeague[1]){
+                        console.log("O jogador ainda não possui divisão neste modo ☹")    
+                        message.channel.send("O jogador ainda não possui divisão neste modo ☹")
                     }
+                    if((!summonerLeague[1])&&summonerLeague[0]){
+                        console.log("O jogador ainda não possui divisão neste modo ☹")    
+                        message.channel.send("O jogador ainda não possui divisão neste modo ☹")
+                    }
+                    if(summonerLeague[-1]){
+                        console.log("O jogador ainda não possui divisão em nenhum modo de jogo 😕")
+                        message.channel.send("O jogador ainda não possui divisão em nenhum modo de jogo 😕")
+                    }
+                    
                 }
 
             })
