@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
                 if(args[1]){
                     cont=0
                     gameMode = args[1].toUpperCase()
-                    if(gameMode){
+                    if(gameMode!=""){
                         for(; cont<=1; cont++){
                             // @@@ FUNÇÕES
 
@@ -68,6 +68,7 @@ exports.run = async (client, message, args) => {
                                 }
                             } //final da função para pegar os nomes dos elos traduzidos
 
+                        
                             // @@@ FIM FUNÇÕES
 
                             var sumLeague = summonerLeague[cont];
@@ -92,20 +93,10 @@ exports.run = async (client, message, args) => {
                                 
                             }
                         }
-                    }
-                    if((!summonerLeague[2])&&summonerLeague[1]){
-                        console.log("O jogador ainda não possui divisão neste modo ☹")    
-                        message.channel.send("O jogador ainda não possui divisão neste modo ☹")
-                    }
-                    if((!summonerLeague[1])&&summonerLeague[0]){
-                        console.log("O jogador ainda não possui divisão neste modo ☹")    
-                        message.channel.send("O jogador ainda não possui divisão neste modo ☹")
-                    }
-                    if(summonerLeague[-1]){
-                        console.log("O jogador ainda não possui divisão em nenhum modo de jogo 😕")
-                        message.channel.send("O jogador ainda não possui divisão em nenhum modo de jogo 😕")
-                    }
-                    
+                    }                    
+                }else{
+                    console.log("**Digite o modo de jogo [solo/flex/tft]!**")
+                    message.channel.send('**Digite o modo de jogo [solo/flex/tft]!**')
                 }
 
             })
