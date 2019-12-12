@@ -1,0 +1,30 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "main": "lol.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "discord": "^0.8.2",
+    "discord.js": "^11.5.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "kayn": "^0.10.2",
+    "lowdb": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node lol.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cleitonpin/Lolis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cleitonpin/Lolis/issues"
+  },
+  "homepage": "https://github.com/cleitonpin/Lolis#readme",
+  "keywords": [],
+  "description": ""
+}
