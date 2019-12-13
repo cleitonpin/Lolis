@@ -2,7 +2,7 @@ const { Client, Attachment } = require('discord.js');
 //const MessageAttachment = require('discord.js')
 const client = new Client()
 const config = require('./config.json')
-//const mysql = require("mysql")
+const mysql = require("mysql")
 
 
 
@@ -20,11 +20,11 @@ client.on('ready', () => {
         }
     })
 
-    // var testChannel = client.channels.find(channel => channel.id === '618232063170183198' );
+    var testChannel = client.channels.find(channel => channel.id === '618232063170183198' );
 
-    // setInterval(() => {
-    //     testChannel.send('Rengar é o melhor campeão!!')
-    // }, 5000)
+    setInterval(() => {
+        testChannel.send('Rengar é o melhor campeão!!')
+    }, 5000)
 })
 
 // var con = mysql.createConnection({
@@ -95,10 +95,10 @@ client.on("message", async message => {
 //     }
 // })
     
-//     if (message.content === 'rip') {
-//         const attachment = new Attachment('https://i.imgur.com/w3duR07.png')
-//         message.channel.send(attachment)
-//     }
+    if (message.content === 'rip') {
+        const attachment = new Attachment('https://i.imgur.com/w3duR07.png')
+        message.channel.send(attachment)
+    }
     
 
     if (message.author.id == '400734254365016068' || message.author.id == '611995739559559223'){
@@ -113,7 +113,7 @@ client.on("message", async message => {
 
     try {
         let commands = require(`./commands/${comando}.js`);
-        commands.run(client, message, args, con);
+        commands.run(client, message, args);
     } catch (e){
         console.log(e)
     } 
