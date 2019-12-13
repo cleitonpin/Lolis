@@ -2,7 +2,7 @@ const { Client, Attachment } = require('discord.js');
 //const MessageAttachment = require('discord.js')
 const client = new Client()
 const config = require('./config.json')
-const mysql = require("mysql")
+//const mysql = require("mysql")
 
 
 
