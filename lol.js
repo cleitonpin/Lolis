@@ -19,12 +19,6 @@ client.on('ready', () => {
             url: "https://www.twitch.tv/cleitonpin"
         }
     })
-
-    var testChannel = client.channels.find(channel => channel.id === '618232063170183198' );
-
-    setInterval(() => {
-        testChannel.send('Rengar é o melhor campeão!!')
-    }, 5000)
 })
 
 // var con = mysql.createConnection({
