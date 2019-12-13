@@ -95,9 +95,9 @@ client.on("message", async message => {
     }
     
 
-    if (message.author.id == '400734254365016068' || message.author.id == '611995739559559223'){
-        return message.channel.send('Cala boca gustavo')
-    }
+   // if (message.author.id == '400734254365016068' || message.author.id == '611995739559559223'){
+      //  return message.channel.send('Cala boca gustavo')
+   // }
 
     if(!message.content.startsWith(config.prefix)) return;
     
