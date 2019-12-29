@@ -93,11 +93,25 @@ client.on("message", async message => {
         const attachment = new Attachment('https://i.imgur.com/w3duR07.png')
         message.channel.send(attachment)
     }
+    if (message.content === '-play' || message.content === '-p' || message.content === '-skip' && message.channel.id == '575815357609148428') {
+        message.delete(1000)
+        message.reply('Sem comando de música aqui')
+        .then(d_message => {
+            d_message.delete(1000)
+            console.log(`Deleted message from ${message.author.username}`)})
+    }
+    
     
 
    // if (message.author.id == '400734254365016068' || message.author.id == '611995739559559223'){
       //  return message.channel.send('Cala boca gustavo')
    // }
+      if (message.content === 'not stonks') return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
+    else if(message.content === 'stonks') return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
+    else if (message.content === 'genio') return message.channel.send(client.emojis.get("589690527742558209").toString())
+    else if (message.content ==='kappa') return message.channel.send(client.emojis.get("592516025334104086").toString())
+    else if(message.content ==='nosa') return message.channel.send(client.emojis.get("598994179464364076").toString())
+
 
     if(!message.content.startsWith(config.prefix)) return;
     
