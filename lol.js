@@ -93,7 +93,7 @@ client.on("message", async message => {
         const attachment = new Attachment('https://i.imgur.com/w3duR07.png')
         message.channel.send(attachment)
     }
-    if (message.content === '-play' || message.content === '-p' || message.content === '-skip' && message.channel.id == '575815357609148428') {
+    if (message.content.first() === '-play' || message.content.first() === '-p' || message.content.first() === '-skip' && message.channel.id == '575815357609148428') {
         message.delete(1000)
         message.reply('Sem comando de música aqui')
         .then(d_message => {
