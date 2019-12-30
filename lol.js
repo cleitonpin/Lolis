@@ -113,7 +113,7 @@ client.on("message", async message => {
     else if(message.content ==='nosa') return message.channel.send(client.emojis.get("598994179464364076").toString())
 
     if(message.author.id == '445003940128358401') {
-        var att = new Discord.Attachment('https://cdn.discordapp.com/attachments/575815357609148428/661022608577527809/5ab2dd770513f.png')
+        var att = new Attachment('https://cdn.discordapp.com/attachments/575815357609148428/661022608577527809/5ab2dd770513f.png')
 
         message.channel.send(att)
     }
