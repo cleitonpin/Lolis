@@ -93,13 +93,7 @@ client.on("message", async message => {
         const attachment = new Attachment('https://i.imgur.com/w3duR07.png')
         message.channel.send(attachment)
     }
-    if (args[0] === '-play' || args[0] === '-p' || args[0] === '-skip' && message.channel.id == '575815357609148428') {
-        message.delete(1000)
-        message.reply('Sem comando de música aqui')
-        .then(d_message => {
-            d_message.delete(1000)
-            console.log(`Deleted message from ${message.author.username}`)})
-    }
+   
     
     
 
@@ -123,6 +117,16 @@ client.on("message", async message => {
     const comando = args.shift().toLowerCase();
     //const emojiList = client.emojis.get("624323979619991582")
 
+    
+        
+     if (args[0] === '-play' || args[0] === '-p' || args[0] === '-skip' && message.channel.id == '575815357609148428') {
+        message.delete(1000)
+        message.reply('Sem comando de música aqui')
+        .then(d_message => {
+            d_message.delete(1000)
+            console.log(`Deleted message from ${message.author.username}`)})
+    }
+    
     try {
         let commands = require(`./commands/${comando}.js`);
         commands.run(client, message, args);
