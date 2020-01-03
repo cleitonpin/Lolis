@@ -43,7 +43,32 @@ client.on('ready', () => {
 //     return Math.floor(Math.random() * (max - min + 1)) + 10
 // }
 
+client.on('raw', async dados  => {
+    
+    let serv = client.guilds.get('575815357609148426')
+    let membro = serv.members.get(dados.d.user.id)
+    let lol = serv.roles.get('662333273263046667'),
+        apex = serv.roles.get('662699156560936981'),
+        dev = serv.roles.get('661743359735496705')
+        
+    if(dados.d.user.id === null || dados.d.user.id === undefined) return
+    if(dados.t !== "PRESENCE_UPDATE") return
 
+    if(dados.t === "PRESENCE_UPDATE") {
+        if(dados.d.game.name == 'Visual Studio Code') {
+            if(membro.roles.has(dev)) return
+            membro.addRole(dev)
+        }
+        else if(dados.d.game.name == 'League of Legends') {
+            if(membro.roles.has(lol)) return
+            membro.addRole(lol)
+        }
+        else if (dados.d.game.name == 'Apex Legends') {
+            if(membro.roles.has(apex)) return
+            membro.addRole(apex)
+        }
+    }
+})
 client.on("message", async message => {
 
     if(message.author.bot) return;
