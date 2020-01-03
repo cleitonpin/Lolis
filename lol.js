@@ -45,16 +45,20 @@ client.on('ready', () => {
 
 client.on('raw', async dados  => {
     
-    let serv = client.guilds.get('575815357609148426')
-    let membro = serv.members.get(dados.d.user.id)
-    let lol = serv.roles.get('662333273263046667'),
-        apex = serv.roles.get('662699156560936981'),
-        dev = serv.roles.get('661743359735496705')
+    
         
     if(dados.d.user.id === null || dados.d.user.id === undefined) return
     if(dados.t !== "PRESENCE_UPDATE") return
 
-    if(dados.t === "PRESENCE_UPDATE") {
+    if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
+        
+        let serv = client.guilds.get('575815357609148426')
+        let membro = serv.members.get(dados.d.user.id)
+        let lol = serv.roles.get('662333273263046667'),
+        apex = serv.roles.get('662699156560936981'),
+        dev = serv.roles.get('661743359735496705')
+        
+        
         if(dados.d.game.name == 'Visual Studio Code') {
             if(membro.roles.has(dev)) return
             membro.addRole(dev)
