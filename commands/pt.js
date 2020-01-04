@@ -1,8 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const key = require('./Update.json')
 const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn(key.key)({
+const kayn = Kayn(process.env.RGAPI_KEY)({
     region: REGIONS.BRAZIL,
     apiURLPrefix: 'https://%s.api.riotgames.com',
     locale: 'pt_BR',

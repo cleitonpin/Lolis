@@ -1,2 +1,1 @@
-
-worker node lol.js
+worker npm run start
