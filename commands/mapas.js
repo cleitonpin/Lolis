@@ -2,7 +2,6 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 
 exports.run = async (client, message, args) => {
-
         const embed = new Discord.RichEmbed()
         .setColor('#0099ff')
         .setThumbnail('')

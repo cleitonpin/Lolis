@@ -1,37 +1,8 @@
 const Discord = require('discord.js')
 const champ = require('./campeoes.json')
-const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn(process.env.RGAPI_KEY)({
-    region: REGIONS.BRAZIL,
-    apiURLPrefix: 'https://%s.api.riotgames.com',
-    locale: 'pt_BR',
-    debugOptions: {
-        isEnabled: true,
-        showKey: false,
-    },
-    requestOptions: {
-        shouldRetry: true,
-        numberOfRetriesBeforeAbort: 3,
-        delayBeforeRetry: 1000,
-        burst: false,
-        shouldExitOn403: false,
-    },
-    cacheOptions: {
-        cache: null,
-        timeToLives: {
-            useDefault: false,
-            byGroup: {},
-            byMethod: {},
-        },
-    },
-})
-
+const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    
-    
-
-
     if(args[0] && args[1]==1){
         //pegar o id do jogador
         kayn.Summoner.by.name(`${args[0]}`)
