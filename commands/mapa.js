@@ -3,7 +3,7 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if(args[0] == '1'){
+    if(args[0] == '1') {
         kayn.DDragon.Map.list()
         .region(REGIONS.BRAZIL)
         .callback(function(err, Map) {
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed)
         })
     }
-    else if(args[0] == '2'){
+    else if(args[0] == '2') {
         kayn.DDragon.Map.list()
         .region(REGIONS.BRAZIL)
         .callback(function(err, Map) {
@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed)
         })
     }
-    else if(args[0] == '3'){
+    else if(args[0] == '3') {
         kayn.DDragon.Map.list()
         .region(REGIONS.BRAZIL)
         .callback(function(err, Map) {
@@ -39,7 +39,7 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed)
         })
     }
-    else if(args[0] == '4'){
+    else if(args[0] == '4') {
         kayn.DDragon.Map.list()
         .region(REGIONS.BRAZIL)
         .callback(function(err, Map) {
@@ -51,7 +51,7 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed)
         })
     }
-    else{
+    else {
         message.channel.send('**Digite a numeração (1-4)**')
     }
 }

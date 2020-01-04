@@ -3,7 +3,7 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if(args[0]){
+    if(args[0]) {
         kayn.DDragon.Champion.get(`${args[0]}`).region('br')
         .version('9.19.1') /* Explicit */
         .callback(function(error, champion) {

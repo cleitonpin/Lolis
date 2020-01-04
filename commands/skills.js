@@ -13,6 +13,7 @@ exports.run = async (client, message, args) => {
         .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.18.1/img/passive/${Champion['data'][args[0]]['passive']['image']['full']}`)
         .addField('**Nome da passiva:**', Champion['data'][`${args[0]}`]['passive']['name'])
         .addField('**Descrição da passiva**', `**${Champion['data'][`${args[0]}`]['passive']['description']}`)
+        
         message.channel.send(Embed)
         
         const skill1 = new Discord.RichEmbed()
@@ -47,9 +48,9 @@ exports.run = async (client, message, args) => {
 
         message.channel.send(skill4)
         
-    })
+        })
     }
-    else{
+    else {
         message.channel.send('**Digite o nome do campeão!**')
     }
 }

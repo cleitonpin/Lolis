@@ -3,7 +3,7 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if(args[0]){
+    if(args[0]) {
         kayn.Summoner.by.name(`${args[0]}`)
         .region(REGIONS.BRAZIL)
         .callback(function(err, summoner) {
@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed)
         })
     }
-    else{
+    else {
         message.channel.send('**Digite o nome do jogador!**')
     }
 }

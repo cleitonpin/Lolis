@@ -3,15 +3,12 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if (!args[0]){
+    if (!args[0]) {
         kayn.DDragon.SummonerSpell.list()
         .version('9.18.1')
-        .callback(function(error, SummonerSpell){
+        .callback(function(error, SummonerSpell) {
             //message.channel.send(SummonerSpell['data'])
             console.log(SummonerSpell)
-                
-                
-                
                 const commandsList = {
                     color: 0x0099ff,
                     title: 'Todos comandos do **Rengo**',
@@ -39,5 +36,4 @@ exports.run = async (client, message, args) => {
                 message.channel.send({ embed: commandsList });
         })
     }
-
 }

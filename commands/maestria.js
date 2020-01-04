@@ -3,7 +3,7 @@ const champ = require('./campeoes.json')
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if(args[0] && args[1]==1){
+    if(args[0] && args[1]==1) {
         //pegar o id do jogador
         kayn.Summoner.by.name(`${args[0]}`)
         .callback(function(err, summoner) {
@@ -14,8 +14,8 @@ exports.run = async (client, message, args) => {
             .callback(function(error, ChampionMastery) {
                 console.log(ChampionMastery[0])
                 //pegar nome dos champs
-                function IDtoName(ID){
-                    switch(ChampionMastery[0]['championId']){
+                function IDtoName(ID) {
+                    switch(ChampionMastery[0]['championId']) {
                         case 164: return "Camille"; break; 
                         case 497: return "Rakan"; break;
                         case 498: return "Xayah"; break;
@@ -194,7 +194,7 @@ exports.run = async (client, message, args) => {
 
 //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    else if(args[0] && args[1]==2){
+    else if(args[0] && args[1]==2) {
         //pegar o id do jogador
         kayn.Summoner.by.name(`${args[0]}`)
         .callback(function(err, summoner) {
@@ -205,8 +205,8 @@ exports.run = async (client, message, args) => {
             .callback(function(error, ChampionMastery) {
                 console.log(ChampionMastery[1])
                 //pegar nome dos champs
-                function IDtoName(ID){
-                    switch(ChampionMastery[1]['championId']){
+                function IDtoName(ID) {
+                    switch(ChampionMastery[1]['championId']) {
                         case 164: return "Camille"; break; 
                         case 497: return "Rakan"; break;
                         case 498: return "Xayah"; break;
@@ -385,7 +385,7 @@ exports.run = async (client, message, args) => {
 
 //  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-    else if(args[0] && args[1]==3){
+    else if(args[0] && args[1]==3) {
         //pegar o id do jogador
         kayn.Summoner.by.name(`${args[0]}`)
         .callback(function(err, summoner) {
@@ -396,8 +396,8 @@ exports.run = async (client, message, args) => {
             .callback(function(error, ChampionMastery) {
                 console.log(ChampionMastery[2])
                 //pegar nome dos champs
-                function IDtoName(ID){
-                    switch(ChampionMastery[2]['championId']){
+                function IDtoName(ID) {
+                    switch(ChampionMastery[2]['championId']) {
                         case 164: return "Camille"; break; 
                         case 497: return "Rakan"; break;
                         case 498: return "Xayah"; break;

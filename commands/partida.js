@@ -3,12 +3,12 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if (args[0]){
+    if (args[0]) {
         //pegar id do player
         kayn.Summoner.by.name(`${args[0]}`)
         .callback(function(err, summoner) {
-            console.log("\n\nID do jogador: "+summoner['id']+"\n\n")
-        //fim pegar id
+            console.log(`\n\nID do jogador: ${summoner['id']}\n\n`)
+            //fim pegar id
             
             //pegar partida ao vivo
             kayn.CurrentGame.by.summonerID(summoner.id)
@@ -165,7 +165,7 @@ exports.run = async (client, message, args) => {
                     }
                 }
                 Bans = (Bans) => {
-                    switch(Bans){
+                    switch(Bans) {
                         case -1: return client.emojis.get("631208516719214617"); break;
                         case 164: return client.emojis.get("631204793670434847"); break; 
                         case 497: return client.emojis.get("631204793813303325"); break;
@@ -315,13 +315,13 @@ exports.run = async (client, message, args) => {
                     }
                 }
                 Teams = (cores) => {
-                    switch(cores){
+                    switch(cores) {
                         case 100: return "Vermelho"; break;
                         case 200: return "Azul"; break;
                     }
                 }
                 Spells = (imgs) => {
-                    switch(imgs){
+                    switch(imgs) {
                         case 1: return client.emojis.get("631195262194417694"); break;
                         case 7: return client.emojis.get("631195264371130391"); break;
                         case 3: return client.emojis.get("631195262085234721"); break;
@@ -336,33 +336,28 @@ exports.run = async (client, message, args) => {
                     }
                 }
                 console.log(CurrentGame)            
-                     
                 if(CurrentGame == null) {
                     const emb = new Discord.RichEmbed()
                     .setColor('0x0099ff')
                     .setTitle('O jogador não está em partida')
-            
                     message.channel.send(emb)
                 }
-                
-                    // @@@@@@@@@@@@@@@@@@@@@@@ RANKED GAME @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                else if(CurrentGame.bannedChampions){
-                        
-                if(CurrentGame.gameMode== 'CLASSIC') var mapa = 'Summoners Rift'
-                
-                const embed = new Discord.RichEmbed()
-                .setColor('#170B3B')
-                .setTitle(`**Partida ao vivo de ${args[0]}**`)
-                .addField(`***Time ${Teams(CurrentGame.participants[0].teamId)}:***`, `${checkSkin(CurrentGame.participants[0].championId)} \u200b __**${CurrentGame.participants[0].summonerName}**__() \u200b ${Spells(CurrentGame.participants[0].spell1Id)}${Spells(CurrentGame.participants[0].spell2Id)}\n${checkSkin(CurrentGame.participants[1].championId)} \u200b __**${CurrentGame.participants[1].summonerName}**__ \u200b ${Spells(CurrentGame.participants[1].spell1Id)}${Spells(CurrentGame.participants[1].spell2Id)}\n${checkSkin(CurrentGame.participants[2].championId)} \u200b __**${CurrentGame.participants[2].summonerName}**__ \u200b ${Spells(CurrentGame.participants[2].spell1Id)}${Spells(CurrentGame.participants[2].spell2Id)}\n${checkSkin(CurrentGame.participants[3].championId)} \u200b __**${CurrentGame.participants[3].summonerName}**__ \u200b ${Spells(CurrentGame.participants[3].spell1Id)}${Spells(CurrentGame.participants[3].spell2Id)}\n${checkSkin(CurrentGame.participants[4].championId)} \u200b __**${CurrentGame.participants[4].summonerName}**__ \u200b ${Spells(CurrentGame.participants[4].spell1Id)}${Spells(CurrentGame.participants[4].spell2Id)}`, true)
-                .addField(`***Time ${Teams(CurrentGame.participants[5].teamId)}:***`, `${checkSkin(CurrentGame.participants[5].championId)} \u200b __**${CurrentGame.participants[5].summonerName}**__ \u200b ${Spells(CurrentGame.participants[5].spell1Id)}${Spells(CurrentGame.participants[5].spell2Id)}\n${checkSkin(CurrentGame.participants[6].championId)} \u200b __**${CurrentGame.participants[6].summonerName}**__ \u200b ${Spells(CurrentGame.participants[6].spell1Id)}${Spells(CurrentGame.participants[6].spell2Id)}\n${checkSkin(CurrentGame.participants[7].championId)} \u200b __**${CurrentGame.participants[7].summonerName}**__ \u200b ${Spells(CurrentGame.participants[7].spell1Id)}${Spells(CurrentGame.participants[7].spell2Id)}\n${checkSkin(CurrentGame.participants[8].championId)} \u200b __**${CurrentGame.participants[8].summonerName}**__ \u200b ${Spells(CurrentGame.participants[8].spell1Id)}${Spells(CurrentGame.participants[8].spell2Id)}\n${checkSkin(CurrentGame.participants[9].championId)} \u200b __**${CurrentGame.participants[9].summonerName}**__ \u200b ${Spells(CurrentGame.participants[9].spell1Id)}${Spells(CurrentGame.participants[9].spell2Id)}`, true)
-                .addField('----------------------------------', '\u200b')
-                .addField(`Bans do time ${Teams(CurrentGame.bannedChampions[0].teamId)}`, `${Bans(CurrentGame.bannedChampions[0].championId)} ${Bans(CurrentGame.bannedChampions[1].championId)} ${Bans(CurrentGame.bannedChampions[2].championId)} ${Bans(CurrentGame.bannedChampions[3].championId)} ${Bans(CurrentGame.bannedChampions[4].championId)}`, true)
-                .addField(`Bans do time ${Teams(CurrentGame.bannedChampions[5].teamId)}`, `${Bans(CurrentGame.bannedChampions[5].championId)} ${Bans(CurrentGame.bannedChampions[6].championId)} ${Bans(CurrentGame.bannedChampions[7].championId)} ${Bans(CurrentGame.bannedChampions[8].championId)} ${Bans(CurrentGame.bannedChampions[9].championId)}` ,true)
-                .setFooter(`Jogando em ${mapa} (Ranqueadas)`)
-                message.channel.send(embed)
+                // @@@@@@@@@@@@@@@@@@@@@@@ RANKED GAME @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                else if(CurrentGame.bannedChampions) {
+                    if(CurrentGame.gameMode== 'CLASSIC') var mapa = 'Summoners Rift'
+                    
+                    const embed = new Discord.RichEmbed()
+                    .setColor('#170B3B')
+                    .setTitle(`**Partida ao vivo de ${args[0]}**`)
+                    .addField(`***Time ${Teams(CurrentGame.participants[0].teamId)}:***`, `${checkSkin(CurrentGame.participants[0].championId)} \u200b __**${CurrentGame.participants[0].summonerName}**__() \u200b ${Spells(CurrentGame.participants[0].spell1Id)}${Spells(CurrentGame.participants[0].spell2Id)}\n${checkSkin(CurrentGame.participants[1].championId)} \u200b __**${CurrentGame.participants[1].summonerName}**__ \u200b ${Spells(CurrentGame.participants[1].spell1Id)}${Spells(CurrentGame.participants[1].spell2Id)}\n${checkSkin(CurrentGame.participants[2].championId)} \u200b __**${CurrentGame.participants[2].summonerName}**__ \u200b ${Spells(CurrentGame.participants[2].spell1Id)}${Spells(CurrentGame.participants[2].spell2Id)}\n${checkSkin(CurrentGame.participants[3].championId)} \u200b __**${CurrentGame.participants[3].summonerName}**__ \u200b ${Spells(CurrentGame.participants[3].spell1Id)}${Spells(CurrentGame.participants[3].spell2Id)}\n${checkSkin(CurrentGame.participants[4].championId)} \u200b __**${CurrentGame.participants[4].summonerName}**__ \u200b ${Spells(CurrentGame.participants[4].spell1Id)}${Spells(CurrentGame.participants[4].spell2Id)}`, true)
+                    .addField(`***Time ${Teams(CurrentGame.participants[5].teamId)}:***`, `${checkSkin(CurrentGame.participants[5].championId)} \u200b __**${CurrentGame.participants[5].summonerName}**__ \u200b ${Spells(CurrentGame.participants[5].spell1Id)}${Spells(CurrentGame.participants[5].spell2Id)}\n${checkSkin(CurrentGame.participants[6].championId)} \u200b __**${CurrentGame.participants[6].summonerName}**__ \u200b ${Spells(CurrentGame.participants[6].spell1Id)}${Spells(CurrentGame.participants[6].spell2Id)}\n${checkSkin(CurrentGame.participants[7].championId)} \u200b __**${CurrentGame.participants[7].summonerName}**__ \u200b ${Spells(CurrentGame.participants[7].spell1Id)}${Spells(CurrentGame.participants[7].spell2Id)}\n${checkSkin(CurrentGame.participants[8].championId)} \u200b __**${CurrentGame.participants[8].summonerName}**__ \u200b ${Spells(CurrentGame.participants[8].spell1Id)}${Spells(CurrentGame.participants[8].spell2Id)}\n${checkSkin(CurrentGame.participants[9].championId)} \u200b __**${CurrentGame.participants[9].summonerName}**__ \u200b ${Spells(CurrentGame.participants[9].spell1Id)}${Spells(CurrentGame.participants[9].spell2Id)}`, true)
+                    .addField('----------------------------------', '\u200b')
+                    .addField(`Bans do time ${Teams(CurrentGame.bannedChampions[0].teamId)}`, `${Bans(CurrentGame.bannedChampions[0].championId)} ${Bans(CurrentGame.bannedChampions[1].championId)} ${Bans(CurrentGame.bannedChampions[2].championId)} ${Bans(CurrentGame.bannedChampions[3].championId)} ${Bans(CurrentGame.bannedChampions[4].championId)}`, true)
+                    .addField(`Bans do time ${Teams(CurrentGame.bannedChampions[5].teamId)}`, `${Bans(CurrentGame.bannedChampions[5].championId)} ${Bans(CurrentGame.bannedChampions[6].championId)} ${Bans(CurrentGame.bannedChampions[7].championId)} ${Bans(CurrentGame.bannedChampions[8].championId)} ${Bans(CurrentGame.bannedChampions[9].championId)}` ,true)
+                    .setFooter(`Jogando em ${mapa} (Ranqueadas)`)
+                    message.channel.send(embed)
                 }
             })
         })
     }
-
 }

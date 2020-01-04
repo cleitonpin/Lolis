@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
             console.log(Champion['freeChampionIds'])
             //pegar nome dos champs
             Freeweek = (free) => {
-                switch(free){
+                switch(free) {
                     case -1: return client.emojis.get("631208516719214617"); break;
                     case 164: return client.emojis.get("631204793670434847"); break; 
                     case 497: return client.emojis.get("631204793813303325"); break;
@@ -159,7 +159,7 @@ exports.run = async (client, message, args) => {
                     case 350: return client.emojis.get("631313803723669522"); break;
                 }             
             }
-    
+
             const freerotarions = new Discord.RichEmbed()
             .setColor('#170B3B')
             .setTitle('***Rotação semanal de campeões***')
@@ -167,7 +167,6 @@ exports.run = async (client, message, args) => {
             .addField(`${Freeweek(Champion.freeChampionIds[0])}${Freeweek(Champion.freeChampionIds[1])}${Freeweek(Champion.freeChampionIds[2])}${Freeweek(Champion.freeChampionIds[3])}${Freeweek(Champion.freeChampionIds[4])}${Freeweek(Champion.freeChampionIds[5])}${Freeweek(Champion.freeChampionIds[6])}${Freeweek(Champion.freeChampionIds[7])}`, `\u200b`, true)
             .addField(`${Freeweek(Champion.freeChampionIds[8])}${Freeweek(Champion.freeChampionIds[9])}${Freeweek(Champion.freeChampionIds[10])}${Freeweek(Champion.freeChampionIds[11])}${Freeweek(Champion.freeChampionIds[12])}${Freeweek(Champion.freeChampionIds[13])}${Freeweek(Champion.freeChampionIds[14])}`, `\u200b`, true)
             .setThumbnail('https://opgg-static.akamaized.net/images/gnb/img/icon-navi-lol.png')
-
             message.channel.send(freerotarions)
         })
 }

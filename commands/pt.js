@@ -3,22 +3,19 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if (args[0]){
+    if (args[0]) {
         //pegar id do player
         kayn.Summoner.by.name(`${args[0]}`)
         .callback(function(err, summoner) {
-            console.log("\n\nID do jogador: "+summoner['id']+"\n\n")
-        //fim pegar id
-            
+            console.log(`\n\nID do jogador: ${summoner['id']}\n\n`)
+            //fim pegar id
             //pegar partida ao vivo
             kayn.CurrentGame.by.summonerID(summoner.id)
             .region(REGIONS.BRAZIL)
             .callback(function(err, CurrentGame) {
                 cont = 0
-                
                 for (; cont < 10 ; cont++) {
-               
-                var p = kayn.League.Entries.by.summonerID(`${CurrentGame.participants[cont].summonerId}`)
+                    var p = kayn.League.Entries.by.summonerID(`${CurrentGame.participants[cont].summonerId}`)
                 }
                 p.callback(function(err, summonerLeague) {
                     const embed = new Discord.RichEmbed()
@@ -173,7 +170,7 @@ exports.run = async (client, message, args) => {
                         }
                     }
                     Bans = (Bans) => {
-                        switch(Bans){
+                        switch(Bans) {
                             case -1: return client.emojis.get("631208516719214617"); break;
                             case 164: return client.emojis.get("631204793670434847"); break; 
                             case 497: return client.emojis.get("631204793813303325"); break;
@@ -323,13 +320,13 @@ exports.run = async (client, message, args) => {
                         }
                     }
                     Teams = (cores) => {
-                        switch(cores){
+                        switch(cores) {
                             case 100: return "Vermelho"; break;
                             case 200: return "Azul"; break;
                         }
                     }
                     Spells = (imgs) => {
-                        switch(imgs){
+                        switch(imgs) {
                             case 1: return client.emojis.get("631195262194417694"); break;
                             case 7: return client.emojis.get("631195264371130391"); break;
                             case 3: return client.emojis.get("631195262085234721"); break;
@@ -344,7 +341,7 @@ exports.run = async (client, message, args) => {
                         }
                     }
                     EmojiElos = (elos) => {
-                        switch(elos){
+                        switch(elos) {
                             case 'IRON': return client.emojis.get("631528448665321472"); break;
                             case 'BRONZE': return client.emojis.get("633781786865958952"); break;
                             case 'SILVER': return client.emojis.get("633785110642294804"); break;
@@ -371,7 +368,7 @@ exports.run = async (client, message, args) => {
                     }
                     
                     //@@@@@@@@@@@@@@@@@@@@@@@ RANKED GAME @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                    else if(CurrentGame.bannedChampions){
+                    else if(CurrentGame.bannedChampions) {
                     
                     if(CurrentGame.gameMode== 'CLASSIC') var mapa = 'Summoners Rift'
                     if(CurrentGame.gameMode== 'URF') var mapa = 'URF'

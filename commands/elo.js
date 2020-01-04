@@ -3,32 +3,31 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if(args[0]){
+    if(args[0]) {
         kayn.Summoner.by.name(`${args[0]}`)
         .region(REGIONS.BRAZIL)
         .callback(function(err, summoner) {
             console.log(summoner['id'])
             kayn.League.Entries.by.summonerID(`${summoner['id']}`)
             .callback(function(err, summonerLeague) {
-                if(args[1]){
+                if(args[1]) {
                     console.log(summonerLeague)
                     cont=0
                     gameMode = args[1].toUpperCase()
-                    if(gameMode!=""){
-                        for(; cont<=1; cont++){
+                    if(gameMode!="") {
+                        for(; cont<=1; cont++) {
                             // @@@ FUNÇÕES
-
-                            function convertGameMode(mode){ 
+                            function convertGameMode(mode) { 
                                 if(gameMode=="SOLO") return "RANKED_SOLO_5x5";
                                 if(gameMode=="FLEX") return "RANKED_FLEX_SR";
                                 if(gameMode=="TFT") return "RANKED_TFT";
                             }
-                            function tierTime(time){
-                                if(summonerLeague[cont]['veteran']==true){ return "***Há muito tempo nesse elo***"}
+                            function tierTime(time) {
+                                if(summonerLeague[cont]['veteran']==true) { return "***Há muito tempo nesse elo***"}
                                 else{ return "***Há pouco tempo no elo***"}
                             }
-                            function tierNamePT(name){
-                                switch(summonerLeague[cont].tier){
+                            function tierNamePT(name) {
+                                switch(summonerLeague[cont].tier) {
                                     case 'IRON': return "Ferro"; break;
                                     case 'BRONZE': return "Bronze"; break;
                                     case 'SILVER': return "Prata"; break;
@@ -41,7 +40,7 @@ exports.run = async (client, message, args) => {
                                 }
                             } 
                             EmojiElos = (elos) => {
-                                switch(elos){
+                                switch(elos) {
                                     case 'IRON': return client.emojis.get("631528448665321472"); break;
                                     case 'BRONZE': return client.emojis.get("633781786865958952"); break;
                                     case 'SILVER': return client.emojis.get("633785110642294804"); break;
@@ -54,21 +53,19 @@ exports.run = async (client, message, args) => {
                                 }
                             }
                             FilaTranslate = (fila) =>{
-                                switch(fila){
+                                switch(fila) {
                                     case "RANKED_TFT": return "TeamFight Tactics"; break;
                                     case "RANKED_SOLO_5x5": return "Solo/Duo"; break;
                                     case "RANKED_FLEX_SR": return "Flexivel"; break;
                                 }
                             }
-                        
                             // @@@ FIM FUNÇÕES
                             
                             var sumLeague = summonerLeague[cont];
                             //verificar o MODO da PARTIDA #RANQUEADO SOLO/FLEX/TFT
-                            if(sumLeague.queueType == convertGameMode()){
+                            if(sumLeague.queueType == convertGameMode()) {
                                 console.log(summonerLeague[cont])
                                 console.log("\n\nModo de jogo: "+sumLeague.queueType+"\n\n")
-
                                 const embed = new Discord.RichEmbed()
                                 .setColor('#0099ff')
                                 .addField('**Nome do invocador: **', summoner['name'], true)
@@ -80,7 +77,6 @@ exports.run = async (client, message, args) => {
                                 .addField(tierTime(), '\u200b', true)
                                 .addField('**Derrotas**', summonerLeague[cont]['losses'], true)
                                 .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/profileicon/${summoner['profileIconId']}.png`)
-
                                 message.channel.send(embed)
                                 
                             }
@@ -90,7 +86,6 @@ exports.run = async (client, message, args) => {
                     console.log("**Digite o modo de jogo [solo/flex/tft]!**")
                     message.channel.send('**Digite o modo de jogo [solo/flex/tft]!**')
                 }
-
             })
         })
     }

@@ -32,7 +32,6 @@ con.connect(err => {
 
 });
 
-
 function generateXp() {
     let min = 20;
     let max = 30;
@@ -41,10 +40,6 @@ function generateXp() {
 }*/
 
 client.on('raw', async dados  => {
-    
-    
-        
-    
     if(dados.t !== "PRESENCE_UPDATE") return
 
     if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
@@ -55,8 +50,7 @@ client.on('raw', async dados  => {
         apex = serv.roles.get('662699156560936981'),
         dev = serv.roles.get('661743359735496705')
         
-        if(dados.d.game == null) return
-        if(dados.d.game.name == null) return
+        if(dados.d.game == null || dados.d.game.name == null) return
         
         if(dados.d.game.name == 'Visual Studio Code') {
             if(membro.roles.has(dev)) return
@@ -72,10 +66,9 @@ client.on('raw', async dados  => {
         }
     }
 })
-client.on("message", async message => {
 
-    if(message.author.bot) return;
-    if(message.channel.type == "dm") return;
+client.on("message", async message => {
+    if(message.author.bot || message.channel.type == "dm") return;
 
     /*con.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, rows) => {
         if (err) throw err;
@@ -152,8 +145,7 @@ client.on("message", async message => {
         commands.run(client, message, args);
     } catch (e){
         console.log(e)
-    } 
-
+    }
 })
 
 client.login(bot_token);
