@@ -1,5 +1,4 @@
 const { Client, Attachment } = require('discord.js')
-//const MessageAttachment = require('discord.js')
 const client = new Client()
 //const mysql = require("mysql")
 require('dotenv').config()
@@ -52,9 +51,9 @@ client.on('raw', async dados  => {
         let serv = client.guilds.get('575815357609148426')
         let membro = serv.members.get(dados.d.user.id)
         let lol = serv.roles.get('662333273263046667'),
-        apex = serv.roles.get('662699156560936981'),
-        dev = serv.roles.get('661743359735496705')
-        
+            apex = serv.roles.get('662699156560936981'),
+            dev = serv.roles.get('661743359735496705')
+            
         if(dados.d.game == null) return
         if(dados.d.game.name == null) return
         
