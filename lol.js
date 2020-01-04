@@ -44,7 +44,7 @@ client.on('raw', async dados  => {
     
     
         
-    if(dados.d.user.id === null || dados.d.user.id === undefined) return
+    
     if(dados.t !== "PRESENCE_UPDATE") return
 
     if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
