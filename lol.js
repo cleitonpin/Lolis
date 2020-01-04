@@ -55,6 +55,8 @@ client.on('raw', async dados  => {
         apex = serv.roles.get('662699156560936981'),
         dev = serv.roles.get('661743359735496705')
         
+        if(dados.d.game == null) return
+        if(dados.d.game.name == null) return
         
         if(dados.d.game.name == 'Visual Studio Code') {
             if(membro.roles.has(dev)) return
