@@ -12,10 +12,13 @@
     "kayn": "^0.10.2",
     "lowdb": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "scripts": {
     "build": "npm install",
-    "start": "node lol.js"
+    "start": "node lol.js",
+    "dev": "nodemon npm run start"
   },
   "repository": {
     "type": "git",
