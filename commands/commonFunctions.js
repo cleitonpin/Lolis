@@ -1905,6 +1905,41 @@ Freeweek = (client, free) => {
     }             
 },
 
+fila = (id) => {
+    switch(id) {
+        case 0: return 'Personalizada';
+        case 2020: return 'Tutorial 3';
+        case 2010: return 'Tutorial 2';
+        case 2000: return 'Tutorial 1';
+        case 1200: return 'Nexus Blitz';
+        case 1100: return 'Odyssey Extraction';
+        case 1020: return 'One for all';
+        case 1010: return 'ARURF Snow';
+        case 1000: return 'Project game';
+        case 990 || 980: return 'Star Guardian Invasion';
+        case 960 || 950: return 'Doom bots';
+        case 940: return 'Nexus Siege games';
+        case 920: return 'Rei poro';
+        case 910: return 'Ascenção';
+        case 900: return 'URF';
+        case 850: return 'Co-op vs. Bots intermediários';
+        case 840: return 'Co-op vs. Bots princinpiantes';
+        case 830: return 'Co-op vs. Bots iniciantes';
+        case 700: return 'Clash';
+        case 610: return 'Dark Star';
+        case 600: return 'Caça ao sangue';
+        case 450: return 'ARAM';
+        case 440: return 'Ranqueada flexível';
+        case 430: return 'Partida normal';
+        case 420: return 'Ranqueada solo/duo';
+        case 400: return 'Partida normal';
+        case 313: return 'Mercado negro';
+        case 310: return 'Nemesis';
+        case 100: return 'ARAM';
+        case 98 || 75: return 'Hexakill';
+    }
+},
+
 module.exports = {
     checkSkin,
     Bans,
@@ -1912,7 +1947,8 @@ module.exports = {
     Spells,
     Freeweek,
     IDtoName,
-    checkItem
+    checkItem,
+    fila
 }
 
 //lucas é o bixo mesmo :v
