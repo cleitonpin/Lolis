@@ -4,8 +4,7 @@ const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
     if(args[0]) {
-        kayn.DDragon.SummonerSpell.list()
-        .version('9.18.1')
+        kayn.kaynObject.DDragon.SummonerSpell.list()
         .callback(function(error, SummonerSpell) {
             //message.channel.send(SummonerSpell['data']['Summoner'+`${args[0]}`]['id'])
 
@@ -43,7 +42,7 @@ exports.run = async (client, message, args) => {
         })
     }
     if (!args[0]) {
-        kayn.DDragon.SummonerSpell.list()
+        kayn.kaynObject.DDragon.SummonerSpell.list()
         .version('9.18.1')
         .callback(function(error, SummonerSpell) {
             //message.channel.send(SummonerSpell['data'])
