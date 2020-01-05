@@ -29,6 +29,5 @@ exports.run = async (client, message, args) => {
         };
         // spacing \u200b
         message.channel.send({ embed: commandsList });
-        })
-    }
+        
 }
