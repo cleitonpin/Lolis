@@ -25,11 +25,11 @@ exports.run = async (client, message, args) => {
                     for(cont = 0;cont<=10;cont++)
                     {
                         kayn.kaynObject.Match.get(matchlist.matches[cont].gameId)
-                        .callback(function(error, match) {
+                        .callback(function match(error, match) {
                     
                     })}
 
-
+                    
                         function transforma_magicamente(s){
               
                             function duas_casas(numero){
