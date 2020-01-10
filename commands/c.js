@@ -1,31 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const key = require('./Update.json')
-const { Kayn, REGIONS } = require('kayn')
-const kayn = Kayn(key.key)({
-    region: REGIONS.BRAZIL,
-    apiURLPrefix: 'https://%s.api.riotgames.com',
-    locale: 'pt_BR',
-    debugOptions: {
-        isEnabled: true,
-        showKey: false,
-    },
-    requestOptions: {
-        shouldRetry: true,
-        numberOfRetriesBeforeAbort: 3,
-        delayBeforeRetry: 1000,
-        burst: false,
-        shouldExitOn403: false,
-    },
-    cacheOptions: {
-        cache: null,
-        timeToLives: {
-            useDefault: false,
-            byGroup: {},
-            byMethod: {},
-        },
-    },
-})
+const kayn = require('./kayn')
 
 
 
@@ -37,17 +12,24 @@ exports.run = async (client, message, args) => {
             season: 7,
         }
 
-        kayn.Summoner.by.name('BestRengarAL')
+        kayn.kaynObject.Summoner.by.name('BestRengarAL')
         .callback(function(error, summoner) {
             // Note that the grabbing of a matchlist is currently limited by pagination.
             // This API request only returns the first list.
-            kayn.Matchlist.by
+            kayn.kaynObject.Matchlist.by
                 .accountID(summoner.accountId)
                 .region('br')
                 .callback(function(error, matchlist) {
                     console.log(matchlist.matches[0])
                 
-                    kayn.Match.get(matchlist.matches[0].gameId).callback(function(error, match) {
+                    for(cont = 0;cont<=10;cont++)
+                    {
+                        kayn.kaynObject.Match.get(matchlist.matches[cont].gameId)
+                        .callback(function(error, match) {
+                    
+                    })}
+
+
                         function transforma_magicamente(s){
               
                             function duas_casas(numero){
@@ -263,7 +245,7 @@ exports.run = async (client, message, args) => {
                         .addField('Fila', fila(match.queueId), true)
                         .addField('das', 'dhsd', true)
                         message.channel.send(emb)
-                    })
+                    
                 })
         })
 

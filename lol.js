@@ -42,20 +42,38 @@ client.on('raw', async dados  => {
     if(dados.t !== "PRESENCE_UPDATE") return
 
     if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
-        
+
+        //console.log(dados.d)
+
         let serv = client.guilds.get('575815357609148426')
         let membro = serv.members.get(dados.d.user.id)
         let lol = serv.roles.get('662333273263046667'),
             apex = serv.roles.get('662699156560936981'),
-            dev = serv.roles.get('661743359735496705')
+            dev = serv.roles.get('661743359735496705'),
+            tft = serv.roles.get('664556186930118656'),
+            js = serv.roles.get('665018735631007754')
             
         if(dados.d.game == null || dados.d.game.name == null) return
         
+        if (dados.d.game.details.search('.js') > 0) {
+            if(membro.roles.has(js)) return
+            membro.addRole(js)
+        }
+        console.log(dados.d.game.details.search('.js'))
+
+        
+
+
         if(dados.d.game.name == 'Visual Studio Code') {
             if(membro.roles.has(dev)) return
             membro.addRole(dev)
         }
         else if(dados.d.game.name == 'League of Legends') {
+            if(dados.d.game.details == 'Teamfight Tactics (Normal)' || dados.d.game.details == 'Teamfight Tactics (Ranqueadas)') {
+                if(membro.roles.has(tft)) return
+                membro.addRole(tft)
+
+            }
             if(membro.roles.has(lol)) return
             membro.addRole(lol)
         }
