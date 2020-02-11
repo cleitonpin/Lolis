@@ -135,6 +135,7 @@ client.on("message", async message => {
     }*/
     else if (message.content === 'not stonks') return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
     else if(message.content === 'stonks') return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
+    else if(message.content === 'ultra super mega stons') return message.channel.send('https://media.discordapp.net/attachments/575815357609148428/676604842399236126/EPoOW3HX4AITgGL.png?width=644&height=474')
     else if (message.content === 'genio') return message.channel.send(client.emojis.get("589690527742558209").toString())
     else if (message.content ==='kappa') return message.channel.send(client.emojis.get("592516025334104086").toString())
     else if(message.content ==='nosa') return message.channel.send(client.emojis.get("598994179464364076").toString())
