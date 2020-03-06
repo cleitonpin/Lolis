@@ -55,9 +55,10 @@ client.on('raw', async dados  => {
 
         if(dados.d.game == null || dados.d.game.name == null) return
 
-        if (dados.d.game.details.includes('.js')) {
+        if(dados.d.game.name == 'Custom Status') return
+        if (dados.d.game.details.includes('.js') == true && dados.d.game !== null) {
             if(!membro.roles.has(roles.js)) {
-                rmembro.addRole(roles.js)
+                membro.addRole(roles.js)
             }
         }
         //console.log(dados.d.game.details.search('.js'))
@@ -133,16 +134,26 @@ client.on("message", async message => {
     /*else if (message.author.id == '400734254365016068' || message.author.id == '611995739559559223'){
         return message.channel.send('Cala boca gustavo')
     }*/
-    else if (message.content === 'not stonks' || message.content.includes('not stonks')) return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
-    else if(message.content === 'stonks' || message.content.includes('stonks')) return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
-    else if(message.content === 'ultra super mega stonks' || message.content.includes('ultra super mega stonks')) return message.channel.send('https://media.discordapp.net/attachments/575815357609148428/676604842399236126/EPoOW3HX4AITgGL.png?width=644&height=474')
-    else if (message.content === 'genio' || message.content.includes('genio')) return message.channel.send(client.emojis.get("589690527742558209").toString())
-    else if (message.content ==='kappa' || message.content.includes('kappa')) return message.channel.send(client.emojis.get("592516025334104086").toString())
-    else if(message.content ==='nosa' || message.content.includes('nosa')) return message.channel.send(client.emojis.get("598994179464364076").toString())
-    /*if(message.author.id == '445003940128358401') {
-        var att = new Attachment('https://cdn.discordapp.com/attachments/575815357609148428/661022608577527809/5ab2dd770513f.png')
-        message.channel.send(att)
-    }*/
+     if (message.content=== 'not stonks' || message.content.startsWith('Not stonks')) return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
+    else if(message.content.includes('stonks') || message.content.startsWith('Stonks')) return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
+    else if (message.content === 'genio'.toUpperCase() || message.content.startsWith('Genio')) return message.channel.send(client.emojis.get("589690527742558209").toString())
+    else if (message.content ==='kappa'.toUpperCase() || message.content.startsWith('Kappa')) return message.channel.send(client.emojis.get("592516025334104086").toString())
+    else if(message.content ==='nosa'.toUpperCase() || message.content.startsWith('Nosa')) return message.channel.send(client.emojis.get("598994179464364076").toString())
+
+    const msg = message.content
+    
+    if (msg.startsWith('-p') || msg.startsWith('-play') || msg.startsWith('-skip') ) {
+        if(message.channel.id !== "670627802004979742"){
+            message.delete(500)
+            message.reply('Sem comando de música aqui')
+            .then(d_message => {
+                d_message.delete(500)
+                console.log(`Deleted message from ${message.author.username}`)})
+        }
+    }
+
+    
+    
     if(!message.content.startsWith(bot_prefix)) return;
 
     const args = message.content.slice(bot_prefix.length).trim().split(/ +/g);
