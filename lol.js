@@ -16,12 +16,12 @@ client.on('ready', () => {
     ]
 
     function setStatus(){
-        let randomStatus = status[Math.floor(Math.random()* 3)]
+        let randomStatus = status[Math.floor(Math.random()* 4)]
         return client.user.setPresence({ game: randomStatus })
     }
 
-
-    setInterval(setStatus, 10000)
+    console.log(setStatus())
+    setInterval(setStatus, 6000)
 })
 
 /*var con = mysql.createConnection({
@@ -61,14 +61,6 @@ client.on('raw', async dados  => {
             js = serv.roles.get('665018735631007754')
             
         if(dados.d.game == null || dados.d.game.name == null) return
-        
-        if (dados.d.game.details.search('.js') > 0) {
-            if(membro.roles.has(js)) return
-            membro.addRole(js)
-        }
-        console.log(dados.d.game.details.search('.js'))
-
-        
 
 
         if(dados.d.game.name == 'Visual Studio Code') {
