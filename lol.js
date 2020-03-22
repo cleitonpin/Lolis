@@ -7,14 +7,21 @@ const bot_token = process.env.BOT_TOKEN
 
 client.on('ready', () => {
     console.log(`Bot foi iniciado, com ${client.users.size} usuários, em ${client.channels.size} canais, em ${client.guilds.size} servidores.`)
-    client.user.setStatus('Availabe')
-    client.user.setPresence({
-        game: {
-            name: 'Liga das lendas',
-            type: "STREAMING",
-            url: "https://www.twitch.tv/cleitonpin"
-        }
-    })
+    
+    let status = [
+        { name: 'Teamfight Tactics', type: "PLAYING" },
+        { name: 'Liga das Lendas', type: "STREAMING", url: 'https://www.twitch.tv/cleitonpin'},
+        { name: 'O Luiz chorar' , type: "LISTENING"},
+        { name: '💤', type: "WATCHING"}
+    ]
+
+    function setStatus(){
+        let randomStatus = status[Math.floor(Math.random()* 3)]
+        return client.user.setPresence({ game: randomStatus })
+    }
+
+
+    setInterval(setStatus, 10000)
 })
 
 /*var con = mysql.createConnection({
@@ -125,24 +132,12 @@ client.on("message", async message => {
     }
 })*/
 
-    if (message.content === 'rip') {
-        const attachment = new Attachment('https://i.imgur.com/w3duR07.png')
-        message.channel.send(attachment)
-    }
-
-    /*if (message.author.id == '400734254365016068' || message.author.id == '611995739559559223'){
-        return message.channel.send('Cala boca gustavo')
-    }*/
     if (message.content === 'not stonks') return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
     else if(message.content === 'stonks') return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
     else if (message.content === 'genio') return message.channel.send(client.emojis.get("589690527742558209").toString())
     else if (message.content ==='kappa') return message.channel.send(client.emojis.get("592516025334104086").toString())
     else if(message.content ==='nosa') return message.channel.send(client.emojis.get("598994179464364076").toString())
 
-    /*if(message.author.id == '445003940128358401') {
-        var att = new Attachment('https://cdn.discordapp.com/attachments/575815357609148428/661022608577527809/5ab2dd770513f.png')
-        message.channel.send(att)
-    }*/
     if(!message.content.startsWith(bot_prefix)) return;
 
     const args = message.content.slice(bot_prefix.length).trim().split(/ +/g);
