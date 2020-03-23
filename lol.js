@@ -49,7 +49,7 @@ client.on('raw', async dados  => {
     if(dados.t !== "PRESENCE_UPDATE") 
         return
 
-        else if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
+    else if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
         //console.log(dados.d)
         let serv = client.guilds.get('575815357609148426')
         let membro = serv.members.get(dados.d.user.id)
@@ -91,7 +91,8 @@ client.on('raw', async dados  => {
 })
 
 client.on("message", async message => {
-    if(message.author.bot || message.channel.type == "dm") return;
+    if(message.author.bot || message.channel.type == "dm") 
+        return;
 
     /*con.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, rows) => {
         if (err) throw err;
