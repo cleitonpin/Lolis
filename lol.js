@@ -133,20 +133,20 @@ client.on("message", async message => {
 })*/
 
     const msg = message.content.toLowerCase()
-    
-    if (message.content.includes('not stonks'))
+
+    if (msg.includes('not stonks'))
         return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
 
-    else if(message.content.includes('stonks')) 
+    else if(msg.includes('stonks')) 
         return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
 
-    else if (message.content.includes('genio'))
+    else if (msg.includes('genio'))
         return message.channel.send(client.emojis.get("589690527742558209").toString())
 
-    else if (message.content.includes('kappa')) 
+    else if (msg.includes('kappa')) 
         return message.channel.send(client.emojis.get("592516025334104086").toString())
 
-    else if(message.content.includes('nosa')) 
+    else if(msg.includes('nosa')) 
         return message.channel.send(client.emojis.get("598994179464364076").toString())
 
     
@@ -161,9 +161,7 @@ client.on("message", async message => {
         }
     }
 
-    
-    
-    if(!message.content.startsWith(bot_prefix))
+    if(!msg.startsWith(bot_prefix))
         return;
 
     const args = message.content.slice(bot_prefix.length).trim().split(/ +/g);
