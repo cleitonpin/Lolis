@@ -46,8 +46,10 @@ function generateXp() {
 }*/
 
 client.on('raw', async dados  => {
-    if(dados.t !== "PRESENCE_UPDATE") return
-    else if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
+    if(dados.t !== "PRESENCE_UPDATE") 
+        return
+
+        else if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
         //console.log(dados.d)
         let serv = client.guilds.get('575815357609148426')
         let membro = serv.members.get(dados.d.user.id)
@@ -60,9 +62,9 @@ client.on('raw', async dados  => {
             js: serv.roles.get('665018735631007754')
         }
 
-        if(dados.d.game == null || dados.d.game.name == null) return
-
-        if(dados.d.game.name == 'Custom Status') return
+        if(dados.d.game == null || dados.d.game.name == null || dados.d.game.name == 'Custom Status') {
+            return
+        }
         //console.log(dados.d.game.details.search('.js'))
 
         if(dados.d.game.name == 'Visual Studio Code') {
@@ -129,14 +131,24 @@ client.on("message", async message => {
     }
 })*/
 
+    const msg = message.content.toLowerCase()
     
-    if (message.content=== 'not stonks' || message.content.startsWith('Not stonks')) return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
-    else if(message.content.includes('stonks') || message.content.startsWith('Stonks')) return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
-    else if (message.content === 'genio'.toUpperCase() || message.content.startsWith('Genio')) return message.channel.send(client.emojis.get("589690527742558209").toString())
-    else if (message.content ==='kappa'.toUpperCase() || message.content.startsWith('Kappa')) return message.channel.send(client.emojis.get("592516025334104086").toString())
-    else if(message.content ==='nosa'.toUpperCase() || message.content.startsWith('Nosa')) return message.channel.send(client.emojis.get("598994179464364076").toString())
+    if (message.content.includes('not stonks'))
+        return message.channel.send('https://tenor.com/view/not-stonks-profit-down-sad-frown-arms-crossed-gif-15684535')
 
-    const msg = message.content
+    else if(message.content.includes('stonks')) 
+        return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
+
+    else if (message.content.includes('genio'))
+        return message.channel.send(client.emojis.get("589690527742558209").toString())
+
+    else if (message.content.includes('kappa')) 
+        return message.channel.send(client.emojis.get("592516025334104086").toString())
+
+    else if(message.content.includes('nosa')) 
+        return message.channel.send(client.emojis.get("598994179464364076").toString())
+
+    
     
     if (msg.startsWith('-p') || msg.startsWith('-play') || msg.startsWith('-skip') ) {
         if(message.channel.id !== "670627802004979742"){
@@ -150,7 +162,8 @@ client.on("message", async message => {
 
     
     
-    if(!message.content.startsWith(bot_prefix)) return;
+    if(!message.content.startsWith(bot_prefix))
+        return;
 
     const args = message.content.slice(bot_prefix.length).trim().split(/ +/g);
     const comando = args.shift().toLowerCase();
