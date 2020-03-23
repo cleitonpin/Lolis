@@ -4,9 +4,9 @@ const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
     if(args[0]) {
-        kayn.DDragon.Champion.get(`${args[0]}`)
+        kayn.kaynObject.DDragon.Champion.get(`${args[0]}`)
         .callback(function(error, Champion) {
-        console.log(Champion['data'][`${args[0]}`]['spells'][0]['name'])
+        if (error) return console.log(error)
 
         const Embed = new Discord.RichEmbed()
         .setColor('#660000')       
@@ -51,6 +51,6 @@ exports.run = async (client, message, args) => {
         })
     }
     else {
-        message.channel.send('**Digite o nome do campeão!**')
+        message.channel.send('**Digite o nome do correto!**')
     }
 }

@@ -3,13 +3,17 @@ const client = new Discord.Client()
 const kayn = require('./kayn')
 
 exports.run = async (client, message, args) => {
-    if(args[0]) {
-        kayn.Summoner.by.name(`${args[0]}`)
-        .region(REGIONS.BRAZIL)
+    let summoner_Name = args.join('').trim()
+    if(summoner_Name) {
+        kayn.kaynObject.Summoner.by.name(summoner_Name)
+        .region(kayn.regions.BRAZIL)
         .callback(function(err, summoner) {
             console.log(summoner['id'])
-            kayn.League.Entries.by.summonerID(`${summoner['id']}`)
+
+            
+            kayn.kaynObject.League.Entries.by.summonerID(summoner['id'])
             .callback(function(err, summonerLeague) {
+                console.log(summonerLeague)
                 if(args[1]) {
                     console.log(summonerLeague)
                     cont=0

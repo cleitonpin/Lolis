@@ -1,4 +1,322 @@
+const champ_name_by_id = {
+    1: "Annie",
+    2: "Olaf",
+    3: "Galio",
+    4: "Twisted Fate",
+    5: "Xin Zhao",
+    6: "Urgot",
+    7: "LeBlanc",
+    8: "Vladimir",
+    9: "Fiddlesticks",
+    10: "Kayle",
+    11: "Master Yi",
+    12: "Alistar",
+    13: "Ryze",
+    14: "Sion",
+    15: "Sivir",
+    16: "Soraka",
+    17: "Teemo",
+    18: "Tristana",
+    19: "Warwick",
+    20: "Nunu",
+    21: "Miss Fortune",
+    22: "Ashe",
+    23: "Tryndamere",
+    24: "Jax",
+    25: "Morgana",
+    26: "Zilean",
+    27: "Singed",
+    28: "Evelynn",
+    29: "Twitch",
+    30: "Karthus",
+    31: "Cho'Gath",
+    32: "Amumu",
+    33: "Rammus",
+    34: "Anivia",
+    35: "Shaco",
+    36: "Dr. Mundo",
+    37: "Sona",
+    38: "Kassadin",
+    39: "Irelia",
+    40: "Janna",
+    41: "Gangplank",
+    42: "Corki",
+    43: "Karma",
+    44: "Taric",
+    45: "Veigar",
+    48: "Trundle",
+    50: "Swain",
+    51: "Caitlyn",
+    53: "Blitzcrank",
+    54: "Malphite",
+    55: "Katarina",
+    56: "Nocturne",
+    57: "Maokai",
+    58: "Renekton",
+    59: "Jarvan IV",
+    60: "Elise",
+    61: "Orianna",
+    62: "Wukong",
+    63: "Brand",
+    64: "Lee Sin",
+    67: "Vayne",
+    68: "Rumble",
+    69: "Cassiopeia",
+    72: "Skarner",
+    74: "Heimerdinger",
+    75: "Nasus",
+    76: "Nidalee",
+    77: "Udyr",
+    78: "Poppy",
+    79: "Gragas",
+    80: "Pantheon",
+    81: "Ezreal",
+    82: "Mordekaiser",
+    83: "Yorick",
+    84: "Akali",
+    85: "Kennen",
+    86: "Garen",
+    89: "Leona",
+    90: "Malzahar",
+    91: "Talon",
+    92: "Riven",
+    96: "Kog'Maw",
+    98: "Shen",
+    99: "Lux",
+    101: "Xerath",
+    102: "Shyvana",
+    103: "Ahri",
+    104: "Graves",
+    105: "Fizz",
+    106: "Volibear",
+    107: "Rengar",
+    110: "Varus",
+    111: "Nautilus",
+    112: "Viktor",
+    113: "Sejuani",
+    114: "Fiora",
+    115: "Ziggs",
+    117: "Lulu",
+    119: "Draven",
+    120: "Hecarim",
+    121: "Kha'Zix",
+    122: "Darius",
+    126: "Jayce",
+    127: "Lissandra",
+    131: "Diana",
+    133: "Quinn",
+    134: "Syndra",
+    136: "Aurelion Sol",
+    141: "Kayn",
+    142: "Zoe",
+    143: "Zyra",
+    145: "Kaisa",
+    150: "Gnar",
+    154: "Zac",
+    157: "Yasuo",
+    161: "Vel'Koz",
+    163: "Taliyah",
+    164: "Camille", 
+    201: "Braum",
+    202: "Jhin",
+    203: "Kindred",
+    222: "Jinx",
+    223: "Tahm Kench",
+    236: "Lucian",
+    238: "Zed",
+    240: "Kled",
+    245: "Ekko",
+    246: "Qiyana",
+    254: "Vi",
+    266: "Aatrox",
+    267: "Nami",
+    268: "Azir",
+    350: "Yuumi",
+    412: "Thresh",
+    420: "Illaoi",
+    421: "Rek'Sai",
+    427: "Ivern",
+    429: "Kalista",
+    432: "Bard",
+    497: "Rakan",
+    498: "Xayah",
+    516: "Ornn",
+    517: "Sylas",
+    517: "Sylas",
+    518: "Neeko",
+    555: "Pyke",
+    523: "Aphelios",
+    235: "Senna",
+    875: "Sett"
+}
 
+const emoji_by_champion_id = {
+    "-1": "631208516719214617",
+    1: "631206552661000203",
+    2: "631207540956332061",
+    3: "631211788133728279",
+    4: "631303849566797835",
+    5: "631312189042720768",
+    6: "631330382783971369",
+    7: "631312187671052298",
+    8: "631303850967695382",
+    9: "631309772783878145",
+    10: "631303849537175592",
+    11: "631328969584541716",
+    12: "631209264785915904",
+    13: "631206269323313155",
+    14: "631206552711462953",
+    15: "631306885470879774",
+    16: "631312189386653706",
+    17: "631309766764920832",
+    18: "631306887500922881",
+    19: "631306885441781790",
+    20: "631303848908029966",
+    21: "631312188862103562",
+    22: "631209265436295198",
+    23: "631205940636680232",
+    24: "631303849562341387",
+    25: "631207540864188436",
+    26: "631312189428334602",
+    27: "631207541061451823",
+    28: "631207540855799827",
+    29: "631312189336191016",
+    30: "631209264924327937",
+    31: "631309772989399060",
+    32: "631312187746418718",
+    33: "631309773538852864",
+    34: "631207540931166208",
+    35: "631309773480001557",
+    36: "631303850220978206",
+    37: "631209262835564620",
+    38: "631326380776357908",
+    39: "631303850942398467",
+    40: "631309772767100929",
+    41: "631319721962110995",
+    42: "631211787978670094",
+    43: "631206902650634240",
+    44: "631312188950446120",
+    45: "631211788200837152",
+    48: "631312190946803765",
+    50: "631309772703924224",
+    51: "631211788096241705",
+    53: "631312189046915074",
+    54: "631306887643791360",
+    55: "631209263347269656",
+    56: "631312188887269396",
+    57: "631207540914520074",
+    58: "631325019397685248",
+    59: "631313800888451093",
+    60: "631303849482911744",
+    61: "631309772645466142",
+    62: "631312189340254208",
+    63: "631303850904780821",
+    64: "631303849143042052",
+    67: "631209262948810783",
+    68: "631209264916201515",
+    69: "631205940410187817",
+    72: "631306890504044554",
+    74: "631209264916070416",
+    75: "631309768656420864",
+    76: "631211788092047388",
+    77: "631211788498632714",
+    78: "631206269386096640",
+    79: "631205941093728257",
+    80: "631211788192710688",
+    81: "631313803388256266",
+    82: "631209263360114700",
+    83: "631312189008904202",
+    84: "631306883625385994",
+    85: "631211787840126977",
+    86: "631207540843216916",
+    89: "631211788586975232",
+    90: "631211788234522624",
+    91: "631309772817432576",
+    92: "631211788259557389",
+    96: "631209265247551521",
+    98: "631312187998076941",
+    99: "631207540960657408",
+    101: "631309765221548073",
+    102: "631303851173085194",
+    103: "631207541363179541",
+    104: "631211788402425856",
+    105: "631209262605008926",
+    106: "631303849012887572",
+    107: "631306890248454154",
+    110: "631209264102244385",
+    111: "631206901891465236",
+    112: "631207541501722644",
+    113: "631303851055775766",
+    114: "631325019427045386",
+    115: "631309772775489546",
+    117: "631209262827307009",
+    119: "631327738808107049",
+    120: "631306884086890507",
+    121: "631211786015735840",
+    122: "631209262399619074",
+    126: "631211786430840867",
+    127: "631207540881096704",
+    131: "631303849528786984",
+    133: "631306879120703489",
+    134: "631211788381323264",
+    136: "631206269507731495",
+    141: "631205289613590559",
+    142: "631204794316619796",
+    143: "631313800800501810",
+    145: "631205291253301249",
+    150: "631211787907366934",
+    154: "631306879242600458",
+    157: "631329144600264714",
+    161: "631312189298311168",
+    163: "631306886028853278",
+    164: "631204793670434847", 
+    201: "631312189189390346",
+    202: "631206552300158982",
+    203: "631319722457169940",
+    222: "631312188547661847",
+    223: "631303849562603530",
+    235: "663140424449523752",
+    236: "631306885458427924",
+    238: "631209262848147466",
+    240: "631206902130278410",
+    245: "631322664077754369",
+    246: "631202429563830272",
+    254: "631264351998967855",
+    266: "631205656430379028",
+    267: "631313800720547860",
+    268: "631211788234391572",
+    350: "631313803723669522",
+    412: "631205655499505700",
+    420: "631303849562603520",
+    421: "631306879267766292",
+    427: "631303849570861065",
+    429: "631303851063902221",
+    432: "631211788100436020",
+    497: "631204793813303325",
+    498: "631203770901987349",
+    516: "631205656199692289",
+    517: "631326380780683314",
+    518: "631313803912544256",
+    523: "663143768995921972",
+    555: "631205289894608897",
+    235: "663140424449523752",
+    875: '691439559908655245',
+    523: "663143768995921972"
+}
+
+const spells_image = {
+    1: "631195262194417694",
+    7: "631195264371130391",
+    3: "631195262085234721",
+    4: "631195263855362081",
+    6: "631195264400490507",
+    11: "631195264501284889",
+    12: "631195264832634880",
+    13: "631195262370709525",
+    14: "631195264815988747",
+    21: "631195261787439106",
+    32: "631195261968056340",
+}
 
 checkItem = (args) => {
     let item_name = args.join(' ')
@@ -1272,640 +1590,39 @@ checkItem = (args) => {
     }
 },
 
-IDtoName = (ID) => {
-    switch(ID) {
-        case 164: return "Camille"; break; 
-        case 497: return "Rakan"; break;
-        case 498: return "Xayah"; break;
-        case 142: return "Zoe"; break;
-        case 145: return "Kaisa"; break;
-        case 141: return "Kayn"; break;
-        case 555: return "Pyke"; break;
-        case 516: return "Ornn"; break;
-        case 266: return "Aatrox"; break;
-        case 412: return "Thresh"; break;
-        case 23: return "Tryndamere"; break;
-        case 79: return "Gragas"; break;
-        case 69: return "Cassiopeia"; break;
-        case 136: return "Aurelion Sol"; break;
-        case 13: return "Ryze"; break;
-        case 78: return "Poppy"; break;
-        case 14: return "Sion"; break;
-        case 1: return "Annie"; break;
-        case 202: return "Jhin"; break;
-        case 43: return "Karma"; break;
-        case 111: return "Nautilus"; break;
-        case 240: return "Kled"; break;
-        case 99: return "Lux"; break;
-        case 103: return "Ahri"; break;
-        case 2: return "Olaf"; break;
-        case 112: return "Viktor"; break;
-        case 34: return "Anivia"; break;
-        case 27: return "Singed"; break;
-        case 86: return "Garen"; break;
-        case 127: return "Lissandra"; break;
-        case 57: return "Maokai"; break;
-        case 25: return "Morgana"; break;
-        case 28: return "Evelynn"; break;
-        case 105: return "Fizz"; break;
-        case 74: return "Heimerdinger"; break;
-        case 238: return "Zed"; break;
-        case 68: return "Rumble"; break;
-        case 82: return "Mordekaiser"; break;
-        case 37: return "Sona"; break;
-        case 96: return "Kog'Maw"; break;
-        case 55: return "Katarina"; break;
-        case 117: return "Lulu"; break;
-        case 22: return "Ashe"; break;
-        case 30: return "Karthus"; break;
-        case 12: return "Alistar"; break;
-        case 122: return "Darius"; break;
-        case 67: return "Vayne"; break;
-        case 110: return "Varus"; break;
-        case 77: return "Udyr"; break;
-        case 89: return "Leona"; break;
-        case 126: return "Jayce"; break;
-        case 134: return "Syndra"; break;
-        case 80: return "Pantheon"; break;
-        case 92: return "Riven"; break;
-        case 121: return "Kha'Zix"; break;
-        case 42: return "Corki"; break;
-        case 268: return "Azir"; break;
-        case 51: return "Caitlyn"; break;
-        case 76: return "Nidalee"; break;
-        case 85: return "Kennen"; break;
-        case 3: return "Galio"; break;
-        case 45: return "Veigar"; break;
-        case 432: return "Bard"; break;
-        case 150: return "Gnar"; break;
-        case 90: return "Malzahar"; break;
-        case 104: return "Graves"; break;
-        case 254: return "Vi"; break;
-        case 10: return "Kayle"; break;
-        case 39: return "Irelia"; break;
-        case 64: return "Lee Sin"; break;
-        case 420: return "Illaoi"; break;
-        case 60: return "Elise"; break;
-        case 106: return "Volibear"; break;
-        case 20: return "Nunu"; break;
-        case 4: return "Twisted Fate"; break;
-        case 24: return "Jax"; break;
-        case 102: return "Shyvana"; break;
-        case 429: return "Kalista"; break;
-        case 36: return "Dr. Mundo"; break;
-        case 427: return "Ivern"; break;
-        case 131: return "Diana"; break;
-        case 223: return "Tahm Kench"; break;
-        case 63: return "Brand"; break;
-        case 113: return "Sejuani"; break;
-        case 8: return "Vladimir"; break;
-        case 154: return "Zac"; break;
-        case 421: return "Rek'Sai"; break;
-        case 133: return "Quinn"; break;
-        case 84: return "Akali"; break;
-        case 163: return "Taliyah"; break;
-        case 18: return "Tristana"; break;
-        case 120: return "Hecarim"; break;
-        case 15: return "Sivir"; break;
-        case 236: return "Lucian"; break;
-        case 107: return "Rengar"; break;
-        case 19: return "Warwick"; break;
-        case 72: return "Skarner"; break;
-        case 54: return "Malphite"; break;
-        case 157: return "Yasuo"; break;
-        case 101: return "Xerath"; break;
-        case 17: return "Teemo"; break;
-        case 75: return "Nasus"; break;
-        case 58: return "Renekton"; break;
-        case 119: return "Draven"; break;
-        case 35: return "Shaco"; break;
-        case 50: return "Swain"; break;
-        case 91: return "Talon"; break;
-        case 40: return "Janna"; break;
-        case 115: return "Ziggs"; break;
-        case 245: return "Ekko"; break;
-        case 61: return "Orianna"; break;
-        case 114: return "Fiora"; break;
-        case 9: return "Fiddlesticks"; break;
-        case 31: return "Cho'Gath"; break;
-        case 33: return "Rammus"; break;
-        case 7: return "LeBlanc"; break;
-        case 16: return "Soraka"; break;
-        case 26: return "Zilean"; break;
-        case 56: return "Nocturne"; break;
-        case 222: return "Jinx"; break;
-        case 83: return "Yorick"; break;
-        case 6: return "Urgot"; break;
-        case 203: return "Kindred"; break;
-        case 21: return "Miss Fortune"; break;
-        case 62: return "Wukong"; break;
-        case 53: return "Blitzcrank"; break;
-        case 98: return "Shen"; break;
-        case 201: return "Braum"; break;
-        case 5: return "Xin Zhao"; break;
-        case 29: return "Twitch"; break;
-        case 11: return "Master Yi"; break;
-        case 44: return "Taric"; break;
-        case 32: return "Amumu"; break;
-        case 41: return "Gangplank"; break;
-        case 48: return "Trundle"; break;
-        case 38: return "Kassadin"; break;
-        case 161: return "Vel'Koz"; break;
-        case 143: return "Zyra"; break;
-        case 267: return "Nami"; break;
-        case 59: return "Jarvan IV"; break;
-        case 81: return "Ezreal"; break;
-        case 517: return "Sylas"; break;
-        case 518: return "Neeko"; break;
-        case 517: return "Sylas"; break;
-        case 246: return "Qiyana"; break;
-        case 350: return "Yuumi"; break;
+IDtoName = id => {
+    try {
+        if(champ_name_by_id[id]) {
+            return champ_name_by_id[id]
+        }
     }
+    catch (err) {}
 },
 
-checkSkin = (client, championId) => {
-    switch(championId) {
-        case 523: return client.emojis.get("663143768995921972"); break;
-        case 235: return client.emojis.get("663140424449523752"); break;
-        case -1: return client.emojis.get("631208516719214617"); break;
-        case 164: return client.emojis.get("631204793670434847"); break; 
-        case 497: return client.emojis.get("631204793813303325"); break;
-        case 498: return client.emojis.get("631203770901987349"); break;
-        case 142: return client.emojis.get("631204794316619796"); break;
-        case 145: return client.emojis.get("631205291253301249"); break;
-        case 141: return client.emojis.get("631205289613590559"); break;
-        case 555: return client.emojis.get("631205289894608897"); break;
-        case 516: return client.emojis.get("631205656199692289"); break;
-        case 266: return client.emojis.get("631205656430379028"); break;
-        case 412: return client.emojis.get("631205655499505700"); break;
-        case 23: return client.emojis.get("631205940636680232"); break;
-        case 79: return client.emojis.get("631205941093728257"); break;
-        case 69: return client.emojis.get("631205940410187817"); break;
-        case 136: return client.emojis.get("631206269507731495"); break;
-        case 13: return client.emojis.get("631206269323313155"); break;
-        case 78: return client.emojis.get("631206269386096640"); break;
-        case 14: return client.emojis.get("631206552711462953"); break;
-        case 1: return client.emojis.get("631206552661000203"); break;
-        case 202: return client.emojis.get("631206552300158982"); break;
-        case 43: return client.emojis.get("631206902650634240"); break;
-        case 111: return client.emojis.get("631206901891465236"); break;
-        case 240: return client.emojis.get("631206902130278410"); break;
-        case 99: return client.emojis.get("631207540960657408"); break;
-        case 103: return client.emojis.get("631207541363179541"); break;
-        case 2: return client.emojis.get("631207540956332061"); break;
-        case 112: return client.emojis.get("631207541501722644"); break;
-        case 34: return client.emojis.get("631207540931166208"); break;
-        case 27: return client.emojis.get("631207541061451823"); break;
-        case 86: return client.emojis.get("631207540843216916"); break;
-        case 127: return client.emojis.get("631207540881096704"); break;
-        case 57: return client.emojis.get("631207540914520074"); break;
-        case 25: return client.emojis.get("631207540864188436"); break;
-        case 28: return client.emojis.get("631207540855799827"); break;
-        case 105: return client.emojis.get("631209262605008926"); break;
-        case 74: return client.emojis.get("631209264916070416"); break;
-        case 238: return client.emojis.get("631209262848147466"); break;
-        case 68: return client.emojis.get("631209264916201515"); break;
-        case 82: return client.emojis.get("631209263360114700"); break;
-        case 37: return client.emojis.get("631209262835564620"); break;
-        case 96: return client.emojis.get("631209265247551521"); break;
-        case 55: return client.emojis.get("631209263347269656"); break;
-        case 117: return client.emojis.get("631209262827307009"); break;
-        case 22: return client.emojis.get("631209265436295198"); break;
-        case 30: return client.emojis.get("631209264924327937"); break;
-        case 12: return client.emojis.get("631209264785915904"); break;
-        case 122: return client.emojis.get("631209262399619074"); break;
-        case 67: return client.emojis.get("631209262948810783"); break;
-        case 110: return client.emojis.get("631209264102244385"); break;
-        case 77: return client.emojis.get("631211788498632714"); break;
-        case 89: return client.emojis.get("631211788586975232"); break;
-        case 126: return client.emojis.get("631211786430840867"); break;
-        case 134: return client.emojis.get("631211788381323264"); break;
-        case 80: return client.emojis.get("631211788192710688"); break;
-        case 92: return client.emojis.get("631211788259557389"); break;
-        case 121: return client.emojis.get("631211786015735840"); break;
-        case 42: return client.emojis.get("631211787978670094"); break;
-        case 268: return client.emojis.get("631211788234391572"); break;
-        case 51: return client.emojis.get("631211788096241705"); break;
-        case 76: return client.emojis.get("631211788092047388"); break;
-        case 85: return client.emojis.get("631211787840126977"); break;
-        case 3: return client.emojis.get("631211788133728279"); break;
-        case 45: return client.emojis.get("631211788200837152"); break;
-        case 432: return client.emojis.get("631211788100436020"); break;
-        case 150: return client.emojis.get("631211787907366934"); break;
-        case 90: return client.emojis.get("631211788234522624"); break;
-        case 104: return client.emojis.get("631211788402425856"); break;
-        case 254: return client.emojis.get("631264351998967855"); break;
-        case 10: return client.emojis.get("631303849537175592"); break;
-        case 39: return client.emojis.get("631303850942398467"); break;
-        case 64: return client.emojis.get("631303849143042052"); break;
-        case 420: return client.emojis.get("631303849562603520"); break;
-        case 60: return client.emojis.get("631303849482911744"); break;
-        case 106: return client.emojis.get("631303849012887572"); break;
-        case 20: return client.emojis.get("631303848908029966"); break;
-        case 4: return client.emojis.get("631303849566797835"); break;
-        case 24: return client.emojis.get("631303849562341387"); break;
-        case 102: return client.emojis.get("631303851173085194"); break;
-        case 429: return client.emojis.get("631303851063902221"); break;
-        case 36: return client.emojis.get("631303850220978206"); break;
-        case 427: return client.emojis.get("631303849570861065"); break;
-        case 131: return client.emojis.get("631303849528786984"); break;
-        case 223: return client.emojis.get("631303849562603530"); break;
-        case 63: return client.emojis.get("631303850904780821"); break;
-        case 113: return client.emojis.get("631303851055775766"); break;
-        case 8: return client.emojis.get("631303850967695382"); break;
-        case 154: return client.emojis.get("631306879242600458"); break;
-        case 421: return client.emojis.get("631306879267766292"); break;
-        case 133: return client.emojis.get("631306879120703489"); break;
-        case 84: return client.emojis.get("631306883625385994"); break;
-        case 163: return client.emojis.get("631306886028853278"); break;
-        case 18: return client.emojis.get("631306887500922881"); break;
-        case 120: return client.emojis.get("631306884086890507"); break;
-        case 15: return client.emojis.get("631306885470879774"); break;
-        case 236: return client.emojis.get("631306885458427924"); break;
-        case 107: return client.emojis.get("631306890248454154"); break;
-        case 19: return client.emojis.get("631306885441781790"); break;
-        case 72: return client.emojis.get("631306890504044554"); break;
-        case 54: return client.emojis.get("631306887643791360"); break;
-        case 157: return client.emojis.get("631329144600264714"); break;
-        case 101: return client.emojis.get("631309765221548073"); break;
-        case 17: return client.emojis.get("631309766764920832"); break;
-        case 75: return client.emojis.get("631309768656420864"); break;
-        case 58: return client.emojis.get("631325019397685248"); break;
-        case 119: return client.emojis.get("631327738808107049"); break;
-        case 35: return client.emojis.get("631309773480001557"); break;
-        case 50: return client.emojis.get("631309772703924224"); break;
-        case 91: return client.emojis.get("631309772817432576"); break;
-        case 40: return client.emojis.get("631309772767100929"); break;
-        case 115: return client.emojis.get("631309772775489546"); break;
-        case 245: return client.emojis.get("631322664077754369"); break;
-        case 61: return client.emojis.get("631309772645466142"); break;
-        case 114: return client.emojis.get("631325019427045386"); break;
-        case 9: return client.emojis.get("631309772783878145"); break;
-        case 31: return client.emojis.get("631309772989399060"); break;
-        case 33: return client.emojis.get("631309773538852864"); break;
-        case 7: return client.emojis.get("631312187671052298"); break;
-        case 16: return client.emojis.get("631312189386653706"); break;
-        case 26: return client.emojis.get("631312189428334602"); break;
-        case 56: return client.emojis.get("631312188887269396"); break;
-        case 222: return client.emojis.get("631312188547661847"); break;
-        case 83: return client.emojis.get("631312189008904202"); break;
-        case 6: return client.emojis.get("631330382783971369"); break;
-        case 203: return client.emojis.get("631319722457169940"); break;
-        case 21: return client.emojis.get("631312188862103562"); break;
-        case 62: return client.emojis.get("631312189340254208"); break;
-        case 53: return client.emojis.get("631312189046915074"); break;
-        case 98: return client.emojis.get("631312187998076941"); break;
-        case 201: return client.emojis.get("631312189189390346"); break;
-        case 5: return client.emojis.get("631312189042720768"); break;
-        case 29: return client.emojis.get("631312189336191016"); break;
-        case 11: return client.emojis.get("631328969584541716"); break;
-        case 44: return client.emojis.get("631312188950446120"); break;
-        case 32: return client.emojis.get("631312187746418718"); break;
-        case 41: return client.emojis.get("631319721962110995"); break;
-        case 48: return client.emojis.get("631312190946803765"); break;
-        case 38: return client.emojis.get("631326380776357908"); break;
-        case 161: return client.emojis.get("631312189298311168"); break;
-        case 143: return client.emojis.get("631313800800501810"); break;
-        case 267: return client.emojis.get("631313800720547860"); break;
-        case 59: return client.emojis.get("631313800888451093"); break;
-        case 81: return client.emojis.get("631313803388256266"); break;
-        case 517: return client.emojis.get("631326380780683314"); break;
-        case 518: return client.emojis.get("631313803912544256"); break;
-        case 246: return client.emojis.get("631202429563830272"); break;
-        case 350: return client.emojis.get("631313803723669522"); break;
-    }
+getChampionEmoji = (client, champion_id) => {
+    try {
+        if(emoji_by_champion_id[champion_id]) {
+            return client.emojis.get(emoji_by_champion_id[champion_id])
+        }
+    } catch (err) {}
 },
 
-Bans = (client, Bans) => {
-    switch(Bans) {
-        case 523: return client.emojis.get("663143768995921972"); break;
-        case 235: return client.emojis.get("663140424449523752"); break;
-        case -1: return client.emojis.get("631208516719214617"); break;
-        case 164: return client.emojis.get("631204793670434847"); break; 
-        case 497: return client.emojis.get("631204793813303325"); break;
-        case 498: return client.emojis.get("631203770901987349"); break;
-        case 142: return client.emojis.get("631204794316619796"); break;
-        case 145: return client.emojis.get("631205291253301249"); break;
-        case 141: return client.emojis.get("631205289613590559"); break;
-        case 555: return client.emojis.get("631205289894608897"); break;
-        case 516: return client.emojis.get("631205656199692289"); break;
-        case 266: return client.emojis.get("631205656430379028"); break;
-        case 412: return client.emojis.get("631205655499505700"); break;
-        case 23: return client.emojis.get("631205940636680232"); break;
-        case 79: return client.emojis.get("631205941093728257"); break;
-        case 69: return client.emojis.get("631205940410187817"); break;
-        case 136: return client.emojis.get("631206269507731495"); break;
-        case 13: return client.emojis.get("631206269323313155"); break;
-        case 78: return client.emojis.get("631206269386096640"); break;
-        case 14: return client.emojis.get("631206552711462953"); break;
-        case 1: return client.emojis.get("631206552661000203"); break;
-        case 202: return client.emojis.get("631206552300158982"); break;
-        case 43: return client.emojis.get("631206902650634240"); break;
-        case 111: return client.emojis.get("631206901891465236"); break;
-        case 240: return client.emojis.get("631206902130278410"); break;
-        case 99: return client.emojis.get("631207540960657408"); break;
-        case 103: return client.emojis.get("631207541363179541"); break;
-        case 2: return client.emojis.get("631207540956332061"); break;
-        case 112: return client.emojis.get("631207541501722644"); break;
-        case 34: return client.emojis.get("631207540931166208"); break;
-        case 27: return client.emojis.get("631207541061451823"); break;
-        case 86: return client.emojis.get("631207540843216916"); break;
-        case 127: return client.emojis.get("631207540881096704"); break;
-        case 57: return client.emojis.get("631207540914520074"); break;
-        case 25: return client.emojis.get("631207540864188436"); break;
-        case 28: return client.emojis.get("631207540855799827"); break;
-        case 105: return client.emojis.get("631209262605008926"); break;
-        case 74: return client.emojis.get("631209264916070416"); break;
-        case 238: return client.emojis.get("631209262848147466"); break;
-        case 68: return client.emojis.get("631209264916201515"); break;
-        case 82: return client.emojis.get("631209263360114700"); break;
-        case 37: return client.emojis.get("631209262835564620"); break;
-        case 96: return client.emojis.get("631209265247551521"); break;
-        case 55: return client.emojis.get("631209263347269656"); break;
-        case 117: return client.emojis.get("631209262827307009"); break;
-        case 22: return client.emojis.get("631209265436295198"); break;
-        case 30: return client.emojis.get("631209264924327937"); break;
-        case 12: return client.emojis.get("631209264785915904"); break;
-        case 122: return client.emojis.get("631209262399619074"); break;
-        case 67: return client.emojis.get("631209262948810783"); break;
-        case 110: return client.emojis.get("631209264102244385"); break;
-        case 77: return client.emojis.get("631211788498632714"); break;
-        case 89: return client.emojis.get("631211788586975232"); break;
-        case 126: return client.emojis.get("631211786430840867"); break;
-        case 134: return client.emojis.get("631211788381323264"); break;
-        case 80: return client.emojis.get("631211788192710688"); break;
-        case 92: return client.emojis.get("631211788259557389"); break;
-        case 121: return client.emojis.get("631211786015735840"); break;
-        case 42: return client.emojis.get("631211787978670094"); break;
-        case 268: return client.emojis.get("631211788234391572"); break;
-        case 51: return client.emojis.get("631211788096241705"); break;
-        case 76: return client.emojis.get("631211788092047388"); break;
-        case 85: return client.emojis.get("631211787840126977"); break;
-        case 3: return client.emojis.get("631211788133728279"); break;
-        case 45: return client.emojis.get("631211788200837152"); break;
-        case 432: return client.emojis.get("631211788100436020"); break;
-        case 150: return client.emojis.get("631211787907366934"); break;
-        case 90: return client.emojis.get("631211788234522624"); break;
-        case 104: return client.emojis.get("631211788402425856"); break;
-        case 254: return client.emojis.get("631264351998967855"); break;
-        case 10: return client.emojis.get("631303849537175592"); break;
-        case 39: return client.emojis.get("631303850942398467"); break;
-        case 64: return client.emojis.get("631303849143042052"); break;
-        case 420: return client.emojis.get("631303849562603520"); break;
-        case 60: return client.emojis.get("631303849482911744"); break;
-        case 106: return client.emojis.get("631303849012887572"); break;
-        case 20: return client.emojis.get("631303848908029966"); break;
-        case 4: return client.emojis.get("631303849566797835"); break;
-        case 24: return client.emojis.get("631303849562341387"); break;
-        case 102: return client.emojis.get("631303851173085194"); break;
-        case 429: return client.emojis.get("631303851063902221"); break;
-        case 36: return client.emojis.get("631303850220978206"); break;
-        case 427: return client.emojis.get("631303849570861065"); break;
-        case 131: return client.emojis.get("631303849528786984"); break;
-        case 223: return client.emojis.get("631303849562603530"); break;
-        case 63: return client.emojis.get("631303850904780821"); break;
-        case 113: return client.emojis.get("631303851055775766"); break;
-        case 8: return client.emojis.get("631303850967695382"); break;
-        case 154: return client.emojis.get("631306879242600458"); break;
-        case 421: return client.emojis.get("631306879267766292"); break;
-        case 133: return client.emojis.get("631306879120703489"); break;
-        case 84: return client.emojis.get("631306883625385994"); break;
-        case 163: return client.emojis.get("631306886028853278"); break;
-        case 18: return client.emojis.get("631306887500922881"); break;
-        case 120: return client.emojis.get("631306884086890507"); break;
-        case 15: return client.emojis.get("631306885470879774"); break;
-        case 236: return client.emojis.get("631306885458427924"); break;
-        case 107: return client.emojis.get("631306890248454154"); break;
-        case 19: return client.emojis.get("631306885441781790"); break;
-        case 72: return client.emojis.get("631306890504044554"); break;
-        case 54: return client.emojis.get("631306887643791360"); break;
-        case 157: return client.emojis.get("631329144600264714"); break;
-        case 101: return client.emojis.get("631309765221548073"); break;
-        case 17: return client.emojis.get("631309766764920832"); break;
-        case 75: return client.emojis.get("631309768656420864"); break;
-        case 58: return client.emojis.get("631325019397685248"); break;
-        case 119: return client.emojis.get("631327738808107049"); break;
-        case 35: return client.emojis.get("631309773480001557"); break;
-        case 50: return client.emojis.get("631309772703924224"); break;
-        case 91: return client.emojis.get("631309772817432576"); break;
-        case 40: return client.emojis.get("631309772767100929"); break;
-        case 115: return client.emojis.get("631309772775489546"); break;
-        case 245: return client.emojis.get("631322664077754369"); break;
-        case 61: return client.emojis.get("631309772645466142"); break;
-        case 114: return client.emojis.get("631325019427045386"); break;
-        case 9: return client.emojis.get("631309772783878145"); break;
-        case 31: return client.emojis.get("631309772989399060"); break;
-        case 33: return client.emojis.get("631309773538852864"); break;
-        case 7: return client.emojis.get("631312187671052298"); break;
-        case 16: return client.emojis.get("631312189386653706"); break;
-        case 26: return client.emojis.get("631312189428334602"); break;
-        case 56: return client.emojis.get("631312188887269396"); break;
-        case 222: return client.emojis.get("631312188547661847"); break;
-        case 83: return client.emojis.get("631312189008904202"); break;
-        case 6: return client.emojis.get("631330382783971369"); break;
-        case 203: return client.emojis.get("631319722457169940"); break;
-        case 21: return client.emojis.get("631312188862103562"); break;
-        case 62: return client.emojis.get("631312189340254208"); break;
-        case 53: return client.emojis.get("631312189046915074"); break;
-        case 98: return client.emojis.get("631312187998076941"); break;
-        case 201: return client.emojis.get("631312189189390346"); break;
-        case 5: return client.emojis.get("631312189042720768"); break;
-        case 29: return client.emojis.get("631312189336191016"); break;
-        case 11: return client.emojis.get("631328969584541716"); break;
-        case 44: return client.emojis.get("631312188950446120"); break;
-        case 32: return client.emojis.get("631312187746418718"); break;
-        case 41: return client.emojis.get("631319721962110995"); break;
-        case 48: return client.emojis.get("631312190946803765"); break;
-        case 38: return client.emojis.get("631326380776357908"); break;
-        case 161: return client.emojis.get("631312189298311168"); break;
-        case 143: return client.emojis.get("631313800800501810"); break;
-        case 267: return client.emojis.get("631313800720547860"); break;
-        case 59: return client.emojis.get("631313800888451093"); break;
-        case 81: return client.emojis.get("631313803388256266"); break;
-        case 517: return client.emojis.get("631326380780683314"); break;
-        case 518: return client.emojis.get("631313803912544256"); break;
-        case 246: return client.emojis.get("631202429563830272"); break;
-        case 350: return client.emojis.get("631313803723669522"); break;
-    }
-},
-
-Teams = (client, cores) => {
-    switch(cores) {
+Teams = team_id => {
+    switch(team_id) {
         case 100: return "Vermelho"; break;
         case 200: return "Azul"; break;
     }
 },
 
-Spells = (client, imgs) => {
-    switch(imgs) {
-        case 1: return client.emojis.get("631195262194417694"); break;
-        case 7: return client.emojis.get("631195264371130391"); break;
-        case 3: return client.emojis.get("631195262085234721"); break;
-        case 4: return client.emojis.get("631195263855362081"); break;
-        case 6: return client.emojis.get("631195264400490507"); break;
-        case 11: return client.emojis.get("631195264501284889"); break;
-        case 12: return client.emojis.get("631195264832634880"); break;
-        case 13: return client.emojis.get("631195262370709525"); break;
-        case 14: return client.emojis.get("631195264815988747"); break;
-        case 21: return client.emojis.get("631195261787439106"); break;
-        case 32: return client.emojis.get("631195261968056340"); break;
-    }
+Spells = (client, spell_id) => {
+    try {
+        if(spells_image[spell_id]) {
+            return client.emojis.get(spells_image[spell_id])
+        }
+    } catch (err) {}
 },
 
-Freeweek = (client, free) => {
-    switch(free) {
-        case 523: return client.emojis.get("663143768995921972"); break;
-        case 235: return client.emojis.get("663140424449523752"); break;
-        case -1: return client.emojis.get("631208516719214617"); break;
-        case 164: return client.emojis.get("631204793670434847"); break; 
-        case 497: return client.emojis.get("631204793813303325"); break;
-        case 498: return client.emojis.get("631203770901987349"); break;
-        case 142: return client.emojis.get("631204794316619796"); break;
-        case 145: return client.emojis.get("631205291253301249"); break;
-        case 141: return client.emojis.get("631205289613590559"); break;
-        case 555: return client.emojis.get("631205289894608897"); break;
-        case 516: return client.emojis.get("631205656199692289"); break;
-        case 266: return client.emojis.get("631205656430379028"); break;
-        case 412: return client.emojis.get("631205655499505700"); break;
-        case 23: return client.emojis.get("631205940636680232"); break;
-        case 79: return client.emojis.get("631205941093728257"); break;
-        case 69: return client.emojis.get("631205940410187817"); break;
-        case 136: return client.emojis.get("631206269507731495"); break;
-        case 13: return client.emojis.get("631206269323313155"); break;
-        case 78: return client.emojis.get("631206269386096640"); break;
-        case 14: return client.emojis.get("631206552711462953"); break;
-        case 1: return client.emojis.get("631206552661000203"); break;
-        case 202: return client.emojis.get("631206552300158982"); break;
-        case 43: return client.emojis.get("631206902650634240"); break;
-        case 111: return client.emojis.get("631206901891465236"); break;
-        case 240: return client.emojis.get("631206902130278410"); break;
-        case 99: return client.emojis.get("631207540960657408"); break;
-        case 103: return client.emojis.get("631207541363179541"); break;
-        case 2: return client.emojis.get("631207540956332061"); break;
-        case 112: return client.emojis.get("631207541501722644"); break;
-        case 34: return client.emojis.get("631207540931166208"); break;
-        case 27: return client.emojis.get("631207541061451823"); break;
-        case 86: return client.emojis.get("631207540843216916"); break;
-        case 127: return client.emojis.get("631207540881096704"); break;
-        case 57: return client.emojis.get("631207540914520074"); break;
-        case 25: return client.emojis.get("631207540864188436"); break;
-        case 28: return client.emojis.get("631207540855799827"); break;
-        case 105: return client.emojis.get("631209262605008926"); break;
-        case 74: return client.emojis.get("631209264916070416"); break;
-        case 238: return client.emojis.get("631209262848147466"); break;
-        case 68: return client.emojis.get("631209264916201515"); break;
-        case 82: return client.emojis.get("631209263360114700"); break;
-        case 37: return client.emojis.get("631209262835564620"); break;
-        case 96: return client.emojis.get("631209265247551521"); break;
-        case 55: return client.emojis.get("631209263347269656"); break;
-        case 117: return client.emojis.get("631209262827307009"); break;
-        case 22: return client.emojis.get("631209265436295198"); break;
-        case 30: return client.emojis.get("631209264924327937"); break;
-        case 12: return client.emojis.get("631209264785915904"); break;
-        case 122: return client.emojis.get("631209262399619074"); break;
-        case 67: return client.emojis.get("631209262948810783"); break;
-        case 110: return client.emojis.get("631209264102244385"); break;
-        case 77: return client.emojis.get("631211788498632714"); break;
-        case 89: return client.emojis.get("631211788586975232"); break;
-        case 126: return client.emojis.get("631211786430840867"); break;
-        case 134: return client.emojis.get("631211788381323264"); break;
-        case 80: return client.emojis.get("631211788192710688"); break;
-        case 92: return client.emojis.get("631211788259557389"); break;
-        case 121: return client.emojis.get("631211786015735840"); break;
-        case 42: return client.emojis.get("631211787978670094"); break;
-        case 268: return client.emojis.get("631211788234391572"); break;
-        case 51: return client.emojis.get("631211788096241705"); break;
-        case 76: return client.emojis.get("631211788092047388"); break;
-        case 85: return client.emojis.get("631211787840126977"); break;
-        case 3: return client.emojis.get("631211788133728279"); break;
-        case 45: return client.emojis.get("631211788200837152"); break;
-        case 432: return client.emojis.get("631211788100436020"); break;
-        case 150: return client.emojis.get("631211787907366934"); break;
-        case 90: return client.emojis.get("631211788234522624"); break;
-        case 104: return client.emojis.get("631211788402425856"); break;
-        case 254: return client.emojis.get("631264351998967855"); break;
-        case 10: return client.emojis.get("631303849537175592"); break;
-        case 39: return client.emojis.get("631303850942398467"); break;
-        case 64: return client.emojis.get("631303849143042052"); break;
-        case 420: return client.emojis.get("631303849562603520"); break;
-        case 60: return client.emojis.get("631303849482911744"); break;
-        case 106: return client.emojis.get("631303849012887572"); break;
-        case 20: return client.emojis.get("631303848908029966"); break;
-        case 4: return client.emojis.get("631303849566797835"); break;
-        case 24: return client.emojis.get("631303849562341387"); break;
-        case 102: return client.emojis.get("631303851173085194"); break;
-        case 429: return client.emojis.get("631303851063902221"); break;
-        case 36: return client.emojis.get("631303850220978206"); break;
-        case 427: return client.emojis.get("631303849570861065"); break;
-        case 131: return client.emojis.get("631303849528786984"); break;
-        case 223: return client.emojis.get("631303849562603530"); break;
-        case 63: return client.emojis.get("631303850904780821"); break;
-        case 113: return client.emojis.get("631303851055775766"); break;
-        case 8: return client.emojis.get("631303850967695382"); break;
-        case 154: return client.emojis.get("631306879242600458"); break;
-        case 421: return client.emojis.get("631306879267766292"); break;
-        case 133: return client.emojis.get("631306879120703489"); break;
-        case 84: return client.emojis.get("631306883625385994"); break;
-        case 163: return client.emojis.get("631306886028853278"); break;
-        case 18: return client.emojis.get("631306887500922881"); break;
-        case 120: return client.emojis.get("631306884086890507"); break;
-        case 15: return client.emojis.get("631306885470879774"); break;
-        case 236: return client.emojis.get("631306885458427924"); break;
-        case 107: return client.emojis.get("631306890248454154"); break;
-        case 19: return client.emojis.get("631306885441781790"); break;
-        case 72: return client.emojis.get("631306890504044554"); break;
-        case 54: return client.emojis.get("631306887643791360"); break;
-        case 157: return client.emojis.get("631329144600264714"); break;
-        case 101: return client.emojis.get("631309765221548073"); break;
-        case 17: return client.emojis.get("631309766764920832"); break;
-        case 75: return client.emojis.get("631309768656420864"); break;
-        case 58: return client.emojis.get("631325019397685248"); break;
-        case 119: return client.emojis.get("631327738808107049"); break;
-        case 35: return client.emojis.get("631309773480001557"); break;
-        case 50: return client.emojis.get("631309772703924224"); break;
-        case 91: return client.emojis.get("631309772817432576"); break;
-        case 40: return client.emojis.get("631309772767100929"); break;
-        case 115: return client.emojis.get("631309772775489546"); break;
-        case 245: return client.emojis.get("631322664077754369"); break;
-        case 61: return client.emojis.get("631309772645466142"); break;
-        case 114: return client.emojis.get("631325019427045386"); break;
-        case 9: return client.emojis.get("631309772783878145"); break;
-        case 31: return client.emojis.get("631309772989399060"); break;
-        case 33: return client.emojis.get("631309773538852864"); break;
-        case 7: return client.emojis.get("631312187671052298"); break;
-        case 16: return client.emojis.get("631312189386653706"); break;
-        case 26: return client.emojis.get("631312189428334602"); break;
-        case 56: return client.emojis.get("631312188887269396"); break;
-        case 222: return client.emojis.get("631312188547661847"); break;
-        case 83: return client.emojis.get("631312189008904202"); break;
-        case 6: return client.emojis.get("631330382783971369"); break;
-        case 203: return client.emojis.get("631319722457169940"); break;
-        case 21: return client.emojis.get("631312188862103562"); break;
-        case 62: return client.emojis.get("631312189340254208"); break;
-        case 53: return client.emojis.get("631312189046915074"); break;
-        case 98: return client.emojis.get("631312187998076941"); break;
-        case 201: return client.emojis.get("631312189189390346"); break;
-        case 5: return client.emojis.get("631312189042720768"); break;
-        case 29: return client.emojis.get("631312189336191016"); break;
-        case 11: return client.emojis.get("631328969584541716"); break;
-        case 44: return client.emojis.get("631312188950446120"); break;
-        case 32: return client.emojis.get("631312187746418718"); break;
-        case 41: return client.emojis.get("631319721962110995"); break;
-        case 48: return client.emojis.get("631312190946803765"); break;
-        case 38: return client.emojis.get("631326380776357908"); break;
-        case 161: return client.emojis.get("631312189298311168"); break;
-        case 143: return client.emojis.get("631313800800501810"); break;
-        case 267: return client.emojis.get("631313800720547860"); break;
-        case 59: return client.emojis.get("631313800888451093"); break;
-        case 81: return client.emojis.get("631313803388256266"); break;
-        case 517: return client.emojis.get("631326380780683314"); break;
-        case 518: return client.emojis.get("631313803912544256"); break;
-        case 246: return client.emojis.get("631202429563830272"); break;
-        case 350: return client.emojis.get("631313803723669522"); break;
-    }             
-},
-
-fila = (id) => {
+fila = id => {
     switch(id) {
         case 0: return 'Personalizada';
         case 2020: return 'Tutorial 3';
@@ -1941,11 +1658,9 @@ fila = (id) => {
 },
 
 module.exports = {
-    checkSkin,
-    Bans,
+    getChampionEmoji,
     Teams,
     Spells,
-    Freeweek,
     IDtoName,
     checkItem,
     fila

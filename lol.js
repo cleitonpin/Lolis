@@ -20,7 +20,7 @@ client.on('ready', () => {
         return client.user.setPresence({ game: randomStatus })
     }
 
-    console.log(setStatus())
+    //console.log(setStatus())
     setInterval(setStatus, 6000)
 })
 
@@ -63,11 +63,6 @@ client.on('raw', async dados  => {
         if(dados.d.game == null || dados.d.game.name == null) return
 
         if(dados.d.game.name == 'Custom Status') return
-        if (dados.d.game.details.includes('.js') == true && dados.d.game !== null) {
-            if(!membro.roles.has(roles.js)) {
-                membro.addRole(roles.js)
-            }
-        }
         //console.log(dados.d.game.details.search('.js'))
 
         if(dados.d.game.name == 'Visual Studio Code') {
