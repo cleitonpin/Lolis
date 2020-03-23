@@ -7,21 +7,21 @@ exports.run = async (client, message, args) => {
         kayn.kaynObject.DDragon.SummonerSpell.list()
         .callback(function(error, SummonerSpell) {
             function NameSpellsTraduzidas() {
-                switch(args[0]) {
-                    case "Teleporte".toLowerCase(): return "Teleport"; break;
-                    case "Barreira".toLowerCase(): return "Barrier"; break;
-                    case "Exaustão".toLowerCase(): return "Exhaust"; break;
-                    case "Flash".toLowerCase(): return "Flash"; break;
-                    case "Curar".toLowerCase(): return "Heal"; break;
-                    case "Mana".toLowerCase(): return "Mana"; break;
-                    case "Poro".toLowerCase(): return "PoroRecall"; break;
-                    case "Bola".toLowerCase(): return "Snowball"; break;
-                    case "BolaURF".toLowerCase(): return "SnowURFSnowball_Mark"; break;
-                    case "Golpear".toLowerCase(): return "Smite"; break;
-                    case "Porot".toLowerCase(): return "PoroThrow"; break;
-                    case "Fantasma".toLowerCase(): return "Haste"; break;
-                    case "Purificar".toLowerCase(): return "Boost"; break;
-                    case "Incendiar".toLowerCase():  return "Dot"; break;
+                switch(args[0].toLowerCase()) {
+                    case "teleporte": return "Teleport"; break;
+                    case "barreira": return "Barrier"; break;
+                    case "exaustão": return "Exhaust"; break;
+                    case "flash": return "Flash"; break;
+                    case "curar": return "Heal"; break;
+                    case "mana": return "Mana"; break;
+                    case "poro": return "PoroRecall"; break;
+                    case "bola": return "Snowball"; break;
+                    case "bolaurf": return "SnowURFSnowball_Mark"; break;
+                    case "golpear": return "Smite"; break;
+                    case "porot": return "PoroThrow"; break;
+                    case "fantasma": return "Haste"; break;
+                    case "purificar": return "Boost"; break;
+                    case "incendiar":  return "Dot"; break;
                 }
             }
             if(error) console.log(error)
