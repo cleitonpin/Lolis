@@ -49,7 +49,7 @@
 // }
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const kayn = require('./kayn')
+const kayn = require('../kayn')
 //const { Kayn, REGIONS } = require('kayn')
 const { getChampionEmoji, Teams, Spells } = require('./commonFunctions')
 

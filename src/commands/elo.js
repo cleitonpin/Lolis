@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const kayn = require('./kayn')
+const kayn = require('../kayn')
 
 exports.run = async (client, message, args) => {
     let summoner_Name = args.join('').trim()
@@ -10,25 +10,28 @@ exports.run = async (client, message, args) => {
         .callback(function(err, summoner) {
             console.log(summoner['id'])
 
-            
             kayn.kaynObject.League.Entries.by.summonerID(summoner['id'])
             .callback(function(err, summonerLeague) {
                 console.log(summonerLeague)
                 if(args[1]) {
                     console.log(summonerLeague)
-                    cont=0
+                    cont = 0
                     gameMode = args[1].toUpperCase()
-                    if(gameMode!="") {
+                    if(gameMode != "") {
                         for(; cont<=1; cont++) {
                             // @@@ FUNÇÕES
                             function convertGameMode(mode) { 
-                                if(gameMode=="SOLO") return "RANKED_SOLO_5x5";
-                                if(gameMode=="FLEX") return "RANKED_FLEX_SR";
-                                if(gameMode=="TFT") return "RANKED_TFT";
+                                if(gameMode == "SOLO") return "RANKED_SOLO_5x5";
+                                if(gameMode == "FLEX") return "RANKED_FLEX_SR";
+                                if(gameMode == "TFT") return "RANKED_TFT";
                             }
                             function tierTime(time) {
-                                if(summonerLeague[cont]['veteran']==true) { return "***Há muito tempo nesse elo***"}
-                                else{ return "***Há pouco tempo no elo***"}
+                                if(summonerLeague[cont]['veteran']) {
+                                    return "***Há muito tempo nesse elo***"
+                                }
+                                else {
+                                    return "***Há pouco tempo no elo***"
+                                }
                             }
                             function tierNamePT(name) {
                                 switch(summonerLeague[cont].tier) {
@@ -69,7 +72,7 @@ exports.run = async (client, message, args) => {
                             //verificar o MODO da PARTIDA #RANQUEADO SOLO/FLEX/TFT
                             if(sumLeague.queueType == convertGameMode()) {
                                 console.log(summonerLeague[cont])
-                                console.log("\n\nModo de jogo: "+sumLeague.queueType+"\n\n")
+                                console.log(`\n\nModo de jogo: ${sumLeague.queueType}\n\n`)
                                 const embed = new Discord.RichEmbed()
                                 .setColor('#0099ff')
                                 .addField('**Nome do invocador: **', summoner['name'], true)
@@ -86,14 +89,14 @@ exports.run = async (client, message, args) => {
                             }
                         }
                     }                    
-                }else{
+                } else {
                     console.log("**Digite o modo de jogo [solo/flex/tft]!**")
                     message.channel.send('**Digite o modo de jogo [solo/flex/tft]!**')
                 }
             })
         })
     }
-    else{
+    else {
         message.channel.send('**Digite o nome do jogador + [solo/flex/tft]!**')
     }
 }

@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const kayn = require('./kayn')
+const kayn = ('../kayn')
 const { checkItem } = require('./commonFunctions')
 
 exports.run = async (client, message, args) => {

@@ -1,7 +1,7 @@
 {
-  "name": "c",
+  "name": "lolbot",
   "version": "1.0.0",
-  "main": "lol.js",
+  "main": "src/lol.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "discord": "^0.8.2",
@@ -17,14 +17,14 @@
   },
   "scripts": {
     "build": "npm install",
-    "start": "node lol.js",
+    "start": "node src/lol.js",
     "dev": "nodemon npm run start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cleitonpin/Lolis.git"
   },
-  "author": "",
+  "author": "cleitonpin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cleitonpin/Lolis/issues"

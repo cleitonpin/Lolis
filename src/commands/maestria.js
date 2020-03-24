@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const kayn = require('./kayn')
+const kayn = require('../kayn')
 const { IDtoName } = require('./commonFunctions')
 
 const masteryImagesURL = {

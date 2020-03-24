@@ -5,22 +5,21 @@ require('dotenv').config()
 const bot_prefix = '['
 const bot_token = process.env.BOT_TOKEN
 
+const bot_status = [
+    { name: 'Teamfight Tactics', type: "PLAYING" },
+    { name: 'Liga das Lendas', type: "STREAMING", url: 'https://www.twitch.tv/cleitonpin'},
+    { name: 'O Luiz chorar' , type: "LISTENING"},
+    { name: '💤', type: "WATCHING"}
+]
+
 client.on('ready', () => {
     console.log(`Bot foi iniciado, com ${client.users.size} usuários, em ${client.channels.size} canais, em ${client.guilds.size} servidores.`)
-    
-    let status = [
-        { name: 'Teamfight Tactics', type: "PLAYING" },
-        { name: 'Liga das Lendas', type: "STREAMING", url: 'https://www.twitch.tv/cleitonpin'},
-        { name: 'O Luiz chorar' , type: "LISTENING"},
-        { name: '💤', type: "WATCHING"}
-    ]
 
-    function setStatus(){
-        let randomStatus = status[Math.floor(Math.random()* 4)]
+    setStatus = () => {
+        let randomStatus = bot_status[Math.floor(Math.random() * bot_status.length)]
         return client.user.setPresence({ game: randomStatus })
     }
 
-    //console.log(setStatus())
     setInterval(setStatus, 6000)
 })
 
@@ -152,7 +151,7 @@ client.on("message", async message => {
     
     
     if (msg.startsWith('-p') || msg.startsWith('-play') || msg.startsWith('-skip') ) {
-        if(message.channel.id !== "670627802004979742"){
+        if(message.channel.id !== "670627802004979742") {
             message.delete(500)
             message.reply('Sem comando de música aqui')
             .then(d_message => {
@@ -162,19 +161,18 @@ client.on("message", async message => {
     }
 
     if(!msg.startsWith(bot_prefix))
-        return;
+        return
 
-    const args = message.content.slice(bot_prefix.length).trim().split(/ +/g);
-    const comando = args.shift().toLowerCase();
+    const args = message.content.slice(bot_prefix.length).trim().split(/ +/g)
+    const comando = args.shift().toLowerCase()
     //const emojiList = client.emojis.get("624323979619991582")
 
-    
     try {
-        let commands = require(`./commands/${comando}.js`);
-        commands.run(client, message, args);
-    } catch (e){
+        let commands = require(`./commands/${comando}.js`)
+        commands.run(client, message, args)
+    } catch (e) {
         console.log(e)
     }
 })
 
-client.login(bot_token);
+client.login(bot_token)

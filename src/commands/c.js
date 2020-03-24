@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const { fila, checkSkin } = require('./commonFunctions')
 const client = new Discord.Client()
-const kayn = require('./kayn')
+const kayn = require('../kayn')
 
 exports.run = async (client, message, args) => {
         /*const config = {
