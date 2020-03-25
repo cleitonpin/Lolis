@@ -1,6 +1,7 @@
 const { Client, Attachment } = require('discord.js')
 const client = new Client()
 //const mysql = require("mysql")
+
 require('dotenv').config()
 const bot_prefix = '['
 const bot_token = process.env.BOT_TOKEN
