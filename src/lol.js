@@ -148,15 +148,41 @@ client.on("message", async message => {
 
     else if(msg.includes('nosa')) 
         return message.channel.send(client.emojis.get("598994179464364076").toString())
+    else if(msg.startsWith('>gen start')) {
+        message.react('688420277272838204')
+
+        setHour = () => {
+            message.reply('Pegar o gerador')
+        }
+
+        const fourHours = 14400000
+
+        setTimeout(setHour, fourHours)
+
+        
+    }
+    else if(msg.startsWith('>hr')) {
+        message.react('688420277272838204')
+
+        setHour = () => {
+            message.reply('Hourly get')
+        }
+                
+        const oneHour = 3600000
+
+        setTimeout(setHour, oneHour)
+
+    }
+    
 
     
     
-    if (msg.startsWith('-p') || msg.startsWith('-play') || msg.startsWith('-skip') ) {
+    if (msg.startsWith('-')) {
         if(message.channel.id !== "670627802004979742") {
-            message.delete(500)
+            message.delete(3000)
             message.reply('Sem comando de música aqui')
             .then(d_message => {
-                d_message.delete(500)
+                d_message.delete(3000)
                 console.log(`Deleted message from ${message.author.username}`)})
         }
     }

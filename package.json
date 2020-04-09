@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "src/lol.js",
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "discord": "^0.8.2",
     "discord.js": "^11.5.1",
@@ -10,7 +11,8 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "kayn": "^0.10.2",
-    "lowdb": "^1.0.0"
+    "lowdb": "^1.0.0",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
