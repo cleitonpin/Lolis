@@ -47,22 +47,17 @@ module.exports = {
         let filter = m => true
         
         let collector = new MessageCollector(message.channel, filter, { max: 1 })
-    
-        if(message.channel.id === '589611252897284098'){
-            
-            collector.on('collect', message => {
-                if(message.embeds[0]) {
-                    if(message.embeds[0].image) {
-                        console.log(true)
-                        var url = message.embeds[0].image.url
-    
-                        robots.nameOfPokemon(client, url)
-                    }
-                    
+
+        collector.on('collect', message => {
+            if(message.embeds[0]) {
+                if(message.embeds[0].image) {
+                    console.log(true)
+                    var url = message.embeds[0].image.url
+
+                    robots.nameOfPokemon(client, url)
                 }
-            })
-        } 
-    
+            }
+        })
     },
     
     async notCommandMusic(message){
