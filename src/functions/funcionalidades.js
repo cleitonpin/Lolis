@@ -54,7 +54,7 @@ module.exports = {
                     console.log(true)
                     var url = message.embeds[0].image.url
 
-                    robots.nameOfPokemon(client, url)
+                    robots.nameOfPokemon(message, client, url)
                 }
             }
         })
