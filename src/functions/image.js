@@ -1,7 +1,7 @@
 var request = require('request')
 
 
-nameOfPokemon = (client, url) => {
+nameOfPokemon = (message, client, url) => {
 
 
     var options = {
@@ -19,7 +19,7 @@ nameOfPokemon = (client, url) => {
 
     
     request(options,(_err,_res,body)=>{
-        client.channels.get('589611252897284098')
+        client.channels.get(message.channel.id)
             .send(
                 `${body.best_guess}`
             )
