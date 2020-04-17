@@ -10,6 +10,7 @@ const bot_status = [
 module.exports = {
 
     async messages(message, client) {
+
         const msg = message.content.toLowerCase()
         
         if (msg.includes('not stonks'))
@@ -48,32 +49,45 @@ module.exports = {
         
         let collector = new MessageCollector(message.channel, filter, { max: 1 })
     
-        if(message.channel.id === '589611252897284098'){
-            
-            collector.on('collect', message => {
-                if(message.embeds[0]) {
-                    if(message.embeds[0].image) {
-                        console.log(true)
-                        var url = message.embeds[0].image.url
-    
-                        robots.nameOfPokemon(client, url)
-                    }
+        collector.on('collect', message => {
+            if(message.embeds[0]) {
+                if(message.embeds[0].image) {
+                    console.log(true)
+                    var url = message.embeds[0].image.url
+
+                    robots.nameOfPokemon(message, client, url)
+                    message.delete('Não')
                     
                 }
-            })
-        } 
-    
+            }
+        })
     },
     
     async notCommandMusic(message){
 
         if (message.content.toLowerCase().startsWith('-')) {
             if(message.channel.id !== "670627802004979742") {
-                message.delete(3000)
-                message.reply('Sem comando de música aqui')
-                .then(d_message => {
-                    d_message.delete(3000)
-                    console.log(`Deleted message from ${message.author.username}`)})
+                try {
+                    message.delete(3000)
+                    .then(d_message => {
+                        d_message.delete(3000)
+                        console.log(`Deleted message from ${message.author.username}`)}
+                    )
+                }
+                catch (e) {console.log(e)}
+                
+                
+            }
+        }
+        else if(message.content.toLowerCase().startsWith('p!')){
+            if(message.channel.id !== "589611252897284098") {
+                try {
+                    message.delete('Sem mensagens do Poke')
+                    .then(d_message => {
+                        console.log(`Deleted message from ${message.author.username}`)}
+                    )
+                }
+                catch (e) {console.log(e)}
             }
         }
     },
@@ -90,7 +104,7 @@ module.exports = {
     async updateRoles(client, dados){
         if(dados.t !== "PRESENCE_UPDATE") 
         return
-
+        
     else if(dados.t === "PRESENCE_UPDATE" && client.guilds.get('575815357609148426').members.get(dados.d.user.id)) {
         //console.log(dados.d)
         let serv = client.guilds.get('575815357609148426')

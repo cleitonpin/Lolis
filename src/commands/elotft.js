@@ -12,13 +12,15 @@ exports.run = async (client, message, args) => {
 
     if(summoner_Name) {
         getSummonerId(summoner_Name).then(summoner => {
-            const tftelo = `https://br1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.id}?api_key=${process.env.RGAPI_KEY}`
+            const tftelo = `https://br1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.id}?api_key=RGAPI-84ca7047-4b35-4fed-a002-b6659baa296d`
             fetch(tftelo)
             .then(response => response.json())
             .then(elo => {
                 //here
+                console.log(elo)
                 if (!summoner)return message.channel.send('Nome inválido')
                 if (elo == '') return message.channel.send('Este jogador não tem elo no TFT')
+                
                 else {
                     
                     const embed = new Discord.RichEmbed()

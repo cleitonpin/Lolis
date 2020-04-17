@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const kayn = ('../kayn')
+const kayn = require('../kayn')
 
 exports.run = async (client, message, args) => {
     //const emojiList = client.emojis.get("624323979619991582")

@@ -19,6 +19,14 @@ client.on('ready', () => {
 
 })
 
+client.on('guildMemberRemove', async member => {
+    if(member.kickable == true){
+        member.
+        client.channels.get(`575815357609148428`).send(`
+        ${member.user.username} deixou o servidor!
+        `)
+    }
+})
 client.on('raw', async dados  => {
     updateRoles(client,dados)
 })
