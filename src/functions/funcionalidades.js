@@ -56,7 +56,7 @@ module.exports = {
 
                     robots.nameOfPokemon(message, client, url)
                     if(message.channel.id !== "589611252897284098"){
-                        message.delete()
+                        message.delete(1500)
                     }
                 }
             }
