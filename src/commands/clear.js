@@ -4,6 +4,7 @@ const client = new Client()
 
 exports.run = async (client, message, args) => {
     
+    return message.channel.bulkDelete(args[0])
 
     function getUserFromMention(mention) {
         if (!mention) return;

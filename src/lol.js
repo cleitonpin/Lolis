@@ -38,7 +38,7 @@ client.on("message", async message => {
     messages(message, client)
     nameOfPoke(message, client)
     notCommandMusic(message)
-
+    
     if(!message.content.toLowerCase().startsWith(bot_prefix))
         return
 

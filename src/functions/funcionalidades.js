@@ -48,7 +48,6 @@ module.exports = {
         let filter = m => true
         
         let collector = new MessageCollector(message.channel, filter, { max: 1 })
-    
         collector.on('collect', message => {
             if(message.embeds[0]) {
                 if(message.embeds[0].image) {
@@ -56,8 +55,9 @@ module.exports = {
                     var url = message.embeds[0].image.url
 
                     robots.nameOfPokemon(message, client, url)
-                    message.delete('Não')
-                    
+                    if(message.channel.id !== "589611252897284098"){
+                        message.delete()
+                    }
                 }
             }
         })
@@ -68,11 +68,9 @@ module.exports = {
         if (message.content.toLowerCase().startsWith('-')) {
             if(message.channel.id !== "670627802004979742") {
                 try {
-                    message.delete(3000)
-                    .then(d_message => {
-                        d_message.delete(3000)
-                        console.log(`Deleted message from ${message.author.username}`)}
-                    )
+                    message.delete()
+                    console.log(`Deleted message from ${message.author.username}`)
+                    
                 }
                 catch (e) {console.log(e)}
                 
@@ -83,9 +81,8 @@ module.exports = {
             if(message.channel.id !== "589611252897284098") {
                 try {
                     message.delete('Sem mensagens do Poke')
-                    .then(d_message => {
-                        console.log(`Deleted message from ${message.author.username}`)}
-                    )
+                    console.log(`Deleted message from ${message.author.username}`)
+                    
                 }
                 catch (e) {console.log(e)}
             }
