@@ -1,5 +1,3 @@
-const { MessageCollector,  } = require('discord.js')
-const robots = require('./image.js')
 
 const bot_status = [
     { name: 'WWZ', type: "PLAYING" },
