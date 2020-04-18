@@ -2,11 +2,10 @@ const { Client } = require('discord.js')
 const client = new Client()
 
 require('dotenv').config()
-const bot_prefix = '['
+const bot_prefix = '$'
 const bot_token = process.env.BOT_TOKEN
 const { 
     messages, 
-    nameOfPoke, 
     notCommandMusic, 
     status,
     updateRoles 
@@ -36,7 +35,6 @@ client.on("message", async message => {
         return;
 
     messages(message, client)
-    nameOfPoke(message, client)
     notCommandMusic(message)
     
     if(!message.content.toLowerCase().startsWith(bot_prefix))

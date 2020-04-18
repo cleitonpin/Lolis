@@ -1,3 +1,4 @@
 node_modules/
 .env
 src/systemXP.js
+src/functions/image.js

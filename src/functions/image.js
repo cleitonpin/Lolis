@@ -23,6 +23,7 @@ nameOfPokemon = (message, client, url) => {
             .send(
                 `${body.best_guess}`
             )
+        message.delete(10000)
         console.log(body.best_guess);
     })
 

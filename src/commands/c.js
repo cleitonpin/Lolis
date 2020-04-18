@@ -1,53 +1,79 @@
 const Discord = require('discord.js')
-const { fila, checkSkin } = require('./commonFunctions')
-const client = new Discord.Client()
 const kayn = require('../kayn')
+const axios = require('axios')
 
 exports.run = async (client, message, args) => {
-        /*const config = {
-            query: 420,
-            champion: 67,
-            season: 7,
-        }*/
-        kayn.kaynObject.Summoner.by.name('BestRengarAL')
-        .callback(function(error, summoner) {
-            // Note that the grabbing of a matchlist is currently limited by pagination.
-            // This API request only returns the first list.
-            kayn.kaynObject.Matchlist.by
-                .accountID(summoner.accountId)
-                .region('br')
-                .callback(function(error, matchlist) {
-                    console.log(matchlist.matches[0])
-                    for(cont = 0; cont<=10; cont++) {
-                        kayn.kaynObject.Match.get(matchlist.matches[cont].gameId)
-                        .callback(function match(error, match) {
-                        })
-                    }
-                    function transforma_magicamente(s) {
-                        function duas_casas(numero) {
-                            if (numero <= 9) {
-                                numero = "0"+numero;
-                            }
-                            return numero;
-                        }
-                        hora = duas_casas(Math.trunc(s/3600));
-                        minuto = duas_casas(Math.trunc((s%3600)/60));
-                        segundo = duas_casas((s%3600)%60);
-                        formatado = `${hora}:${minuto}:${segundo}`;
-                        return formatado;
-                    }
-                    console.log(match)
-                    cont = 0
-                    for (; cont<10; cont++) {
-                        var m = matchlist.matches[cont]
-                    }
-                    const emb = new Discord.RichEmbed()
-                    .setTitle('Histórico de partidas')
-                    .addField('Campeão jogado nesta partida', `${checkSkin(client, matchlist.matches[0].champion)}`, true)
-                    .addField('Tempo da partida', transforma_magicamente(match.gameDuration), true)
-                    .addField('Fila', fila(match.queueId), true)
-                    .addField('das', 'dhsd', true)
-                    message.channel.send(emb)
-                })
-        })
+    //const emojiList = client.emojis.get("624323979619991582")
+
+
+    let summoner_Name = args.join('').trim()
+
+    if(summoner_Name) {
+        getSummonerId(summoner_Name).then(async summoner => {
+            getInfoMaestria(summoner.id).then(async info => {
+
+                let vari = info[2].championPoints.toString()
+
+                console.log(info[2].championPoints.toString())
+                console.log(vari.length)
+
+                if(vari.length == 6){
+                    let v = vari.slice(3)
+                    let g = vari.slice(0, 3)
+                    let result = g + ',' + v
+
+                    console.log(result) 
+                } 
+                else if (vari.length == 4) {
+                    let v = vari.slice(1)
+                    let g = vari.slice(0, 1)
+                    let result = g + ',' + v
+
+                    console.log(result) 
+                }
+                else if(vari.length == 7){
+                    let v = vari.slice(0, 1)
+                    let x = vari.slice(1, 4)
+                    let y = vari.slice(0, 4)
+
+                    console.log(v + ',' + x + ',')
+                }
+                else if(vari.length == 5) {
+                    let v = vari.slice(0, 2)
+                    let x = vari.slice(2)
+
+                    console.log(v + ',' + x)
+                }
+
+
+                
+
+            })
+            // const response = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}?api_key=${process.env.RGAPI_KEY}`)
+                
+            // const { tier } = response.data[0]
+
+            // if(response.data == '') return console.log('d')
+
+            
+            // .then(elo => {
+            //     //here
+            //     console.log(elo.data)
+                
+            // })
+        }) 
+
+    }
+    
+    
+    
+
+}
+
+getSummonerId = async (args) => {
+    return await kayn.kaynObject.Summoner.by.name(args).region(kayn.regions.BRAZIL);
+}
+
+getInfoMaestria = async (id) => {
+    return await  kayn.kaynObject.ChampionMastery.list(id)
 }

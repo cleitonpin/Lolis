@@ -42,26 +42,6 @@ module.exports = {
     
         }
     },
-
-    async nameOfPoke(message, client){
-                
-        let filter = m => true
-        
-        let collector = new MessageCollector(message.channel, filter, { max: 1 })
-        collector.on('collect', message => {
-            if(message.embeds[0]) {
-                if(message.embeds[0].image) {
-                    console.log(true)
-                    var url = message.embeds[0].image.url
-
-                    robots.nameOfPokemon(message, client, url)
-                    if(message.channel.id !== "589611252897284098"){
-                        message.delete()
-                    }
-                }
-            }
-        })
-    },
     
     async notCommandMusic(message){
 
@@ -80,7 +60,7 @@ module.exports = {
         else if(message.content.toLowerCase().startsWith('p!')){
             if(message.channel.id !== "589611252897284098") {
                 try {
-                    message.delete('Sem mensagens do Poke')
+                    message.delete(1500)
                     console.log(`Deleted message from ${message.author.username}`)
                     
                 }
@@ -141,6 +121,6 @@ module.exports = {
             }
         }
     }
-    }
+    },
     
 }

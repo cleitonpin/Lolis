@@ -318,6 +318,29 @@ const spells_image = {
     32: "631195261968056340",
 }
 
+const elo_emoji = {
+    "IRON": "700867641446760548",
+    "BRONZE": "700875020427329656",
+    "SILVER": "700875508405108826",
+    "GOLD": "700875020188254269",
+    "PLATINUM": "700875020330860656",
+    "DIAMOND": "700875020414484580",
+    "MASTER": "700875020439781436",
+    "GRANDMASTER": "700875020443975731",
+    "CHALLENGER": "700875020494176307"
+}
+
+const masteryImagesURL = {
+    1: "700878777613287484",
+    2: "700878785574338560",
+    3: "700878785527939182",
+    4: "700878785578532965",
+    5: "700878785830191204",
+    6: "700878785578401832",
+    7: "700878786237038593"
+}
+
+
 checkItem = (args) => {
     let item_name = args.join(' ')
     console.log(item_name)
@@ -1657,13 +1680,65 @@ fila = id => {
     }
 },
 
+getEloEmoji = (client, tier) => {
+    try {
+        if(elo_emoji[tier]) {
+            return client.emojis.get(elo_emoji[tier])
+        }
+    } catch(err) {}
+},
+
+getMasteryEmoji = (client, champion_level) => {
+    try {
+        if(masteryImagesURL[champion_level]) {
+            return client.emojis.get(masteryImagesURL[champion_level])
+        }
+    } catch (err) {}
+},
+
+virgulaPoints = points => {
+    try {
+
+        if(points.toString().length == 6){
+            let v = points.slice(3)
+            let g = points.slice(0, 3)
+
+            return (g + ',' + v)
+        } 
+        else if (points.toString().length == 4) {
+            let v = points.slice(1)
+            let g = points.slice(0, 1)
+
+            return (g + ',' + v)
+        }
+        else if(points.toString().length == 7){
+            let v = points.slice(0, 1)
+            let x = points.slice(1, 4)
+            let y = points.slice(4)
+
+            return (v + ',' + x + ',' + y)
+        }
+        else if(points.length == 5) {
+            let v = points.slice(0, 2)
+            let x = points.slice(2)
+
+            return (v + ',' + x)
+        }
+
+
+    } catch (err) {}
+}
+
 module.exports = {
     getChampionEmoji,
     Teams,
     Spells,
     IDtoName,
     checkItem,
-    fila
+    fila,
+    getEloEmoji,
+    getMasteryEmoji,
+    virgulaPoints
 }
 
 //lucas é o bixo mesmo :v
