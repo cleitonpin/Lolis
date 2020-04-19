@@ -1625,7 +1625,7 @@ IDtoName = id => {
 getChampionEmoji = (client, champion_id) => {
     try {
         if(emoji_by_champion_id[champion_id]) {
-            return client.emojis.get(emoji_by_champion_id[champion_id])
+            return client.emojis.cache.get(emoji_by_champion_id[champion_id])
         }
     } catch (err) {}
 },
@@ -1640,7 +1640,7 @@ Teams = team_id => {
 Spells = (client, spell_id) => {
     try {
         if(spells_image[spell_id]) {
-            return client.emojis.get(spells_image[spell_id])
+            return client.emojis.cache.get(spells_image[spell_id])
         }
     } catch (err) {}
 },
@@ -1683,7 +1683,7 @@ fila = id => {
 getEloEmoji = (client, tier) => {
     try {
         if(elo_emoji[tier]) {
-            return client.emojis.get(elo_emoji[tier])
+            return client.emojis.cache.get(elo_emoji[tier])
         }
     } catch(err) {}
 },
@@ -1691,7 +1691,7 @@ getEloEmoji = (client, tier) => {
 getMasteryEmoji = (client, champion_level) => {
     try {
         if(masteryImagesURL[champion_level]) {
-            return client.emojis.get(masteryImagesURL[champion_level])
+            return client.emojis.cache.get(masteryImagesURL[champion_level])
         }
     } catch (err) {}
 },

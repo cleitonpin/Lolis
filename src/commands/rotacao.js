@@ -8,9 +8,9 @@ exports.run = async (client, message, args) => {
         .callback(function(error, Champion) {
             console.log(Champion['freeChampionIds'])
             //pegar nome dos champs
-            let emoji = client.emojis.get('700901486619656232')
+            let emoji = client.emojis.cache.get('700901486619656232')
 
-            const freerotarions = new Discord.RichEmbed()
+            const freerotarions = new Discord.MessageEmbed()
             .setColor('#170B3B')
             .setTitle(`${emoji} Rotação semanal grátis de campeões`) 
             

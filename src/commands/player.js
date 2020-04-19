@@ -7,7 +7,7 @@ const {
     IDtoName, 
     getMasteryEmoji, 
     virgulaPoints 
-} = require('./commonFunctions').default
+} = require('./commonFunctions')
 
 exports.run = async (client, message, args) => {
     
@@ -20,11 +20,11 @@ exports.run = async (client, message, args) => {
                 .then(async version => {
 
                     const response = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}?api_key=${process.env.RGAPI_KEY}`)
-                    console.log([response.data, summoner])
+                    console.log(response.data)
 
 
                     if(response.data == ''){
-                        const emb = new Discord.RichEmbed()
+                        const emb = new Discord.MessageEmbed()
                         .setTitle(`📛 Perfil: ${summoner.name} 📛`)
                         .setColor('#33062b')
                         .addField('Nível do invocador', summoner['summonerLevel'], true)
@@ -33,10 +33,11 @@ exports.run = async (client, message, args) => {
                         .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version.data[0]}/img/profileicon/${summoner.profileIconId}.png`)
 
                         message.channel.send(emb)
-                    } else {
+                    } 
+                    else if(response.data) {
                         const { tier, rank, leaguePoints, wins, losses } = response.data[0]
 
-                        const embed = new Discord.RichEmbed()
+                        const embed = new Discord.MessageEmbed()
                         .setColor('#7e143f')
                         .setTitle(`📛 Perfil: ${summoner.name} 📛`)
                         .addField('Nível', summoner['summonerLevel'], true)
@@ -45,9 +46,17 @@ exports.run = async (client, message, args) => {
                         .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version.data[0]}/img/profileicon/${summoner['profileIconId']}.png`)
                         
                         message.channel.send(embed)
+                    } else {
+                        message.channel.send('jogador inexistente')
                     }
+                }) .catch(function(e) {
+                    console.log('1')
                 })
-            }) 
+            }) .catch(function(e) {
+                console.log('2')
+            })
+        }) .catch(function(e) {
+            message.channel.send('Jogador inexistente')
         })
     } 
 }

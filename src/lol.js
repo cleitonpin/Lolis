@@ -11,9 +11,8 @@ const {
     updateRoles 
 } = require('./functions/funcionalidades')
 
-
 client.on('ready', () => {
-    console.log(`Bot foi iniciado, com ${client.users.size} usuários, em ${client.channels.size} canais, em ${client.guilds.size} servidores.`)
+    console.log(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`)
     status(client)
 
 })
@@ -21,7 +20,7 @@ client.on('ready', () => {
 client.on('guildMemberRemove', async member => {
     if(member.kickable == true){
         member.
-        client.channels.get(`575815357609148428`).send(`
+        client.channels.cache.get(`575815357609148428`).send(`
         ${member.user.username} deixou o servidor!
         `)
     }
@@ -31,12 +30,18 @@ client.on('raw', async dados  => {
 })
 
 client.on("message", async message => {
+    
     if(message.author.bot || message.channel.type == "dm") 
         return;
 
     messages(message, client)
     notCommandMusic(message)
     
+    if(message.tts == true) {
+        message.channel.send('^^ Mensagem TTS')
+    }
+
+
     if(!message.content.toLowerCase().startsWith(bot_prefix))
         return
 
