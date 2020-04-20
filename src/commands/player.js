@@ -50,6 +50,7 @@ exports.run = async (client, message, args) => {
                         message.channel.send('jogador inexistente')
                     }
                 }) .catch(function(e) {
+                    message.channel.send('Jogador inexistente')
                     console.log('1')
                 })
             }) .catch(function(e) {
