@@ -1723,7 +1723,7 @@ virgulaPoints = points => {
             let x = points.slice(2)
 
             return (v + ',' + x)
-        }
+        } else return points
 
 
     } catch (err) {}

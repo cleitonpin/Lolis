@@ -2,7 +2,7 @@ const { Client } = require('discord.js')
 const client = new Client()
 
 require('dotenv').config()
-const bot_prefix = '$'
+const bot_prefix = '!'
 const bot_token = process.env.BOT_TOKEN
 const { 
     messages, 
@@ -10,6 +10,8 @@ const {
     status,
     updateRoles 
 } = require('./functions/funcionalidades')
+
+
 
 client.on('ready', () => {
     console.log(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`)
