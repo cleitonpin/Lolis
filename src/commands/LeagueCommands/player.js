@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const kayn = require('../kayn')
+const kayn = require('../../kayn')
 const axios = require('axios')
 const { 
     getEloEmoji, 
@@ -7,7 +7,7 @@ const {
     IDtoName, 
     getMasteryEmoji, 
     virgulaPoints 
-} = require('./commonFunctions')
+} = require('../commonFunctions')
 
 exports.run = async (client, message, args) => {
     
@@ -20,8 +20,6 @@ exports.run = async (client, message, args) => {
                 .then(async version => {
 
                     const response = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}?api_key=${process.env.RGAPI_KEY}`)
-                    console.log(response.data)
-
 
                     if(response.data == ''){
                         const emb = new Discord.MessageEmbed()

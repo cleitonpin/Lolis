@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const kayn = require('../kayn')
+const kayn = require('../../kayn')
 
 traduzirSpell = (name) => {
     switch(name.toLowerCase()) {

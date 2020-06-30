@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
-const kayn = require('../kayn')
-const { getChampionEmoji, IDtoName } = require('./commonFunctions')
+const kayn = require('../../kayn')
+const { getChampionEmoji, IDtoName } = require('../commonFunctions')
 
 exports.run = async (client, message, args) => {
         kayn.kaynObject.Champion.Rotation.list()
