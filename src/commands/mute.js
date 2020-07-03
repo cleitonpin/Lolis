@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 
 
-exports.run = async (client, message, args, con) => {
+exports.run = async (message, args, client, con) => {
     if(!message.member.hasPermission("MANAGE_ROLES") || !message.guild.owner) 
         return message.channel.send('Você não tem permissão para usar este comando.')
     

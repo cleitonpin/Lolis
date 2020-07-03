@@ -1,6 +1,6 @@
 const Giphly = require('../api/gif')
 
-exports.run = async (client, message, args) => {
+exports.run = async (message, args, client) => {
 
     
     let msg = args.join(' ')
