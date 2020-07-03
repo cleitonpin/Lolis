@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 
+const leagueV4 = require('../api/league-v4')
 const lista = (fila, rank, tier) => {
     
 
@@ -207,6 +208,22 @@ const stop = (data, rank) => {
 
 }
 
+const client = new Discord.Client()
+const elo = async (id) => {
+    
+    var data = await leagueV4.data(id)
+    if (data == '') {
+        return 'UNRANKED'
+    } else {
+
+        const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+
+        return tier
+    }
+
+    
+}
+
 
 
 
@@ -224,5 +241,6 @@ module.exports = {
     top40,
     top45,
     top50,
-    stop
+    stop,
+    elo
 }

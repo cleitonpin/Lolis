@@ -91,7 +91,7 @@ client.on("message", async message => {
             
         } catch (e) {
             const commands = require(`./commands/${comando}.js`) 
-            commands.run(message, args, client)
+            commands.run(client, message, args,)
         }
 
     } catch (e) {

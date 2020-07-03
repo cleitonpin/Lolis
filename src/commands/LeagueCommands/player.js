@@ -11,7 +11,7 @@ const {
 
 exports.run = async (client, message, args) => {
     
-    let summoner_Name = args.join('').trim()
+    let summoner_Name = args.join(' ').trim()
 
     if(summoner_Name) {
         getSummonerId(summoner_Name).then(async summoner => {
@@ -20,6 +20,8 @@ exports.run = async (client, message, args) => {
                 .then(async version => {
 
                     const response = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}?api_key=${process.env.RGAPI_KEY}`)
+
+                    
 
                     if(response.data == ''){
                         const emb = new Discord.MessageEmbed()
@@ -33,7 +35,7 @@ exports.run = async (client, message, args) => {
                         message.channel.send(emb)
                     } 
                     else if(response.data) {
-                        const { tier, rank, leaguePoints, wins, losses } = response.data[0]
+                        const { tier, rank, leaguePoints, wins, losses } = response.data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
 
                         const embed = new Discord.MessageEmbed()
                         .setColor('#7e143f')

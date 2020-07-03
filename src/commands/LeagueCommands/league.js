@@ -27,6 +27,7 @@ exports.run = async (client, message, args) => {
         "tier3": client.emojis.cache.get('728333993895919687'),
         "tier4": client.emojis.cache.get('728333994063822931')
     }
+    let resolved = false;
 
     embedL.setColor('#F00')
     .setTitle('Lista')
@@ -92,7 +93,7 @@ exports.run = async (client, message, args) => {
     const collector = embed.createReactionCollector(filterTops, { max: 1, });
     const collectorFila = embed.createReactionCollector(filter_file, { max: 1 });
     const collectorTier = embed.createReactionCollector(filter_tier, { max: 1 })
-    var fila,rank = '```DIVISÃO```',tier;
+    var fila,rank,tier;
 
     collectorFila.on('collect', async (reaction, user) => {
 
@@ -186,7 +187,6 @@ exports.run = async (client, message, args) => {
         await embed.react('🔟')
         await embed.react('❌')
         
-
         const filter = (reaction, user) => {
             switch(reaction.emoji.name) {
                 case "1️⃣":  return user.id === message.author.id
@@ -202,44 +202,62 @@ exports.run = async (client, message, args) => {
                 case "❌": return user.id === message.author.id
             }
         }
-    
-        const collector = embed.createReactionCollector(filter, { max: undefined, });
+        
+        setTimeout(() => {
+            if(!resolved){
+                return message.reply('Expirado.')
+            }
+        }, 600000   )
+
+        const collector = embed.createReactionCollector(filter, { max: undefined, time: 600000});
 
         collector.on('collect', (reaction, user) => {
             if(reaction.emoji.name == '1️⃣') {
                 embed.edit(embeds.top5(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '2️⃣') {
+            else if(reaction.emoji.name == '2️⃣') {
                 embed.edit(embeds.top10(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '3️⃣') {
+            else if(reaction.emoji.name == '3️⃣') {
                 embed.edit(embeds.top15(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '4️⃣') {
+            else if(reaction.emoji.name == '4️⃣') {
                 embed.edit(embeds.top20(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '5️⃣') {
+            else if(reaction.emoji.name == '5️⃣') {
                 embed.edit(embeds.top25(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '6️⃣') {
+            else if(reaction.emoji.name == '6️⃣') {
                 embed.edit(embeds.top30(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '7️⃣') {
+            else if(reaction.emoji.name == '7️⃣') {
                 embed.edit(embeds.top35(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '8️⃣') {
+            else if(reaction.emoji.name == '8️⃣') {
                 embed.edit(embeds.top40(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '9️⃣') {
+            else if(reaction.emoji.name == '9️⃣') {
                 embed.edit(embeds.top45(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '🔟') {
+            else if(reaction.emoji.name == '🔟') {
                 embed.edit(embeds.top50(data,rank))
+                resolved = true
             }
-            if(reaction.emoji.name == '❌') {
+            else if(reaction.emoji.name == '❌') {
                 embed.reactions.removeAll()
                 embed.edit(embeds.stop())
+                resolved = true
             }
+            
 
         })
 

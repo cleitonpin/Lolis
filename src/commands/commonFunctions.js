@@ -327,7 +327,8 @@ const elo_emoji = {
     "DIAMOND": "700875020414484580",
     "MASTER": "700875020439781436",
     "GRANDMASTER": "700875020443975731",
-    "CHALLENGER": "700875020494176307"
+    "CHALLENGER": "700875020494176307",
+    "UNRANKED": "700901486619656232"
 }
 
 const masteryImagesURL = {
@@ -1685,6 +1686,7 @@ getEloEmoji = (client, tier) => {
         if(elo_emoji[tier]) {
             return client.emojis.cache.get(elo_emoji[tier])
         }
+        
     } catch(err) {}
 },
 
