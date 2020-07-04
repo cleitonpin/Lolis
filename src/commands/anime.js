@@ -19,14 +19,13 @@ exports.run = async (client, message, args) => {
     } else {
         kitsuEmbed.addField('📟 Categoria', animeInfos.attributes.ageRatingGuide, true)
     }
-
-    kitsuEmbed.addField('💽 Total de episódios', animeInfos.attributes.episodeCount, true)
     if(animeInfos.attributes.episodeLength == null){
-        kitsuEmbed.addField('⏲️ Duração de episódio', '??', true)    
+        kitsuEmbed.addField('💽 Total de episódios', '??', true)   
     } else {
-
-        kitsuEmbed.addField('⏲️ Duração de episódio', animeInfos.attributes.episodeLength+'min', true)
+        kitsuEmbed.addField('💽 Total de episódios', animeInfos.attributes.episodeCount, true)
+        
     }
+    kitsuEmbed.addField('⏲️ Duração de episódio', animeInfos.attributes.episodeLength+'min', true)
     kitsuEmbed.addField('⭐ Tier average rating', animeInfos.attributes.averageRating, true)
     .addField('📅 Data de ínicio', animeInfos.attributes.startDate, true)
     if (animeInfos.attributes.endDate == null) {
