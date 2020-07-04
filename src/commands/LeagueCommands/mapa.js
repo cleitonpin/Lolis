@@ -1,14 +1,14 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const kayn = require('../kayn')
+const kayn = require('../../kayn')
 
 exports.run = async (client, message, args) => {
     if(args[0] == '1') {
-        kayn.DDragon.Map.list()
-        .region(REGIONS.BRAZIL)
+        kayn.kaynObject.DDragon.Map.list()
+        .region(kayn.regions.BRAZIL)
         .callback(function(err, Map) {
             console.log(Map)
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(Map['data']['10']['MapName'])
             .setImage(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/map/map10.png`)
@@ -16,11 +16,11 @@ exports.run = async (client, message, args) => {
         })
     }
     else if(args[0] == '2') {
-        kayn.DDragon.Map.list()
-        .region(REGIONS.BRAZIL)
+        kayn.kaynObject.DDragon.Map.list()
+        .region(kayn.regions.BRAZIL)
         .callback(function(err, Map) {
             console.log(Map)
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(Map['data']['11']['MapName'])
             .setImage(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/map/map11.png`)
@@ -28,11 +28,11 @@ exports.run = async (client, message, args) => {
         })
     }
     else if(args[0] == '3') {
-        kayn.DDragon.Map.list()
-        .region(REGIONS.BRAZIL)
+        kayn.kaynObject.DDragon.Map.list()
+        .region(kayn.regions.BRAZIL)
         .callback(function(err, Map) {
             console.log(Map)
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(Map['data']['12']['MapName'])
             .setImage(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/map/map12.png`)
@@ -40,11 +40,11 @@ exports.run = async (client, message, args) => {
         })
     }
     else if(args[0] == '4') {
-        kayn.DDragon.Map.list()
-        .region(REGIONS.BRAZIL)
+        kayn.kaynObject.DDragon.Map.list()
+        .region(kayn.regions.BRAZIL)
         .callback(function(err, Map) {
             console.log(Map)
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(Map['data']['22']['MapName'])
             .setImage(`https://ddragon.leagueoflegends.com/cdn/9.19.1/img/map/map22.png`)

@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
 
                     const response = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}?api_key=${process.env.RGAPI_KEY}`)
 
-                    
+                    console.log(summoner)
 
                     if(response.data == ''){
                         const emb = new Discord.MessageEmbed()

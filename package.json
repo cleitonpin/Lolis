@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "src/lol.js",
   "dependencies": {
+    "@google-cloud/translate": "^6.0.1",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "discord": "^0.8.2",
@@ -15,7 +16,8 @@
     "kayn": "^0.10.2",
     "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "unirest": "^0.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
