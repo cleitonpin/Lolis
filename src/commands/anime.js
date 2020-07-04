@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
     } else {
         kitsuEmbed.addField('📟 Categoria', animeInfos.attributes.ageRatingGuide, true)
     }
-    if(animeInfos.attributes.episodeLength == null){
+    if(animeInfos.attributes.episodeCount == null){
         kitsuEmbed.addField('💽 Total de episódios', '??', true)   
     } else {
         kitsuEmbed.addField('💽 Total de episódios', animeInfos.attributes.episodeCount, true)
