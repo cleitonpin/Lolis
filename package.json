@@ -2,6 +2,10 @@
   "name": "lolbot",
   "version": "1.0.0",
   "main": "src/lol.js",
+  "engines": {
+    "node": "12.x",
+    "vscode": "^1.22.0"
+  },
   "dependencies": {
     "@google-cloud/translate": "^6.0.1",
     "axios": "^0.19.2",

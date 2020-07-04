@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     let data = await kitsu.data(anime)
     let animeInfos = data.data[0]
 
-    console.log(animeInfos)
+    console.log(animeInfos.attributes.episodeCount)
 
     const kitsuEmbed = new Discord.MessageEmbed()
 
