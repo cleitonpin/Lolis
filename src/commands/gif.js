@@ -1,6 +1,6 @@
 const Giphly = require('../api/gif')
 
-exports.run = async (message, args, client) => {
+exports.run = async (client, message, args) => {
 
     
     let msg = args.join(' ')
@@ -12,6 +12,7 @@ exports.run = async (message, args, client) => {
     let random = Math.floor(Math.random() * numberRandom)
     let giph = response.data[random].images.original.url
     
+    message.delete()
     message.channel.send(giph)
     
 }

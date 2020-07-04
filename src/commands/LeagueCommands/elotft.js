@@ -1,51 +1,14 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const kayn = require('../kayn')
+const tft = require('../../api/league-tft')
+const versions = require('../../api/versions')
 
-const fetch = require('node-fetch')
 
 exports.run = async (client, message, args) => {
     //const emojiList = client.emojis.get("624323979619991582")
     
-
-    let summoner_Name = args.join('').trim()
-
-    if(summoner_Name) {
-        getSummonerId(summoner_Name).then(summoner => {
-            const tftelo = `https://br1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.id}?api_key=RGAPI-84ca7047-4b35-4fed-a002-b6659baa296d`
-            fetch(tftelo)
-            .then(response => response.json())
-            .then(elo => {
-                //here
-                console.log(elo)
-                if (!summoner)return message.channel.send('Nome inválido')
-                if (elo == '') return message.channel.send('Este jogador não tem elo no TFT')
-                
-                else {
-                    
-                    const embed = new Discord.RichEmbed()
-
-                    .setColor('#f00')
-                    .setTitle(elo[0].summonerName)
-                    .addField('Tier', `${elo[0].tier} ${elo[0].rank}`)
-                    .addField('Pontos', elo[0].leaguePoints)
-                    .addField('Vitórias', elo[0].wins, true)
-                    .addField('Derrotas', elo[0].losses, true)
-                    .setThumbnail(`http://ddragon.leagueoflegends.com/cdn/10.6.1/img/profileicon/${summoner.profileIconId}.png`)
-                
-                    message.channel.send(embed)
-                }
-                
-            })
-        }) 
-
-    }
-    
-    
+    console.log(await versions.data())
     
 
 }
 
-getSummonerId = async (args) => {
-    return await kayn.kaynObject.Summoner.by.name(args).region(kayn.regions.BRAZIL);
-}

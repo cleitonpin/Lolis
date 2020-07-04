@@ -72,9 +72,9 @@ client.on("message", async message => {
 
     } catch (e) {
         console.log(e)
-        // const commandsLeague = require(`./commands/LeagueCommands/${comando}.js`)
+        const commandsLeague = require(`./commands/LeagueCommands/${comando}.js`)
 
-        // commandsLeague.run(client, message, args)
+        commandsLeague.run(client, message, args)
         
         message.channel.send('Comando inválido')
     }
