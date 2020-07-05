@@ -328,17 +328,17 @@ const elo_emoji = {
     "MASTER": "700875020439781436",
     "GRANDMASTER": "700875020443975731",
     "CHALLENGER": "700875020494176307",
-    "UNRANKED": "729018162540052581"
+    "Unranked": "729018162540052581"
 }
 
 const masteryImagesURL = {
-    1: "700878777613287484",
+    1: "729418938605109268",
     2: "700878785574338560",
     3: "700878785527939182",
-    4: "700878785578532965",
-    5: "700878785830191204",
-    6: "700878785578401832",
-    7: "700878786237038593"
+    4: "729418939154825286",
+    5: "729418939104231555",
+    6: "729418939150630944",
+    7: "729418939205025824"
 }
 
 
@@ -1725,7 +1725,15 @@ virgulaPoints = points => {
             let x = points.slice(2)
 
             return (v + ',' + x)
-        } else return points
+        } 
+        else if(points.length == 8) {
+            let v = points.slice(0, 2)
+            let x = points.slice(2, 5)
+            let y = points.slice(5, 8)
+
+            return (v+ ',' + x + ',' + y    )
+        }
+        else return points
 
 
     } catch (err) {}
