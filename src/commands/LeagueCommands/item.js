@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
         .region(kayn.regions.BRAZIL)
         .callback(function (error, Item) {
             
-            //console.log(Item)
+            
             const ItemUnique = new Discord.RichEmbed()
             const OneItem = new Discord.RichEmbed()          
             const TwoItems = new Discord.RichEmbed()          

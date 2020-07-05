@@ -26,16 +26,24 @@ exports.run = async (client, message, args) => {
         
     }
     kitsuEmbed.addField('⏲️ Duração de episódio', animeInfos.attributes.episodeLength+'min', true)
-    kitsuEmbed.addField('⭐ Tier average rating', animeInfos.attributes.averageRating, true)
-    .addField('📅 Data de ínicio', animeInfos.attributes.startDate, true)
+    if(animeInfos.attributes.averageRating == null) {
+        kitsuEmbed.addField('⭐ Tier average rating', 'N/A', true)    
+    }else {
+        kitsuEmbed.addField('⭐ Tier average rating', animeInfos.attributes.averageRating, true)
+    }
+    kitsuEmbed.addField('📅 Data de ínicio', animeInfos.attributes.startDate, true)
     if (animeInfos.attributes.endDate == null) {
         kitsuEmbed.addField('📅 Data final', 'Não finalizado', true)
     } else {
         kitsuEmbed.addField('📅 Data final', animeInfos.attributes.endDate, true)
     }
-
-    kitsuEmbed.addField('🏆 Rank', animeInfos.attributes.ratingRank, true)
-    .setFooter('Status: '+animeInfos.attributes.status, animeInfos.attributes.posterImage.tiny)
+    if(animeInfos.attributes.ratingRank == null) {
+        kitsuEmbed.addField('🏆 Rank', 'N/A', true)    
+    } else {
+        kitsuEmbed.addField('🏆 Rank', animeInfos.attributes.ratingRank, true)
+    }
+    
+    kitsuEmbed.setFooter('Status: '+animeInfos.attributes.status, animeInfos.attributes.posterImage.tiny)
     .setThumbnail(animeInfos.attributes.posterImage.original)
 
     
