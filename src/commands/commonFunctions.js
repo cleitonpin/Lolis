@@ -147,7 +147,8 @@ const champ_name_by_id = {
     555: "Pyke",
     523: "Aphelios",
     235: "Senna",
-    875: "Sett"
+    875: "Sett",
+    "-1": "Não baniu"
 }
 
 const emoji_by_champion_id = {
@@ -1633,8 +1634,8 @@ getChampionEmoji = (client, champion_id) => {
 
 Teams = team_id => {
     switch(team_id) {
-        case 100: return "Vermelho"; break;
-        case 200: return "Azul"; break;
+        case 100: return "Azul"; break;
+        case 200: return "Vermelho"; break;
     }
 },
 
@@ -1748,7 +1749,7 @@ module.exports = {
     fila,
     getEloEmoji,
     getMasteryEmoji,
-    virgulaPoints
+    virgulaPoints,
 }
 
 //lucas é o bixo mesmo :v

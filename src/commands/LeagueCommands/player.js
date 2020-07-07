@@ -25,17 +25,17 @@ exports.run = async (client, message, args) => {
 
                     let elotft = await leagueTft.data(summoner_Name)
                     
-                    console.log(summoner.id)
+                    console.log(summoner)
                     if(response.data == ''){
                         
                         emb.setTitle(`📛 Perfil: ${summoner.name} 📛`)
                         .setColor('#33062b')
                         .addField('Nível do invocador', summoner['summonerLevel'], true)
                         if(elotft == '') {
-                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'UNRANKED')} Unranked`, true)
+                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'UNRANKED')} Unranked`, true)
                         }
                         else {
-                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)
+                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)
                         }
                         
                         emb.addField('Top 3 campeões', `${getChampionEmoji(client, info[0].championId)} Top 1. **${IDtoName(info[0].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[0].championPoints.toString())}\n ${getChampionEmoji(client, info[1].championId)} Top 2. **${IDtoName(info[1].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[1].championPoints.toString())}\n ${getChampionEmoji(client, info[2].championId)} Top 3. **${IDtoName(info[2].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[2].championPoints.toString())}`)
@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
                         .setTitle(`📛 Perfil: ${summoner.name} 📛 `)
                         .addField('Nível', summoner['summonerLevel'], true)
                         if(elotft == '') {
-                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, tier)} ${tier} ${rank} / **${leaguePoints} LP**\nRanqueada flexível: ${getEloEmoji(client, flex.tier)} ${flex.tier} ${flex.rank} / **${flex.leaguePoints} LP**\nRanqueada TFT: ${getEloEmoji(client, 'UNRANKED')} Unranked`, true)
+                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, tier)} ${tier} ${rank} / **${leaguePoints} LP**\nRanqueada flexível: ${getEloEmoji(client, flex.tier)} ${flex.tier} ${flex.rank} / **${flex.leaguePoints} LP**\nRanqueada TFT: ${getEloEmoji(client, 'Unranked')} Unranked`, true)
                         } else {
 
                             emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, tier)} ${tier} ${rank} / **${leaguePoints} LP**\nRanqueada flexível: ${getEloEmoji(client, flex.tier)} ${flex.tier} ${flex.rank} / **${flex.leaguePoints} LP**\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)
@@ -79,9 +79,9 @@ exports.run = async (client, message, args) => {
                             .addField('Nível', summoner['summonerLevel'], true)
                             if(elotft == '') {
 
-                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, tier)} ${tier} ${rank} / **${leaguePoints} LP**\nRanqueada flexível: ${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'UNRANKED')} Unranked`, true)
+                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, tier)} ${tier} ${rank} / **${leaguePoints} LP**\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'Unranked')} Unranked`, true)
                             } else {
-                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, tier)} ${tier} ${rank} / **${leaguePoints} LP**\nRanqueada flexível: ${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)
+                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, tier)} ${tier} ${rank} / **${leaguePoints} LP**\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)
                             }
                             emb.addField('Top 3 campeões', `${getChampionEmoji(client, info[0].championId)} Top 1. **${IDtoName(info[0].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[0].championPoints.toString())}\n ${getChampionEmoji(client, info[1].championId)} Top 2. **${IDtoName(info[1].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[1].championPoints.toString())}\n ${getChampionEmoji(client, info[2].championId)} Top 3. **${IDtoName(info[2].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[2].championPoints.toString())}`)
                             .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await versions.data()}/img/profileicon/${summoner['profileIconId']}.png`)
@@ -91,11 +91,11 @@ exports.run = async (client, message, args) => {
                             .addField('Nível', summoner['summonerLevel'], true)
                             if(elotft == '') {
 
-                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, 'UNRANKED')} \nRanqueada flexível: ${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'UNRANKED')} Unranked`, true)
+                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, 'Unranked')} \nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'Unranked')} Unranked`, true)
                             } else {
-                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, 'UNRANKED')} \nRanqueada flexível: ${getEloEmoji(client, 'UNRANKED')} Unranked\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)
+                                emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, 'Unranked')} \nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)
                             }
-                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, 'UNRANKED')}\nRanqueada flexível: ${getEloEmoji(client, flex.tier)} ${flex.tier} ${flex.rank} / **${flex.leaguePoints} LP**`, true)
+                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo: ${getEloEmoji(client, 'Unranked')}\nRanqueada flexível: ${getEloEmoji(client, flex.tier)} ${flex.tier} ${flex.rank} / **${flex.leaguePoints} LP**`, true)
                             .addField('Top 3 campeões', `${getChampionEmoji(client, info[0].championId)} Top 1. **${IDtoName(info[0].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[0].championPoints.toString())}\n ${getChampionEmoji(client, info[1].championId)} Top 2. **${IDtoName(info[1].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[1].championPoints.toString())}\n ${getChampionEmoji(client, info[2].championId)} Top 3. **${IDtoName(info[2].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[2].championPoints.toString())}`)
                             .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version.data[0]}/img/profileicon/${summoner['profileIconId']}.png`)
                             

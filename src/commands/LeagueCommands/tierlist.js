@@ -4,7 +4,7 @@ const { getChampionEmoji, } = require('../commonFunctions')
 const leagueTierlist = require('../../api/league-tierlist')
 const champ = require('./champion.json')
 const championApi = require('../../api/champion-api')
-
+const { prefix } = require('../../config.json')
 
 titleize = (text) => {
     var words = text.toLowerCase().split(" ");
@@ -21,10 +21,19 @@ exports.run = async (client, message, args) => {
     let champions = version.data.champions
     let lane = args.join('')
     let tierlist = await leagueTierlist.data()
-
+    
     const tierlistE = new Discord.MessageEmbed()
-    .setColor('#ffff1a')
-    .setTitle(`Tierlist: ${titleize(lane)}`)
+    
+    tierlistE.setColor('#ffff1a')
+
+    if(lane == '') {
+        tierlistE.setTitle('Lane não encontrada')
+        tierlistE.setDescription(`Digite ${prefix}tierlist [top-jugle-mid-adc-support]`)
+
+        message.channel.send(tierlistE)
+    } else {
+
+    tierlistE.setTitle(`Tierlist: ${titleize(lane)}`)
 
     champ.forEach(name => {
         
@@ -96,8 +105,12 @@ exports.run = async (client, message, args) => {
         
     })
 
-    tierlistE.setFooter(`Patch ${await versions.data()}`)
-    message.channel.send(tierlistE)
     
+        tierlistE.setFooter(`Patch ${await versions.data()}`)
+        message.channel.send(tierlistE)
+        
+
+}
+
 }
 
