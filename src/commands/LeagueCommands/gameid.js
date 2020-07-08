@@ -59,7 +59,7 @@ data = async (id, client) => {
     let winner = arrayWinner.filter(w => w.win == 'Fail')
 
     if(infoMtach.gameMode == 'CLASSIC') var mapa = `Summoner's Rift ${SR}`
-    else mapa = CurrentGame.gameMode
+    else mapa = infoMtach.gameMode
 
     if(lost == '' && winner == '') {
         
