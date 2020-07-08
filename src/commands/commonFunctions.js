@@ -342,6 +342,14 @@ const masteryImagesURL = {
     7: "729418939205025824"
 }
 
+const runesEmoji = {
+    8100: "730244168101920790",
+    8300: "730245671931740211",
+    8000: "730244167971635312",
+    8400: "730244168039006220",
+    8200: "730244168139407420"
+}
+
 
 checkItem = (args) => {
     let item_name = args.join(' ')
@@ -1615,6 +1623,14 @@ checkItem = (args) => {
     }
 },
 
+getRunesEmoji = (id, client) => {
+    try {
+        if(runesEmoji[id]){
+            return client.emojis.cache.get(runesEmoji[id])
+        }
+    } catch (err) {}
+}
+
 IDtoName = id => {
     try {
         if(champ_name_by_id[id]) {
@@ -1750,6 +1766,7 @@ module.exports = {
     getEloEmoji,
     getMasteryEmoji,
     virgulaPoints,
+    getRunesEmoji
 }
 
 //lucas é o bixo mesmo :v

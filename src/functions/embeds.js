@@ -1,6 +1,11 @@
 const Discord = require('discord.js')
 
+const kayn = require("../kayn")
 const leagueV4 = require('../api/league-v4')
+const versions = require('../api/versions')
+
+
+
 const lista = (fila, rank, tier) => {
     
 
@@ -224,10 +229,72 @@ const elo = async (id) => {
     
 }
 
+const eloTranslate = async (id) => {
+    
+    var data = await leagueV4.data(id)
+    if (data == '') {
+        return 'UNRANKED'
+    } else {
+
+        const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+
+        switch(tier) {
+            case 'IRON': return 'Ferro'
+            case 'BRONZE': return 'Bronze'
+            case 'SILVER': return 'Prata'
+            case 'GOLD': return 'Ouro'
+            case 'PLATINUM': return 'Platina'
+            case 'DIAMOND': return 'Diamante'
+            case 'MASTER': return 'Mestre'
+            case 'GRANDMASTER': return 'Grão-Mestre'
+            case 'CHALLENGER': return 'Desafiante'
+            
+        }
 
 
+        return tier
+    }
+
+    
+}
+const rank = async (id) => {
+    
+    var data = await leagueV4.data(id)
+    if (data == '') {
+        return 'UNRANKED'
+    } else {
+
+        const { rank, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+
+        
+
+        return rank
+    }
+
+    
+}
+
+const LP = async (id) => {
+    
+    var data = await leagueV4.data(id)
+    if (data == '') {
+        return 'UNRANKED'
+    } else {
+
+        const { leaguePoints, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+
+        
+
+        return leaguePoints
+    }
+
+    
+}
 
 
+getChampionData = async (name) => {
+    return kayn.kaynObject.DDragon.Champion.get(name).region(kayn.regions.BRAZIL)
+}
 
 module.exports = {
     lista,
@@ -242,5 +309,8 @@ module.exports = {
     top45,
     top50,
     stop,
-    elo
+    elo,
+    rank,
+    eloTranslate,
+    LP
 }
