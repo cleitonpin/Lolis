@@ -25,14 +25,13 @@ exports.run = async (client, message, args) => {
 
                     let elotft = await leagueTft.data(summoner_Name)
                     
-                    console.log(summoner)
                     if(response.data == ''){
                         
                         emb.setTitle(`📛 Perfil: ${summoner.name} 📛`)
                         .setColor('#33062b')
                         .addField('Nível do invocador', summoner['summonerLevel'], true)
                         if(elotft == '') {
-                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'UNRANKED')} Unranked`, true)
+                            emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'Unranked')} Unranked`, true)
                         }
                         else {
                             emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, elotft[0].tier)} ${elotft[0].tier} ${elotft[0].rank} / **${elotft[0].leaguePoints} LP**`, true)

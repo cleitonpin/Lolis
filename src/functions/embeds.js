@@ -218,8 +218,10 @@ const elo = async (id) => {
     
     var data = await leagueV4.data(id)
     if (data == '') {
-        return 'UNRANKED'
+        return 'Unranked'
     } else {
+
+        const datah = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
 
         const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
 
@@ -233,7 +235,7 @@ const eloTranslate = async (id) => {
     
     var data = await leagueV4.data(id)
     if (data == '') {
-        return 'UNRANKED'
+        return 'Unranked'
     } else {
 
         const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
@@ -261,12 +263,11 @@ const rank = async (id) => {
     
     var data = await leagueV4.data(id)
     if (data == '') {
-        return 'UNRANKED'
+        return ''
     } else {
 
         const { rank, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
 
-        
 
         return rank
     }
@@ -278,14 +279,14 @@ const LP = async (id) => {
     
     var data = await leagueV4.data(id)
     if (data == '') {
-        return 'UNRANKED'
+        return ''
     } else {
 
         const { leaguePoints, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
 
-        
+        if(leaguePoints == 0) return '(0 PDL)'
 
-        return leaguePoints
+        return `(${leaguePoints} PDL's)`
     }
 
     

@@ -59,7 +59,6 @@ exports.run = async (client, message, args) => {
                     return emojiTeam
                 }
 
-                console.log(CurrentGame.participants[4].summonerName.length)
                 const embed = new Discord.MessageEmbed()
 
 
