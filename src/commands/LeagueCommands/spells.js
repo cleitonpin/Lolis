@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const kayn = require('../../kayn')
+const versao = require('../../api/versions')
 
 traduzirSpell = (name) => {
     switch(name.toLowerCase()) {
@@ -23,29 +24,25 @@ traduzirSpell = (name) => {
 
 exports.run = async (client, message, args) => {
     if(args[0]) {
-        kayn.kaynObject.DDragon.SummonerSpell.list()
-        .callback(function(error, SummonerSpell) {
+        
+            let version = await versao.data()
+            let SummonerSpell = await getSummoenrsSpells()
             
-            
-            // if (SummonerSpell.data[`Summoner${traduzirSpell(SummonerSpell.data)}`] == null) 
-            //     return message.channel.send('Invalid params')
-
             const minutos = parseFloat(`${SummonerSpell.data[`${traduzirSpell(args[0])}`].cooldownBurn/60}`).toFixed(2)
             
             console.log(SummonerSpell.data['SummonerFlash'].name)
             
-
             const embed = new Discord.MessageEmbed()
-                .setColor('#ebdf05')
-                .setTitle(SummonerSpell.data[`${traduzirSpell(args[0])}`].name)
-                .addField(`Descrição: `, SummonerSpell.data[`${traduzirSpell(args[0])}`].description)
-                .addField(`Tempo de recarga: `, `${SummonerSpell.data[`${traduzirSpell(args[0])}`].cooldownBurn} segundos ou ${minutos} minutos`, true)
-                .addField(`Level necessário:`, SummonerSpell['data'][`${traduzirSpell(args[0])}`]['summonerLevel'], true)
-                //.addField(`Custo: `, `${SummonerSpell.data[`${traduzirSpell(args[0])}`].costType}`, true)
-                .addField('Modos de jogos onde a spell está disponível:', `${SummonerSpell.data[`${traduzirSpell(args[0])}`].modes}`)
-                .setThumbnail(`http://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/${SummonerSpell.data[`${traduzirSpell(args[0])}`].id}.png`)
-                message.channel.send(embed)                
-        })
+            .setColor('#170B3B')
+            .setTitle(SummonerSpell.data[`${traduzirSpell(args[0])}`].name)
+            .addField(`Descrição: `, SummonerSpell.data[`${traduzirSpell(args[0])}`].description)
+            .addField(`Tempo de recarga: `, `${SummonerSpell.data[`${traduzirSpell(args[0])}`].cooldownBurn} segundos ou ${minutos} minutos`, true)
+            .addField(`Level necessário:`, SummonerSpell['data'][`${traduzirSpell(args[0])}`]['summonerLevel'], true)
+            //.addField(`Custo: `, `${SummonerSpell.data[`${traduzirSpell(args[0])}`].costType}`, true)
+            .addField('Modos de jogos onde a spell está disponível:', `${SummonerSpell.data[`${traduzirSpell(args[0])}`].modes}`)
+            .setThumbnail(`http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${SummonerSpell.data[`${traduzirSpell(args[0])}`].id}.png`)
+            message.channel.send(embed)                
+    
     }
 
     if (!args[0]) {
@@ -62,4 +59,9 @@ exports.run = async (client, message, args) => {
             .setThumbnail(message.author.displayAvatarURL)
         message.channel.send(embed)
     }
+}
+
+
+getSummoenrsSpells = async () => {
+    return kayn.kaynObject.DDragon.SummonerSpell.list()
 }

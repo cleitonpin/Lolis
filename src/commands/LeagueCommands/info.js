@@ -1,31 +1,44 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const kayn = require('../../kayn')
+const versions = require('../../api/versions')
 
 exports.run = async (client, message, args) => {
     //const emojiList = client.emojis.get("624323979619991582")
     if(args[0]) {
-        kayn.kaynObject.DDragon.Champion.get(`${args[0]}`).region('br')
-        .callback(function(error, champion) {
-            console.log(champion['data'][`${args[0]}`].key)
+        let name_champ = titleize(args.join(' '))
+        let champion = await getInfoChampions(name_champ)
+        let versao = await versions.data()
 
-            const embed = new Discord.RichEmbed()
-            .setColor('#660000')
-            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.18.1/img/champion/${args[0]}.png`)
-            .addField(`**${args[0]}**`, champion['data'][`${args[0]}`]['title'],true)
-            .addField(`**Tipo:**`,champion['data'][`${args[0]}`]['tags'],true)
-            .addField('**Vida:**', `${champion['data'][`${args[0]}`]['stats']['hp']} (+${champion['data'][`${args[0]}`]['stats']['hpperlevel']} por nível)`, true)
-            .addField('**Dano de Ataque:**', `${champion['data'][`${args[0]}`]['stats']['attackdamage']} (+${champion['data'][`${args[0]}`]['stats']['attackdamageperlevel']} por nível)`, true)
-            .addField('**Velocidade de ataque:**', `${champion['data'][`${args[0]}`]['stats']['attackspeed']} (+${champion['data'][`${args[0]}`]['stats']['attackspeedperlevel']}% por nível)`, true)
-            .addField('**Velocidade Movimento:**', `${champion['data'][`${args[0]}`]['stats']['movespeed']}` ,true)
-            .addField('**Armadura:**', `${champion['data'][`${args[0]}`]['stats']['armor']} (+${champion['data'][`${args[0]}`]['stats']['armorperlevel']} por nível)`, true)
-            .addField('**Regeneração de vida:**', `${champion['data'][`${args[0]}`]['stats']['hpregen']} (+${champion['data'][`${args[0]}`]['stats']['hpregenperlevel']} por nível)`, true)
-            .addField('**Resistência Mágica:**\n', `${champion['data'][`${args[0]}`]['stats']['spellblock']} (+${champion['data'][`${args[0]}`]['stats']['spellblockperlevel']} por nível)\n\n`, true)
-            .addField('**Regeneração de mana:**', `${champion['data'][`${args[0]}`]['stats']['mpregen']} (+${champion['data'][`${args[0]}`]['stats']['mpregenperlevel']} por nível)`, true)
-            .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${args[0]}_0.jpg`)
-            message.channel.send(embed)
-        })
+        const embed = new Discord.MessageEmbed()
+        .setColor('#170B3B')
+        //.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await versions.data}/img/champion/${name_champ}.png`)
+        .setAuthor(`${champion.data[name_champ].name}, ${champion.data[name_champ].title} ` ,`https://ddragon.leagueoflegends.com/cdn/${versao}/img/champion/${name_champ}.png`)
+        .addField(`**Tipo:**`,champion['data'][`${name_champ}`]['tags'],true)
+        .addField('**Vida:**', `${champion['data'][`${name_champ}`]['stats']['hp']} (+${champion['data'][`${name_champ}`]['stats']['hpperlevel']} por nível)`, true)
+        .addField('**Dano de Ataque:**', `${champion['data'][`${name_champ}`]['stats']['attackdamage']} (+${champion['data'][`${name_champ}`]['stats']['attackdamageperlevel']} por nível)`, true)
+        .addField('**Velocidade de ataque:**', `${champion['data'][`${name_champ}`]['stats']['attackspeed']} (+${champion['data'][`${name_champ}`]['stats']['attackspeedperlevel']}% por nível)`, true)
+        .addField('**Velocidade Movimento:**', `${champion['data'][`${name_champ}`]['stats']['movespeed']}` ,true)
+        .addField('**Armadura:**', `${champion['data'][`${name_champ}`]['stats']['armor']} (+${champion['data'][`${name_champ}`]['stats']['armorperlevel']} por nível)`, true)
+        .addField('**Regeneração de vida:**', `${champion['data'][`${name_champ}`]['stats']['hpregen']} (+${champion['data'][`${name_champ}`]['stats']['hpregenperlevel']} por nível)`, true)
+        .addField('**Resistência Mágica:**\n', `${champion['data'][`${name_champ}`]['stats']['spellblock']} (+${champion['data'][`${name_champ}`]['stats']['spellblockperlevel']} por nível)\n\n`, true)
+        .addField('**Regeneração de mana:**', `${champion['data'][`${name_champ}`]['stats']['mpregen']} (+${champion['data'][`${name_champ}`]['stats']['mpregenperlevel']} por nível)`, true)
+        .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${name_champ}_0.jpg`)
+        message.channel.send(embed)
     } else {
         message.channel.send('**Digite o nome do campeão!**')
     }
+}
+
+function titleize(text) {
+    var words = text.toLowerCase().split(" ");
+    for (var a = 0; a < words.length; a++) {
+        var w = words[a];
+        words[a] = w[0].toUpperCase() + w.slice(1);
+    }
+    return words.join(" ");
+}
+
+getInfoChampions = async(name) => {
+    return kayn.kaynObject.DDragon.Champion.get(name).region(kayn.regions.BRAZIL)
 }

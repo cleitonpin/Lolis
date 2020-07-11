@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
     
     const tierlistE = new Discord.MessageEmbed()
     
-    tierlistE.setColor('#ffff1a')
+    tierlistE.setColor('#170B3B')
 
     if(lane == '') {
         tierlistE.setTitle('Lane não encontrada')

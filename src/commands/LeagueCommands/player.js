@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
                     if(response.data == ''){
                         
                         emb.setTitle(`📛 Perfil: ${summoner.name} 📛`)
-                        .setColor('#33062b')
+                        .setColor('#170B3B')
                         .addField('Nível do invocador', summoner['summonerLevel'], true)
                         if(elotft == '') {
                             emb.addField('Estatísticas Ranqueadas', `Ranqueada solo/duo:${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada flexível: ${getEloEmoji(client, 'Unranked')} Unranked\nRanqueada TFT: ${getEloEmoji(client, 'Unranked')} Unranked`, true)
@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
                         const { tier, rank, leaguePoints, wins, losses } = response.data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
                         const flex = response.data.find(fila => fila.queueType == 'RANKED_FLEX_SR')
                         
-                        emb.setColor('#7e143f')
+                        .setColor('#170B3B')
                         .setTitle(`📛 Perfil: ${summoner.name} 📛 `)
                         .addField('Nível', summoner['summonerLevel'], true)
                         if(elotft == '') {
@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
                         const flex = response.data.find(fila => fila.queueType == 'RANKED_FLEX_SR')
 
                         if(fila == undefined){
-                            emb.setColor('#7e143f')
+                            emb.setColor('#170B3B')
                             .setTitle(`📛 Perfil: ${summoner.name} 📛`)
                             .addField('Nível', summoner['summonerLevel'], true)
                             if(elotft == '') {
@@ -85,7 +85,7 @@ exports.run = async (client, message, args) => {
                             emb.addField('Top 3 campeões', `${getChampionEmoji(client, info[0].championId)} Top 1. **${IDtoName(info[0].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[0].championPoints.toString())}\n ${getChampionEmoji(client, info[1].championId)} Top 2. **${IDtoName(info[1].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[1].championPoints.toString())}\n ${getChampionEmoji(client, info[2].championId)} Top 3. **${IDtoName(info[2].championId)}** ${getMasteryEmoji(client, info[0].championLevel)} ${virgulaPoints(info[2].championPoints.toString())}`)
                             .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await versions.data()}/img/profileicon/${summoner['profileIconId']}.png`)
                         } else {
-                            emb.setColor('#7e143f')
+                            emb.setColor('#170B3B')
                             .setTitle(`📛 Perfil: ${summoner.name} 📛`)
                             .addField('Nível', summoner['summonerLevel'], true)
                             if(elotft == '') {

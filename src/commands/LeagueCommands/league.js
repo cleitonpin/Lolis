@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
     }
     let resolved = false;
 
-    embedL.setColor('#F00')
+    embedL.setColor('#170B3B')
     .setTitle('Lista')
     .setDescription('Para ver a lista dos jogadores de ranqueadas, preciso de 3 coisinhas')
     .addField('\u200b',  ' ```QUEUE```')

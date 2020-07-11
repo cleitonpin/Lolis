@@ -24,22 +24,46 @@ exports.run = async (client, message, args) => {
     
     let name_champ = args.join('')
     let counters = await leagueMetaApi.data(name_champ)
-
+    let red = client.emojis.cache.get('730241924879089745')
+    let verde = client.emojis.cache.get('730241924744740895')
 
     let winrate = counters.data.roles[0].winRate
     let banrate = counters.data.roles[0].banRate
+    let pickrate = counters.data.roles[0].pickRate
     let forte_contra = counters.data.roles[0].matchups.strongAgainstGame
     let fraco_contra = counters.data.roles[0].matchups.weakAgainstGame
 
     const embed = new Discord.MessageEmbed()
+    embed.setTitle('Counters de '+titleize(name_champ))
+    .setDescription(`Winrate: ${winrate}%\nBanrate: ${banrate}%\nPickrate: ${pickrate}%`)
+    .setColor('#170B3B')
+    if(forte_contra && fraco_contra == '') {
+        embed.setFooter('Parece que não há informações sobre este campeão')
+    } else {
 
-    .setTitle('Counters de '+titleize(name_champ))
-    .setDescription(`Winrate: ${winrate}%\nBanrate: ${banrate}%`)
-    .addField('Forte contra', `${getChampionEmoji(client, forte_contra[0].championId)} ${forte_contra[0].name}: ${forte_contra[0].winRate}%\n ${getChampionEmoji(client, forte_contra[1].championId)} ${forte_contra[1].name}: ${forte_contra[1].winRate}%\n ${getChampionEmoji(client, forte_contra[2].championId)} ${forte_contra[2].name}: ${forte_contra[2].winRate}%\n ${getChampionEmoji(client, forte_contra[3].championId)} ${forte_contra[3].name}: ${forte_contra[3].winRate}%\n ${getChampionEmoji(client, forte_contra[4].championId)} ${forte_contra[4].name}: ${forte_contra[4].winRate}%\n ${getChampionEmoji(client, forte_contra[5].championId)} ${forte_contra[5].name}: ${forte_contra[5].winRate}%\n ${getChampionEmoji(client, forte_contra[6].championId)} ${forte_contra[6].name}: ${forte_contra[6].winRate}%\n ${getChampionEmoji(client, forte_contra[7].championId)} ${forte_contra[7].name}: ${forte_contra[7].winRate}%\n ${getChampionEmoji(client, forte_contra[8].championId)} ${forte_contra[8].name}: ${forte_contra[8].winRate}%\n`, true)
-    .addField('Fraco contra', `${getChampionEmoji(client, fraco_contra[0].championId)} ${fraco_contra[0].name}: ${fraco_contra[0].winRate}%\n ${getChampionEmoji(client, fraco_contra[1].championId)} ${fraco_contra[1].name}: ${fraco_contra[1].winRate}%\n ${getChampionEmoji(client, fraco_contra[2].championId)} ${fraco_contra[2].name}: ${fraco_contra[2].winRate}%\n ${getChampionEmoji(client, fraco_contra[3].championId)} ${fraco_contra[3].name}: ${fraco_contra[3].winRate}%\n ${getChampionEmoji(client, fraco_contra[4].championId)} ${fraco_contra[4].name}: ${fraco_contra[4].winRate}%\n ${getChampionEmoji(client, fraco_contra[5].championId)} ${fraco_contra[5].name}: ${fraco_contra[5].winRate}%\n ${getChampionEmoji(client, fraco_contra[6].championId)} ${fraco_contra[6].name}: ${fraco_contra[6].winRate}%\n ${getChampionEmoji(client, fraco_contra[7].championId)} ${fraco_contra[7].name}: ${fraco_contra[7].winRate}%\n ${getChampionEmoji(client, fraco_contra[8].championId)} ${fraco_contra[8].name}: ${fraco_contra[8].winRate}%\n`, true)
-    .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await version.data()}/img/champion/${titleize(name_champ)}.png`)
-    .setFooter('Lembrando que é counter no geral, e não na lane')
+        const forte = forte_contra.map(o => {
+            const novoEstado = {...o}
+
+
+            novoEstado.championId = getChampionEmoji(client, novoEstado.championId)
+    
+            return `${novoEstado.championId} ${novoEstado.name}: ${novoEstado.winRate}%`
+        })
+        const fraco = fraco_contra.map(o => {
+            const novoEstado = {...o}
+
+
+            novoEstado.championId = getChampionEmoji(client, novoEstado.championId)
+    
+            return `${novoEstado.championId} ${novoEstado.name}: ${novoEstado.winRate}%`
+        })
+
+        embed.addField(`${red} Forte contra`, forte.join('\n'), true)
+        embed.addField(`${verde} Fraco contra`, fraco.join('\n'), true)
+        embed.setFooter('Lembrando que é counter no geral, e não na lane')
+    }
+    embed.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await version.data()}/img/champion/${titleize(name_champ)}.png`)
+    
     message.channel.send(embed)
 
 }
-

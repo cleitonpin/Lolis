@@ -71,6 +71,7 @@ data = async (id, client) => {
 
 
         embed.setTitle('Informações detalhadas da partida')
+        .setColor('#170B3B')
         embed.setDescription([
             `Time vencedor: ${Teams(winner[0].teamId)} 🔹 `,
             `Modo de jogo: ${mapa}`,
@@ -137,6 +138,7 @@ data = async (id, client) => {
     else {
 
         embed.setTitle('Informações detalhadas da partida')
+        .setColor('#170B3B')
         embed.setDescription([
             `Time vencedor: ${Teams(lost[0].teamId)} ${red} `,
             `Modo de jogo: ${mapa}`,

@@ -25,6 +25,7 @@ exports.run = async (client, message, args) => {
         
 
         const matchEmbed = new Discord.MessageEmbed()
+        .setColor('#170B3B')
         matchEmbed.setAuthor(`Histórico de partida de ${summoner.name}`, `https://ddragon.leagueoflegends.com/cdn/${await versions.data()}/img/profileicon/${summoner['profileIconId']}.png`)
         matchEmbed.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${await versions.data()}/img/profileicon/${summoner['profileIconId']}.png`)
         .setColor('#170B3B')
@@ -90,8 +91,15 @@ exports.run = async (client, message, args) => {
         })
         
     }) .catch(async (err) => {
-        console.log(err)
-        message.channel.send('``` Jogador inexistente ```')
+
+        await msg.then(async ar => {
+            ar.delete()
+            const ERROEmbed = new Discord.MessageEmbed()
+            .setColor('#170B3B')
+            .setTitle('Histórico de partidas')
+            .setDescription('O jogador informado **_não existe_**')
+            message.channel.send(ERROEmbed)
+        })
         //console.log(err)
     })
 
