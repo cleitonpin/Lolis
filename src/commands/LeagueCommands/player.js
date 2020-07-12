@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
                     const emb = new Discord.MessageEmbed()
                     const response = await axios.get(`https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}?api_key=${process.env.RGAPI_KEY}`)
-
+                    console.log(summoner.id)
                     let elotft = await leagueTft.data(summoner_Name)
                     
                     if(response.data == ''){
@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
                         const { tier, rank, leaguePoints, wins, losses } = response.data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
                         const flex = response.data.find(fila => fila.queueType == 'RANKED_FLEX_SR')
                         
-                        .setColor('#170B3B')
+                        emb.setColor('#170B3B')
                         .setTitle(`📛 Perfil: ${summoner.name} 📛 `)
                         .addField('Nível', summoner['summonerLevel'], true)
                         if(elotft == '') {
@@ -113,7 +113,8 @@ exports.run = async (client, message, args) => {
                         })
                         
                     }
-            }) .catch(async function(e) {
+            }) .catch(async function(err) {
+                console.log(err)
                 await msg.then(ar => {
                     ar.delete()
                     message.channel.send('jogador inexistente')

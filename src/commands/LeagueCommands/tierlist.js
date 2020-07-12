@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
 
     tierlistE.setTitle(`Tierlist: ${titleize(lane)}`)
 
-    champ.forEach(name => {
+    champ.names.forEach(name => {
         
         let id = champions[name]
 
