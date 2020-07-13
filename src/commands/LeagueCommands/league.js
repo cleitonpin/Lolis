@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
         "gold": client.emojis.cache.get('700875020188254269'),
         "silver": client.emojis.cache.get('700875508405108826'),
         "bronze": client.emojis.cache.get('700875020427329656'),
-        "iron": client.emojis.cache.get('631528448665321472'),
+        "iron": client.emojis.cache.get('732076707774726154'),
         "ranked_solo": client.emojis.cache.get('728075489670987886'),
         "ranked_flex": client.emojis.cache.get('728075496285405254'),
         //"ranked_tft": client.emojis.cache.get('728075494733381633'),
@@ -31,10 +31,7 @@ exports.run = async (client, message, args) => {
 
     embedL.setColor('#170B3B')
     .setTitle('Lista')
-    .setDescription('Para ver a lista dos jogadores de ranqueadas, preciso de 3 coisinhas')
-    .addField('\u200b',  ' ```QUEUE```')
-    .addField('\u200b', '```DIVISÃO```')
-    .addField('\u200b', ' ```TIER``` ')
+    .setDescription('Para ver a lista dos jogadores de ranqueadas, preciso de 3 coisinhas\n\n1 - Fila\n2 - Divisão\n3 - Tier')
     .addField('\u200b', 'Reaja respectivamente')
 
     
@@ -49,12 +46,12 @@ exports.run = async (client, message, args) => {
     const filter = (reaction, user) => {
 
         switch(reaction.emoji.name) {
-            case 'DIAMOND': return user.id === message.author.id
-            case 'PLATINUM': return user.id === message.author.id
-            case 'GOLD': return user.id === message.author.id
-            case 'SILVER': return user.id === message.author.id
-            case 'BRONZE': return user.id === message.author.id
-            case 'IRON': return user.id === message.author.id
+            case 'Diamante': return user.id === message.author.id
+            case 'Platina': return user.id === message.author.id
+            case 'Ouro': return user.id === message.author.id
+            case 'Prata': return user.id === message.author.id
+            case 'Bronze': return user.id === message.author.id
+            case 'Ferro': return user.id === message.author.id
             
 
         }
@@ -64,9 +61,9 @@ exports.run = async (client, message, args) => {
     const filterTops = (reaction, user) => {
 
         switch(reaction.emoji.name) {
-            case 'CHALLENGER': return user.id === message.author.id
-            case 'GRANDMASTER': return user.id === message.author.id
-            case 'MASTER': return user.id === message.author.id
+            case 'Desafiante': return user.id === message.author.id
+            case 'Grão-mestre': return user.id === message.author.id
+            case 'Mestre': return user.id === message.author.id
         
         }
 
@@ -119,15 +116,15 @@ exports.run = async (client, message, args) => {
 
     collectorRank.on('collect', async (reaction, user) => {
 
-        reaction.emoji.name == 'DIAMOND' ? rank = 'DIAMOND' : false;
-        reaction.emoji.name == 'PLATINUM' ? rank = 'PLATINUM' : false;
-        reaction.emoji.name == 'GOLD' ? rank = 'GOLD' : false;
-        reaction.emoji.name == 'SILVER' ? rank = 'SILVER' : false;
-        reaction.emoji.name == 'BRONZE' ? rank = 'BRONZE' : false;
-        reaction.emoji.name == 'IRON' ? rank = 'IRON' : false;
+        reaction.emoji.name == 'Diamante' ? rank = 'DIAMOND' : false;
+        reaction.emoji.name == 'Platina' ? rank = 'PLATINUM' : false;
+        reaction.emoji.name == 'Ouro' ? rank = 'GOLD' : false;
+        reaction.emoji.name == 'Prata' ? rank = 'SILVER' : false;
+        reaction.emoji.name == 'Bronze' ? rank = 'BRONZE' : false;
+        reaction.emoji.name == 'Ferro' ? rank = 'IRON' : false;
         
-        if(reaction.emoji.name == 'DIAMOND' || 'PLATINUM' || 'GOLD' || 'SILVER'|| 
-        'BRONZE' || 'IRON') {
+        if(reaction.emoji.name == 'Diamante' || 'Platina' || 'Ouro' || 'Prata'|| 
+        'Bronze' || 'Ferro') {
             
             embed.reactions.removeAll()
             await embed.react(emojis.tier1)
@@ -157,12 +154,12 @@ exports.run = async (client, message, args) => {
     })
     collector.on('collect', async (reaction, user) => {
         
-    
-        reaction.emoji.name == 'CHALLENGER' ? rank = 'CHALLENGER' : false;
-        reaction.emoji.name == 'GRANDMASTER' ? rank = 'GRANDMASTER' : false;
-        reaction.emoji.name == 'MASTER' ? rank = 'MASTER' : false;
+        console.log(reaction.emoji.name)
+        reaction.emoji.name == 'Desafiante' ? rank = 'CHALLENGER' : false;
+        reaction.emoji.name == 'Grão-mestre' ? rank = 'GRANDMASTER' : false;
+        reaction.emoji.name == 'Mestre' ? rank = 'MASTER' : false;
 
-        if(reaction.emoji.name == 'CHALLENGER' || 'GRANDMASTER' || 'MASTER') {
+        if(reaction.emoji.name == 'Desafiante' || 'Grão-mestre' || 'Mestre') {
             embed.reactions.removeAll()
             await embed.react(emojis.tier1)
         }
