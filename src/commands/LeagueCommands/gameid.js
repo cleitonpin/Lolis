@@ -340,7 +340,7 @@ dataExtra = async (id, client) => {
         embed.setTitle('Informações detalhadas da partida')
         .setColor('#170B3B')
         embed.setDescription([
-            `Time vencedor: ${Teams(lost[0].teamId)} 🔹 `,
+            `Time vencedor: ${Teams(lost[0].teamId)} ${red} `,
             `Modo de jogo: ${fila(infoMtach.queueId, client)}`,
             `Duração da partida: ${tempoPartida.toFixed(0)} minutos`
         ])

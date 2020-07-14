@@ -1,65 +1,99 @@
+const axios = require('axios')
 const Discord = require('discord.js')
-const client = new Discord.Client()
-const kayn = ('../kayn')
-const { checkItem } = require('./commonFunctions')
 
 exports.run = async (client, message, args) => {
-    if(args[0]) {
-        kayn.kaynObject.DDragon.Item.list()
-        .region(kayn.regions.BRAZIL)
-        .callback(function (error, Item) {
-            
-            
-            const ItemUnique = new Discord.RichEmbed()
-            const OneItem = new Discord.RichEmbed()          
-            const TwoItems = new Discord.RichEmbed()          
-            const ThreeItems = new Discord.RichEmbed()
-            
-            //if(Item.data[checkItem(args)] == undefined) return message.channel.send('Digite o nome do item correto.')
 
-            if(Item.data[checkItem(args)].from == null) {
-                ItemUnique.setTitle(Item.data[checkItem(args)].name)
-                ItemUnique.addField('O que o item faz/da', Item.data[checkItem(args)].plaintext)
-                ItemUnique.addField('Preço combinado', Item.data[checkItem(args)].gold.base)
-                ItemUnique.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${Item.version}/img/item/${Item.data[checkItem(args)].image.full}`)
-                ItemUnique.setFooter(`Preço total: ${Item.data[checkItem(args)].gold.total}`)
-                message.channel.send(ItemUnique)
-            }
-            
-            if(Item.data[checkItem(args)].from.length == 1) {
+    let name = args.join(' ').toLowerCase()
+    let full = await data()
+    .catch(err => {})
 
-                OneItem.setTitle(Item.data[checkItem(args)].name)
-                OneItem.addField('O que o item faz/da', Item.data[checkItem(args)].plaintext)
-                OneItem.addField('Item que compõe', `${Item.data[Item.data[checkItem(args)].from[0]].name}`)
-                OneItem.addField('Preço combinado', Item.data[checkItem(args)].gold.base)
-                OneItem.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${Item.version}/img/item/${Item.data[checkItem(args)].image.full}`)
-                OneItem.setFooter(`Preço total: ${Item.data[checkItem(args)].gold.total}`)
-                }
-            
-            if(Item.data[checkItem(args)].from.length == 2) {
-                TwoItems.setTitle(Item.data[checkItem(args)].name)
-                TwoItems.addField('O que o item faz/da', Item.data[checkItem(args)].plaintext)
-                TwoItems.addField('Itens que compõem', `${Item.data[Item.data[checkItem(args)].from[0]].name} e ${Item.data[Item.data[checkItem(args)].from[1]].name}`)
-                TwoItems.addField('Preço combinado', Item.data[checkItem(args)].gold.base)
-                TwoItems.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${Item.version}/img/item/${Item.data[checkItem(args)].image.full}`)
-                TwoItems.setFooter(`Preço total: ${Item.data[checkItem(args)].gold.total}`)
-            }
 
-            if(Item.data[checkItem(args)].from.length == 3) {
-                ThreeItems.setTitle(Item.data[checkItem(args)].name)
-                ThreeItems.addField('O que o item faz/da', `${Item.data[checkItem(args)].plaintext}`, true)
-                ThreeItems.addField('Itens que compõem', `${Item.data[Item.data[checkItem(args)].from[0]].name}, ${Item.data[Item.data[checkItem(args)].from[1]].name} e ${Item.data[Item.data[item()].from[2]].name}`, true)
-                ThreeItems.addField('Preço combinado', Item.data[checkItem(args)].gold.base)
-                ThreeItems.setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${Item.version}/img/item/${Item.data[checkItem(args)].image.full}`)
-                ThreeItems.setFooter(`Preço total: ${Item.data[checkItem(args)].gold.total}`)
-            }
+    
+    
 
-            switch (Item.data[checkItem(args)].from.length) {
-                case 1: return message.channel.send(OneItem); break;
-                case 2: return message.channel.send(TwoItems); break;
-                case 3: return message.channel.send(ThreeItems); break;
+    const embed = new Discord.MessageEmbed()
+    const name_item = full.filter(it => it.name.toLowerCase() == name)
+    let emoji_gold = client.emojis.cache.get("732419646107549806")
+    
+    embed.setColor('#170B3B')
+    .setTitle('Item')
+    .setDescription('Informações do item ')
 
-            }           
-        })
+    if(name_item == '') {
+        embed.setColor('#170B3B')
+        .setTitle('❌ Item informado não encontrado')
+        .setDescription('Digite o nome do item corretamente!')
+
+        message.channel.send(embed)
+    } else {
+
+
+        
+        let item_stats = removeD(name_item[0].stats)
+        
+
+        embed.addField('Nome', name_item[0].name, true)
+        .addField('Preços', [
+            `${emoji_gold} Base: ${name_item[0].gold.base}`,
+            `${emoji_gold} Vender: ${name_item[0].gold.sell}`,
+            `${emoji_gold} Total: ${name_item[0].gold.total}`
+        ], true)
+        .addField('Descrição', name_item[0].description)
+        .addField('Status', item_stats, true)
+        .setThumbnail(name_item[0].image_url)
+        
+        message.channel.send(embed)
     }
+
 }
+
+removeD = (string) => {
+
+    
+    string = string.replace(/<stats>/g, '')
+    string = string.replace(/<\/stats>/g, '')
+    string = string.replace(/<passive>/g, '')
+    string = string.replace(/<\/passive>/g, '')
+    string = string.replace(/<br>/g, '\n')
+    string = string.replace(/<font color='#CFBF84'>/gi, '')
+    string = string.replace(/<\/font>/g, '')
+    string = string.replace(/<unique>/g, '')
+    string = string.replace(/<\/unique>/g, '')
+    string = string.replace(/<groupLimit>/g, '')
+    string = string.replace(/<\/groupLimit>/g, '')
+    string = string.replace(/<active>/g, '')
+    string = string.replace(/<\/active>/g, '')
+    string = string.replace(/<scaleLevel>/g, '')
+    string = string.replace(/<\/scaleLevel>/g, '')
+    string = string.replace(/<scaleHealth>/g, '')
+    string = string.replace(/<\/scaleHealth>/g, '')
+    string = string.replace(/<mana>/g, '')
+    string = string.replace(/<\/mana>/g, '')
+    string = string.replace(/<rules>/g, '')
+    string = string.replace(/<\/rules>/g, '')
+    string = string.replace(/<i>/g, '')
+    string = string.replace(/<\/i>/g, '')
+    string = string.replace(/<mainText>/g, '')
+    string = string.replace(/<\/mainText>/g, '')
+    string = string.replace(/<consumable>/g, '')
+    string = string.replace(/<\/consumable>/g, '')
+    //string = string.replace(/<hr>/g, '')
+    
+
+
+    let item_stats =string.replace(/<hr>/g, '\n')
+
+    return item_stats
+} 
+
+data = async () => {
+    const url = `https://morelegends.com/pt/api/static_data`
+    const JsonData = await axios.get(url)
+    const data = JsonData.data
+
+
+    return data.items
+}
+
+
+
