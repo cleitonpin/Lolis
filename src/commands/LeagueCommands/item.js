@@ -7,10 +7,6 @@ exports.run = async (client, message, args) => {
     let full = await data()
     .catch(err => {})
 
-
-    
-    
-
     const embed = new Discord.MessageEmbed()
     const name_item = full.filter(it => it.name.toLowerCase() == name)
     let emoji_gold = client.emojis.cache.get("732419646107549806")

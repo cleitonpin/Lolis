@@ -1,56 +1,134 @@
 const Discord = require('discord.js')
-const client = new Discord.Client()
 const kayn = require('../../kayn')
+const versions = require('../../api/versions')
 
 exports.run = async (client, message, args) => {
-    if(args[0]) {
-        kayn.kaynObject.DDragon.Champion.get(`${args[0]}`)
-        .callback(function(error, Champion) {
-        if (error) return console.log(error)
+    
+    let topic = client.emojis.cache.get('733165607159201995')
+    let name_champ = titleize(args[0])
+    let embed = new Discord.MessageEmbed()
+    if(name_champ == 'Drmundo') name_champ = 'DrMundo'
+    else if(name_champ == 'Masteryi') name_champ = 'MasterYi'
+    else if(name_champ == 'Jarvaniv') name_champ = 'JarvanIV'
+    else if(name_champ == 'Kogmaw') name_champ = 'KogMaw'
+    else if(name_champ == 'Leesin') name_champ = 'LeeSin'
+    else if(name_champ == 'Missfortune') name_champ = 'MissFortune'
+    else if(name_champ == 'Wukong') name_champ = 'MonkeyKing'
+    else if(name_champ == 'Xinzhao') name_champ = 'XinZhao'
 
-        const Embed = new Discord.RichEmbed()
-        .setColor('#660000')       
-        .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.18.1/img/passive/${Champion['data'][args[0]]['passive']['image']['full']}`)
-        .addField('**Nome da passiva:**', Champion['data'][`${args[0]}`]['passive']['name'])
-        .addField('**Descrição da passiva**', `**${Champion['data'][`${args[0]}`]['passive']['description']}`)
-        
-        message.channel.send(Embed)
-        
-        const skill1 = new Discord.RichEmbed()
-        .setColor('#660000')
-        .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/${Champion['data'][args[0]]['spells'][0]['image']['full']}`)
-        .addField(`**Q do(a) ${args[0]}:**`, Champion['data'][`${args[0]}`]['spells'][0]['name'])
-        .addField('**Descrição:**', Champion['data'][`${args[0]}`]['spells'][0]['description'])
+    let data = await getHablites(name_champ).catch(err => {})
 
-        message.channel.send(skill1)
+    if(!data) {
+        embed.setColor('#170B3B')
+        .setTitle('Comando Skills')
+        .setDescription(`O campeão informado **não existe**!`)
+        .setFooter('Utilize :skills [champion] [p-q-w-e-r]')
+    } else {
 
-        const skill2 = new Discord.RichEmbed()
-        .setColor('#660000')
-        .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/${Champion['data'][args[0]]['spells'][1]['image']['full']}`)
-        .addField(`**W do(a) ${args[0]}:**`, Champion['data'][`${args[0]}`]['spells'][1]['name'])
-        .addField('**Descrição:**', Champion['data'][`${args[0]}`]['spells'][1]['description'])
 
-        message.channel.send(skill2)
+        if(args[1] == 'q') {
 
-        const skill3 = new Discord.RichEmbed()
-        .setColor('#660000')
-        .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/${Champion['data'][args[0]]['spells'][2]['image']['full']}`)
-        .addField(`**E do(a) ${args[0]}:**`, Champion['data'][`${args[0]}`]['spells'][2]['name'])
-        .addField('**Descrição:**', Champion['data'][`${args[0]}`]['spells'][2]['description'])
+            embed.setColor('#170B3B')
+            .setTitle('Comando Skills')
+            .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
+            .addField(`${topic} Nome`, data.data[name_champ].spells[0].name)
+            .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[0].description))
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[0].image.full}`)
+        }
+        else if(args[1] == 'w') {
 
-        message.channel.send(skill3)
+            embed.setColor('#170B3B')
+            .setTitle('Comando Skills')
+            .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
+            .addField(`${topic} Nome`, data.data[name_champ].spells[1].name)
+            .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[1].description, name_champ))
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[1].image.full}`)
+        }
+        else if(args[1] == 'e') {
 
-        const skill4 = new Discord.RichEmbed()
-        .setColor('#660000')
-        .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/9.18.1/img/spell/${Champion['data'][args[0]]['spells'][3]['image']['full']}`)
-        .addField(`**Ult(R) do(a) ${args[0]}:**`, Champion['data'][`${args[0]}`]['spells'][3]['name'])
-        .addField('**Descrição:**', Champion['data'][`${args[0]}`]['spells'][3]['description'])
+            embed.setColor('#170B3B')
+            .setTitle(`Comando Skills`)
+            .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
+            .addField(`${topic} Nome`, data.data[name_champ].spells[2].name)
+            .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[2].description))
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[2].image.full}`)
+        }
+        else if(args[1] == 'r') {
 
-        message.channel.send(skill4)
-        
-        })
+            embed.setColor('#170B3B')
+            .setTitle(`Comando Skills`)
+            .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
+            .addField(`${topic} Nome`, data.data[name_champ].spells[3].name)
+            .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[3].description))
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[3].image.full}`)
+        }
+        else if(args[1] == 'p') {
+            args[1] = 'Passiva'
+            embed.setColor('#170B3B')
+            .setTitle('Comando Skills')
+            .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1]}`)
+            .addField(`${topic} Nome`, data.data[name_champ].passive.name)
+            .addField(`${topic} Descrição`, removeD(data.data[name_champ].passive.description))
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/passive/${data.data[name_champ].passive.image.full}`)
+        } 
+        else {
+            embed.setColor('#170B3B')
+            .setTitle('Comando Skills')
+            .setDescription(`A habilidade informada **não existe**!`)
+            .setFooter('Utilize :skills [champion] [p-q-w-e-r]')
+        }
     }
-    else {
-        message.channel.send('**Digite o nome do correto!**')
+
+    
+    message.channel.send(embed)
+
+}
+
+
+
+function titleize(text) {
+    var words = text.toLowerCase().split(" ");
+    for (var a = 0; a < words.length; a++) {
+        var w = words[a];
+        words[a] = w[0].toUpperCase() + w.slice(1);
     }
+    return words.join(" ");
+}
+
+
+removeD = (string) => {
+    
+    string = string.replace(/<font color='#BB55EE'>/gi, '')
+    string = string.replace(/<font color='#FF9900'>/gi, '')
+    string = string.replace(/<font color='#FF9900'>/gi, '')
+    string = string.replace(/<font color='#6655CC'>/gi, '')
+    string = string.replace(/<font color='#9b0f5f'>/gi, '')
+    string = string.replace(/<font color='#ee91d7'>/gi, '')
+    string = string.replace(/<font color='#FFF673'>/gi, '')
+    string = string.replace(/<font color='#cccc00'>/gi, '')
+    string = string.replace(/<font color='#8484fb'>/gi, '')
+    string = string.replace(/<font color='#fe5c50'>/gi, '')
+    string = string.replace(/<font color='#FF8C00'>/gi, '')
+    string = string.replace(/<font color='#C200E1'>/gi, '')
+    string = string.replace(/<font color='#669900'>/gi, '')
+    string = string.replace(/<font color='#99FF99'>/gi, '')
+    string = string.replace(/<font color='#cd90ee'>/gi, '')
+    string = string.replace(/<font color='#BBFFFF'>/gi, '')
+    string = string.replace(/<font color='#FFFFFF'>/gi, '')
+    string = string.replace(/<font color='#00DD33'>/gi, '')
+    string = string.replace(/<font color='#91d7ee'>/gi, '')
+    string = string.replace(/<font color='#FF3300'>/gi, '')
+    string = string.replace(/<factionIonia1>/gi, '')
+
+    string = string.replace(/<\/factionIonia1>/gi, '')
+    string = string.replace(/<br>/gi, '\n')
+    string = string.replace(/<\/font>/gi, '')
+
+
+    return string
+
+}
+
+getHablites = async (name) => {
+    return await kayn.kaynObject.DDragon.Champion.get(name).version(await versions.data())
 }

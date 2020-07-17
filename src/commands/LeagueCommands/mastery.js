@@ -113,7 +113,16 @@ getDataDays = (number) => {
     const months = Math.ceil(resultado / (1000 * 60 * 60 * 24 * 30));
 
     if(months == 1) return 'No último mês.'
-    else if(months > 12) return `Há 1 ano.`
+    else if(months > 12) {
+        let meses = months - 12
+        return `Há 1 ano e ${meses} meses.`
+
+    } 
+    else if(months > 24) {
+        let meses = months - 24
+        return `Há 2 anos e ${meses} meses.`
+
+    }
 
     return `${months} meses atrás.`
 }
