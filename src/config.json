@@ -1,3 +1,5 @@
 {
-    "prefix": ":"
+    "prefix": ":",
+    "prefixLol": ":lol",
+    "tftprefix": ":tft"
 }

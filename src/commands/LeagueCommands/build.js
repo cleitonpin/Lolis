@@ -24,11 +24,11 @@ exports.run = async (client, message, args) => {
     .setColor('#170B3B')
     
     const data = await champion.data(name_champ)
-    .catch(err => {})
+    .catch(err => console.log(err))
 
 
     const data_skill = await skills.data(name_champ, role)
-    .catch(err => {})
+    .catch(err => console.log(err))
     if(!data_skill || !data) {
         embed.setTitle('Comando Champion builds')
         .setDescription('Você me deu informações erradas')

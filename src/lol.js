@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-
+const prefix = require('./config.json')
 require('dotenv').config()
 const bot_prefix = ':'
 const bot_token = process.env.BOT_TOKEN
@@ -59,23 +59,35 @@ client.on("message", async message => {
     
     try {
 
-        try {
+
+        if(message.content.startsWith(prefix.prefixLol)){
+
+            let args = message.content.slice(prefix.prefixLol.length).trim().split(/ +/g)
+            let comando = args.shift().toLowerCase()
             
             const commandsLeague = require(`./commands/LeagueCommands/${comando}.js`)
 
             commandsLeague.run(client, message, args)
+        } 
+        else if(message.content.startsWith(prefix.tftprefix)) {
+            let args = message.content.slice(prefix.tftprefix.length).trim().split(/ +/g)
+            let comando = args.shift().toLowerCase()
             
-        } catch (e) {
+            const commandstft = require(`./commands/TFT-Commands/${comando}.js`)
+
+            
+            commandstft.run(client, message, args)
+        }
+        else {
+    
             const commands = require(`./commands/${comando}.js`) 
             commands.run(client, message, args,)
         }
+        
 
     } catch (e) {
         console.log(e)
-        const commandsLeague = require(`./commands/LeagueCommands/${comando}.js`)
 
-        commandsLeague.run(client, message, args)
-        
         message.channel.send('Comando inválido')
     }
         

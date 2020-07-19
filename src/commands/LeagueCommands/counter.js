@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
     embed.setTitle('Counters de '+titleize(name_champ))
-    .setDescription(`Winrate: ${winrate}%\nBanrate: ${banrate}%\nPickrate: ${pickrate}%`)
+    .setDescription(`Taxa de vitória: ${winrate}%\nTaxa de ban: ${banrate}%\nTaxa de escolha: ${pickrate}%`)
     .setColor('#170B3B')
     if(forte_contra && fraco_contra == '') {
         embed.setFooter('Parece que não há informações sobre este campeão')

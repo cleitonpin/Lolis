@@ -420,75 +420,93 @@ const runesEmoji = {
     5008: "731375080285667388"
 }
 
-// const runesId = {
-//     "demolir": 8446,
-//     "eletrocutar": 8100,
-//     "predador": 8124,
-//     "colheitas ombria": 8128 ,
-//     "Chuvada lâminas":9923 ,
-//     "Golpe Desleal":8126 ,
-//     "Gosto de Sangue":8139, 
-//     "Impacto Repentino":8143, 
-//     "Sentinela Zumbi":8136,
-//     "Poro Fantasma":8120, 
-//     "Globos Oculares":8138, 
-//     "Caça Voraz":8135, 
-//     "Caça Ardilosa":8105, 
-//     "Caça Incansável":8106, 
-//     "Inspiração":8300, 
-//     "Aprimoramento Glacial":8351, 
-//     "Livro de Feitiços Deslacrado":8360, 
-//     "Onirruna":8358, 
-//     "Flashtração Hextec":8306, 
-//     "Calçados Mágicos":8304, 
-//     "Sincronia Perfeita":8313, 
-//     "Mercado do Futuro":8321, 
-//     "Pulverizador de Tropas":8316, 
-//     "Entrega de Biscoitos":8345, 
-//     "Perspicácia Cósmica":8347, 
-//     "Velocidade de Aproximação":8410, 
-//     "Tempo de Poção Tônica":8352, 
-//     "Precisão":8000, 
-//     "Pressione o Ataque":8005, 
-//     "Ritmo Fatal":8008, 
-//     "Agilidade nos Pés":8021, 
-//     "Conquistador":8010, 
-//     "Cura Excessiva":9101, 
-//     "Triunfo":9111, 
-//     "Presença de Espírito":8009, 
-//     "Lenda: Espontaneidade":9104, 
-//     "Lenda: Tenacidade":9105, 
-//     "Lenda: Linhagem":9103, 
-//     "Golpe de Misericórdia":8014, 
-//     "Dilacerar":8017, 
-//     "Até a Morte":8299, 
-//     "Determinação":8400, 
-//     "Aperto dos Mortos-vivos":8437, 
-//     "Pós-choque":8439, 
-//     "Guardião":8465, 
-//     "Fonte da Vida":8463, 
-//     "Casco Duplicado":8401, 
-//     "Condicionamento":8429, 
-//     "Ventos Revigorantes":8444, 
-//     "Platina Óssea":8473, 
-//     "Crescimento Excessico":8451, 
-//     "Revitalizar":8453, 
-//     "Inabalável":8242, 
-//     "Feitiçaria":8200, 
-//     "Invocar Aery":8214, 
-//     "Cometa Arcano":8229, 
-//     "Ímpeto Gradual":8230, 
-//     "Orbe Anulador":8224, 
-//     "Faixa de Fluxo de Mana":8226, 
-//     "Manto Nimbus":8275, 
-//     "Transcedência":8210,
-//     "Celeridade":8234, 
-//     "Foco Absoluto":8233, 
-//     "Chamuscar":8237, 
-//     "Caminhas Sob as Águas":8232, 
-//     "Tempestade Crescente":8236, 
-//     "Resistência Mágica":5003, 
-// }
+const tftmoji = {
+    "aurelion-sol": "733902761644785704",
+    "poppy": "733901680734634045",
+    "ahri": "733889806567735357",
+    "annie": "733889808392519711",
+    "ashe": "733889810347065364",
+    "bard": "733889915607318628",
+    "blitzcrank": "733889917721247804",
+    "caitlyn": "733889927145586729",
+    "cassiopeia": "733889929872146432",
+    "darius": "733889927401701397",
+    "ekko": "733889927225540728",
+    "ezreal": "733889929083617373",
+    "fiora": "733889929414705163",
+    "fizz": "733889927313489961",
+    "gangplank": "733889925623316531",
+    "gnar": "733889925530910803",
+    "graves": "733889927191724113",
+    "illaoi": "733889930161291338",
+    "irelia": "733889927804354560",
+    "janna": "733889926155993098",
+    "jarvan-iv": "733889929440133162",
+    "jayce": "733889929557442631",
+    "jhin": "733889924050452583",
+    "jinx": "733889926076301368",
+    "karma": "733889927766343690",
+    "kogmaw": "733889930832642108",
+    "leona": "733889929649848431",
+    "lucian": "733889926520635449",
+    "lulu": "733889929041543220",
+    "malphite": "733889929326624788",
+    "master-yi": "733889928970108940",
+    "wukong": "733889926873088011",
+    "mordekaiser": "733889929389670442",
+    "nautilus" : "733891542657531934",
+    "neeko" : "733891543408181288",
+    "nocturne" : "733891544159092806",
+    "rakan" : "733891542665920633",
+    "riven" : "733891544825987149",
+    "rumble" : "733891543382884473",
+    "shaco" : "733891542934356018",
+    "shen" : "733891542233776149",
+    "soraka" : "733891543752114286",
+    "syndra" : "733891542884024381",
+    "teemo" : "733891541831254048",
+    "thresh" : "733891542875504712",
+    "twistedfate" : "733891542309404754",
+    "urgot" : "733891544330928249",
+    "vayne" : "733891544125407252",
+    "vi" : "733891543525490709",
+    "viktor" : "733891540400734329",
+    "xayah" : "733891543085088788",
+    "xerath" : "733891542728835103",
+    "xin-zhao" : "733891543596925038",
+    "yasuo" : "733891543726817331",
+    "zed" : "733891543064117278",
+    "ziggs" : "733891543798120518",
+    "zoe" : "733891543714496614",
+}
+
+const classestft = {
+    "astro": "733894300424732692",
+    "battlecast": "733894300987031672",
+    "blademaster": "733894300508749916",
+    "blaster": "733894300814934026",
+    "brawler": "733894300819128361",
+    "celestial": "733894300500361278",
+    "chrono": "733894300844163172",
+    "cybernetic": "733894300752019498",
+    "dark-star": "733894300315680780",
+    "demolitionist": "733894300743499796",
+    "infiltator": "733894300278194208",
+    "infiltrator": "733894300278194208",
+    "manareaver": "733894300684779591",
+    "mechpilot": "733894300705751079",
+    "mercenary": "733894300349235291",
+    "mystic": "733894300898820207",
+    "paragon": "733894300265349171",
+    "protector": "733894300282388521",
+    "rebel": "733894300051701772",
+    "sniper": "733894300378726501",
+    "sorcerer": "733894300974317589",
+    "spacepirate": "733894301070917693",
+    "star-guardian": "733894301066723388",
+    "starship": "733894301171580949",
+    "vanguard": "733894300974317639",
+}
 
 const runesName = {
     5007: "CDR",
@@ -829,6 +847,88 @@ const itemsEmoji = {
 
 }
 
+const tft_items = {
+    "titanic-hydra": "734261159154155531",
+    "needlessly-large-rod": "734259777361805327",
+    "bf-sword": "734249198194786447",
+    "blade-of-the-ruined-king": "734249198664548402",
+    "bloodthirster": "734249150547230741",
+    "blue-buff": "734249150924980324",
+    "bramble-vest": "734249150589304874",
+    "celestial-orb": "734249150966792213",
+    "chain-vest": "734249151260393582",
+    "chalice-of-power": "734249150937301013",
+    "dark-stars-heart": "734249151369445419",
+    "deathblade": "734249151423971328",
+    "dragons-claw": "734249151340216390",
+    "force-of-nature": "734249151012798497",
+    "frozen-heart": "734249155194781776",
+    "giants-belt": "734249154913763400",
+    "giant-slayer": "734249156226449409",
+    "guardian-angel": "734248722451529729",
+    "hand-of-justice": "734249155320348782",
+    "hextech-gunblade": "734249155920396341",
+    "infiltrators-talons": "734249156415193169",
+    "infinity-edge": "734249155417079818",
+    "ionic-spark": "734249155316154499",
+    "jeweled-gauntlet": "734249155484188723",
+    "last-whisper": "734249156532764712",
+    "locket-of-the-iron-solari": "734249155635183706",
+    "ludens-echo": "734249155605823488",
+    "morellonomicon": "734249155253370963",
+    "negatron-cloak": "734249155534258266",
+    "protectors-chestguard": "734249155538583562",
+    "quicksilver": "734249155530326116",
+    "rabadons-deathcap": "734249155609755768",
+    "rapid-firecannon": "734249156369055764",
+    "rebel-medal": "734249156083712051",
+    "recurve-bow": "734249155777658951",
+    "red-buff": "734249155995762688",
+    "redemption": "734249156490821653",
+    "runaans-hurricane": "734249155899162706",
+    "shroud-of-stillness": "734249156167860304",
+    "sparring-gloves": "734248651937021962",
+    "spatula": "734249156201414696",
+    "spear-of-shojin": "734249156042031146",
+    "star-guardians-charm": "734249159988740127",
+    "statikk-shiv": "734249156410998844",
+    "sword-breaker": "734249156201283595",
+    "tear-of-the-goddess": "734249156352278559",
+    "thiefs-gloves": "734249156465524829",
+    "titans-resolve": "734249156390027305",
+    "trap-claw": "734249156150820957",
+    "zekes-herald": "734249159825031219",
+    "zephyr": "734248998411698260",
+    "zzrot-portal": "734249159816773733",
+    "battlecast-plating": "734251621051269202",
+    "warmogs-armor": "734252029337403464",
+    "guinsoos-rageblade": "734252459945623604",
+}
+
+getEmojitft = (name, client) => {
+    try {
+        if(tftmoji[name]){
+            return client.emojis.cache.get(tftmoji[name])
+        }
+    } catch (err) {}
+}
+
+getEmojitftItems = (name, client) => {
+    try {
+        if(tft_items[name]){
+            return client.emojis.cache.get(tft_items[name])
+        }
+    } catch (err) {}
+}
+
+getEmojiclassetft = (name, client) => {
+    try {
+        if(classestft[name]){
+            return client.emojis.cache.get(classestft[name])
+        }
+    } catch (err) {}
+}
+
 getRunesName = (id) => {
     try {
         if(runesName[id]){
@@ -992,7 +1092,10 @@ module.exports = {
     virgulaPoints,
     getRunesEmoji,
     getRunesName,
-    getEmojiItems
+    getEmojiItems,
+    getEmojitft,
+    getEmojiclassetft,
+    getEmojitftItems
 }
 
 //lucas é o bixo mesmo :v,

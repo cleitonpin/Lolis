@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 const matchInfoV4 = require("../../api/match-info-v4")
 const embeds = require('../../functions/embeds')
-const kayn = require('../../kayn')
 const { 
     getEloEmoji, 
     getChampionEmoji, 
