@@ -1,0 +1,790 @@
+{
+    "data": {
+        "origins": [
+                {
+                    "key": "dark-star",
+                    "name": "Estrela Negra",
+                    "description": "Quando um aliado morre, todas as estrelas negras recebem Dano de Ataque e Poder de Habilidade",
+                    "buff": "2: 8 Dano de Ataque e Poder de Habilidade, 4: 18 Dano de Ataque e Poder de Habilidade, 6: 28 Dano de Ataque e Poder de Habilidade, 8: 38 Dano de Ataque e Poder de Habilidade",            
+                    "units": "jhin,karma,mordekaiser,jarvan-iv,shaco,xerath",
+                    "img": "https://rerollcdn.com/icons/darkstar.png",
+                    "tier": "s"
+                },
+                {
+                    "key": "chrono",
+                    "name": "Temporal",
+                    "description": "Todos os aliados ganham 15% de velocidade de ataque a cada poucos segundos. (Incluindo no início do combate)",
+                    "buff": "2: A cada 8 segundos, 4: A cada 3.5 segundos, 6: A cada 1.5 segundos, 8: A cada 0.75 segundos",
+                    "units": "riven,caitlyn,twistedfate,blitzcrank,shen,ezreal,wukong,thresh",
+                    "img": "https://rerollcdn.com/icons/chrono.png",
+                    "tier": "a"
+                },
+                {
+                    "key": "battlecast",
+                    "name": "Máquina de Combate",
+                    "description": "Campeões Máquina de Combate, ao causar ou receber 10 ocorrências de dano, curam se tiverem menos da metade da vida ou causam dano mágico ao inimigo mais próximo que estiver acima da metade da saúde.",
+                    "buff": "2: 80 de saúde ou 80 de dano mágico, 4: 180 de saúde ou 180 de dano mágico, 6: 480 de saúde ou 480 de dano mágico, 8: 880 de saúde ou 880 de dano mágico",
+                    "units": "urgot,viktor,cassiopeia,kogmaw,illaoi,nocturne",
+                    "img": "https://rerollcdn.com/icons/battlecast.png",
+                    "tier": "b"
+                },
+                {
+                    "key": "star-guardian",
+                    "name": "Guardiã Estelar",
+                    "description": "Os feitiços das Guardiões das Estrelas concedem mana a outros Guardiães das Estrelas (espalhados entre elas).",
+                    "buff": "3: 15 Mana, 6: 25 Mana, 9: 45 Mana",
+                    "units": "janna,syndra,poppy,neeko,ahri,zoe,soraka",
+                    "img": "https://rerollcdn.com/icons/starguardian.png",
+                    "tier": "a"
+                },
+                {
+                    "key": "cybernetic",
+                    "name": "Cibernético",
+                    "description": "Cibernético com um item ganha bônus de Dano e Saúde de Ataque.",
+                    "buff": "3: 35 de Dano de Ataque e 300 de saúde, 6: 70 de Dano de Ataque e 550 de saúde",
+                    "units": "irelia,vi,ekko,fiora,leona,vayne,lucian",
+                    "img": "https://rerollcdn.com/icons/cybernetic.png",
+                    "tier": "b"
+                },
+                {
+                    "key": "celestial",
+                    "name": "Celestial",
+                    "description": "Todos os aliados se curam com base no dano causado.",
+                    "buff": "2: 20% do dano causado, 4: 45% do dano causado, 6: 150% do dano causado",
+                    "units": "ashe,xayah,rakan,xin-zhao,lulu",
+                    "img": "https://rerollcdn.com/icons/celestial.png",
+                    "tier": "b"
+                },
+                {
+                    "key": "astro",
+                    "name": "Astro",
+                    "description": "Campeões Astro têm 30 custos de mana reduzidos",
+                    "buff": "3: Bônus ativo",
+                    "units": "gnar,nautilus,bard,teemo",
+                    "img": "https://rerollcdn.com/icons/astro.png",
+                    "tier": "b"
+                },
+                {
+                    "key": "space-pirate",
+                    "name": "Pirata Espacial",
+                    "description": "50% de chance de largar ouro ou itens sempre que um pirata espacial der um golpe fatal",
+                    "buff": "2: 1 de ouro, 4: 1 de ouro e 25% de chance de deixar um item",
+                    "units": "darius,graves,jayce,gangplank",
+                    "img": "https://rerollcdn.com/icons/spacepirate.png",
+                    "tier": "d"
+                },
+                {
+                    "key": "valkyrie",
+                    "name": "Valquíria",
+                    "description": "Os ataques e feitiços de Valquíria sempre são críticos para alvos com menos de 40% de vida.",
+                    "buff": "2: Bônus ativo",
+                    "units": "",
+                    "img": "https://rerollcdn.com/icons/valkyrie.png",
+                    "tier": ""
+                },
+                {
+                    "key": "rebel",
+                    "name": "Rebelde",
+                    "description": "No início do combate, os Rebeldes ganham um Escudo de Vida por 8 segundos e Dano Aumentado para cada Rebelde adjacente.",
+                    "buff": "3: 150 de Escudo de Vida e 10% de Dano Aumentado, 6: 210 de Escudo de Vida e 12% de Dano Aumentado, 9: 330 de Escudo de Vida e 15% de Dano Aumentado",
+                    "units": "aurelion-sol,jinx,master-yi,malphite,ziggs,yasuo,zed",
+                    "img": "https://rerollcdn.com/icons/rebel.png",
+                    "tier": "b"
+                },
+                {
+                    "key": "mech-pilot",
+                    "name": "Piloto Mecha",
+                    "description": "No início do combate, três Mech-Pilots aleatórios são mesclados em um Super-Mech até que ele morra. O Super-Mech combinou HP, Attack e Traits. Depois que morre, os Mech-Pilots são ejetados, recebem 25 de mana e continuam lutando.",
+                    "buff": "3: Bônus ativo",
+                    "units": "annie,fizz,rumble",
+                    "img": "https://rerollcdn.com/icons/mechpilot.png",
+                    "tier": "c"
+                },
+                {
+                    "key": "void",
+                    "name": "Vazio",
+                    "description": "Vazio causam dano verdadeiro",
+                    "units": "",
+                    "buff": "3: Bônus ativo",
+                    "img": "https://rerollcdn.com/icons/void.png",
+                    "tier": ""
+                }
+        ],
+        "classes": [
+            {
+                "key": "sorcerer",
+                "name": "Feiticeiro",
+                "description": "Todos os aliados ganham maior poder mágico.",
+                "buff": "2: 20% Poder Mágico, 4: 40% Poder Mágico, 6: 70% Poder Mágico",
+                "units": "viktor,syndra,twisted-fate,zoe,ahri,annie,xerath",
+                "img": "https://rerollcdn.com/icons/sorcerer.png",
+                "tier": "s"
+            },
+            {
+                "key": "blademaster",
+                "name": "Mestre das Lâminas",
+                "description": "Os Mestre das Lâminas têm chance de acertar para atacar duas vezes extras.",
+                "buff": "3: 30% de chance de acerto, 6: 65% de chance de acerto, 9: 100%  de chance de acerto",
+                "units": "riven,irelia,master-yi,fiora,xayah,shen,yasuo",
+                "img": "https://rerollcdn.com/icons/blademaster.png",
+                "tier": "b"
+            },
+            {
+                "key": "mystic",
+                "name": "Místico",
+                "description": "Concede bônus de equipe à Resistência Mágica.",
+                "buff": "2: 50 de Resistência Mágica, 4: 120 de Resistência Mágica",
+                "units": "karma,cassiopeia,bard,soraka,lulu",
+                "img": "https://rerollcdn.com/icons/mystic.png",
+                "tier": "s"
+            },
+            {
+                "key": "protector",
+                "name": "Protetor",
+                "description": "Protetores ganham um escudo diminuindo sua vida útil máxima por 3 segundos sempre que lançados.",
+                "buff": "2: 30% de Vida Máxima Escudo, 4: 40% de Vida Máxima Escudo, 6: 50% de Vida Máxima Escudo",
+                "units": "urgot,jarvan-iv,rakan,xin-zhao,neeko",
+                "img": "https://rerollcdn.com/icons/protector.png",
+                "tier": "a"
+            },
+            {
+                "key": "blaster",
+                "name": "Detonador",
+                "description": "Cada quarto ataque do Blaster dispara ataques adicionais que aplicam efeitos ao acertar.",
+                "buff": "2: 3 Ataques Adicionais, 4: 6 Ataques Adicionais",
+                "units": "lucian,graves,jinx,ezreal,kogmaw",
+                "img": "https://rerollcdn.com/icons/blaster.png",
+                "tier": "c"
+            },
+            {
+                "key": "infiltrator",
+                "name": "Infiltrado",
+                "description": "Passivo: Infiltrados saltam para o fundo do território inimigo no início do combate.\nOs infiltrados ganham Velocidade de Ataque pelos primeiros 6 segundos de combate e atualizam esse bônus na queda.",
+                "buff": "2: 40% de velocidade de ataque, 4: 80% de velocidade de ataque, 6: 120% de velocidade de ataque",
+                "units": "fizz,ekko,shaco,zed,nocturne",
+                "img": "https://rerollcdn.com/icons/infiltrator.png",
+                "tier": "d"
+            },
+            {
+                "key": "sniper",
+                "name": "Atirador de Elite",
+                "description": "Atiradores causam dano aumentado a cada hexadecimal de distância entre eles e o alvo.",
+                "buff": "2: 10% de dano por Hex, 4: 18% de dano por Hex",
+                "units": "jhin,ashe,caitlyn,vayne,teemo",
+                "img": "https://rerollcdn.com/icons/sniper.png",
+                "tier": "s"
+            },
+            {
+                "key": "vanguard",
+                "name": "Vanguarda",
+                "description": "Vanguardas ganham armadura bônus.",
+                "buff": "2: 125 Armadura, 4: 300 Armadura, 6: 1000 Armadura",
+                "units": "mordekaiser,nautilus,leona,poppy,jayce,wukong",
+                "img": "https://rerollcdn.com/icons/vanguard.png",
+                "tier": "b"
+            },
+            {
+                "key": "brawler",
+                "name": "Lutador",
+                "description": "Lutadores ganham bônus de Vida.",
+                "buff": "2: 350 Vida, 4: 600 Vida",
+                "units": "gnar,malphite,illaoi,blitzcrank,vi",
+                "img": "https://rerollcdn.com/icons/brawler.png",
+                "tier": "c"
+            },
+            {
+                "key": "paragon",
+                "name": "Redentora",
+                "description": "Ataques básicos de Guardiãs Estelares aliadas são convertidos em Dano Verdadeiro. Os ataques básicos dos outros aliados são convertidos em Dano Mágico.",
+                "buff": "1: Bônus Ativo",
+                "units": "janna",
+                "img": "https://rerollcdn.com/icons/paragon.png",
+                "tier": "a"
+            },
+            {
+                "key": "starship",
+                "name": "Nave Espacial",
+                "description": "Naves Espaciais circundam a arena continuamente e não podem usar ataques básicos.",
+                "buff": "1: Bônus Ativo",
+                "units": "aurelion-sol",
+                "img": "https://rerollcdn.com/icons/starship.png",
+                "tier": "a"
+            },
+            {
+                "key": "mana-reaver",
+                "name": "Manamante",
+                "description": "Ataques de Mana-Reaver aumentam em 40% o custo do próximo feitiço de seu alvo.",
+                "buff": "2: Bônus Ativo",
+                "units": "irelia,darius",
+                "img": "https://rerollcdn.com/icons/mana-reaver.png",
+                "tier": "b"
+            },
+            {
+                "key": "demolitionist",
+                "name": "Demolidor",
+                "description": "Feitiços demolicionistas atordoam alvos que atingem por 1,5 segundos.",
+                "buff": "2: Bônus Ativo",
+                "units": "ziggs,rumble",
+                "img": "https://rerollcdn.com/icons/demolitionist.png",
+                "tier": "b"
+            },
+            {
+                "key": "mercenary",
+                "name": "Mercenário",
+                "description": "Os mercenários podem receber ouro para melhorar suas habilidades.",
+                "buff": "1: Bônus Ativo",
+                "units": "gangplank",
+                "img": "https://rerollcdn.com/icons/mercenary.png",
+                "tier": "b"
+            }
+        ],
+        "galaxies": [
+            {
+                "key": "TFT3_GameVariation_Bonanza",
+                "name": "Arca do Tesouro",
+                "description": "Todos os minions e monstros dropam um loot orb.",
+                "odd": "10%"
+            },
+            {
+                "key": "TFT3_GameVariation_FreeNeekos",
+                "name": "O Neekoverso",
+                "description": "Todos ganham duas cópias gratuitas ajudas de Neeko.",
+                "odd": "10%"
+            },
+            {
+                "key": "TFT3_GameVariation_FreeRerolls",
+                "name": "Setor de Comércio",
+                "description": "Todos os jogadores recebem um reroll grátis por rodada.",
+                "odd": "10%"
+            },
+            {
+                "key": "TFT3_GameVariation_MidGameFoN",
+                "name": "Superdenso",
+                "description": "Ao atingir o estágio 3-1, os jogadores recebem um Força da Natureza.",
+                "odd": "10%"
+            },
+            {
+                "key": "TFT3_GameVariation_None",
+                "name": "Normal Game",
+                "description": "Sem regras especiais.",
+                "odd": "20%"
+            },
+            {
+                "key": "TFT3_GameVariation_StartingItems",
+                "name": "Arsenal Galáctico",
+                "description": "Todos os jogadores começam com 3 itens completos.",
+                "odd": "10%"
+            },
+            {
+                "key": "TFT3_GameVariation_TwoItemMax",
+                "name": "Estrela Binária",
+                "description": "Campeões podem equipar apenas 2 items.",
+                "odd": "10%"
+            },
+            {
+                "key": "TFT3_GameVariation_TwoStarCarousels",
+                "name": "Aglomerado de Estrelas",
+                "description": "1, 2 e 3 unidades de custo em carrosséis têm duas estrelas. O segundo carrossel possui apenas 2 unidades de custo.",
+                "odd": "10%"
+            },
+            {
+                "name": "Planeta dos anões",
+                "description": "As filas mais próximas e mais distantes em cada placa são intransitáveis.",
+                "odd": "10%"
+            },
+            {
+                "name": "Planet plunder",
+                "description": "Todos os campeões têm a chance de soltar uma moeda, especialmente a primeira.",
+                "odd": "10%"
+            }
+        ]
+    },
+    "items":{
+        "tier_list_comps": [
+            {
+                "name": "Astro Snipers",
+                "units": [
+                    "caitlyn",
+                    "nautilus",
+                    "ashe",
+                    "gnar",
+                    "jhin",
+                    "teemo",
+                    "wukong",
+                    "lulu"
+                ],
+                "how": "Fast 8",
+                "tier": "s"
+            },
+            {
+                "name": "Vanguard Mystics",
+                "units": [
+                    "mordekaiser",
+                    "nautilus",
+                    "jayce",
+                    "cassiopeia",
+                    "karma",
+                    "soraka",
+                    "wukong",
+                    "lulu"
+                ],
+                "how": "Slow Roll",
+                "tier": "s"
+            },
+            {
+                "name": "Hyperroll Blademasters",
+                "units": [
+                    "fiora",
+                    "jarvan-iv",
+                    "xayah",
+                    "rakan",
+                    "shen",
+                    "master-yi",
+                    "irelia",
+                    "riven"
+                ],
+                "how": "Hyperroll",
+                "tier": "s"
+            },
+            {
+                "name": "Brawler Blasters",
+                "units": [
+                    "malphite",
+                    "blitzcrank",
+                    "ezreal",
+                    "vi",
+                    "gnar",
+                    "jinx",
+                    "soraka",
+                    "aurelion-sol",
+                    "lulu"
+                ],
+                "how": "Fast 8",
+                "tier": "s"
+            },
+            {
+                "name": "Rebel Blademasters",
+                "units": [
+                    "shen",
+                    "yasuo",
+                    "zed",
+                    "master-yi",
+                    "fizz",
+                    "irelia",
+                    "riven"
+                ],
+                "how": "Slow Roll",
+                "tier": "s"
+            },
+            {
+                "name": "Dark Star Snipers",
+                "units": [
+                    "mordekaiser",
+                    "jarvan-iv",
+                    "ashe",
+                    "karma",
+                    "jhin",
+                    "wukong",
+                    "lulu",
+                    "thresh"
+                ],
+                "how": "Fast 8",
+                "tier": "b"
+            },
+            {
+                "name": "Protector Dark Stars",
+                "units": [
+                    "neeko",
+                    "jarvan-iv",
+                    "xin-zhao",
+                    "rakan",
+                    "ashe",
+                    "karma",
+                    "jhin",
+                    "lulu"
+                ],
+                "how": "Slow Roll",
+                "tier": "b"
+            },
+            {
+                "name": "Star Guardian Sorceres",
+                "units": [
+                    "zoe",
+                    "ahri",
+                    "neeko",
+                    "rakan",
+                    "syndra",
+                    "soraka",
+                    "janna",
+                    "lulu",
+                    "xerath"
+                ],
+                "how": "Slow Roll",
+                "tier": "b"
+            },
+            {
+                "name": "Cybernetics",
+                "units": [
+                    "fiora",
+                    "leona",
+                    "shen",
+                    "vayne",
+                    "vi",
+                    "irelia",
+                    "ekko",
+                    "thresh"
+                ],
+                "how": "Fast 8",
+                "tier": "a"
+            },
+            {
+                "name": "Protector Mystics",
+                "units": [
+                    "xin-zhao",
+                    "ashe",
+                    "cassiopeia",
+                    "rakan",
+                    "karma",
+                    "soraka",
+                    "lulu",
+                    "urgot"
+                ],
+                "how": "Slow Roll",
+                "tier": "a"
+            },
+            {
+                "name": "Rebel Demolitionists",
+                "units": [
+                    "malphite",
+                    "ziggs",
+                    "blitzcrank",
+                    "yasuo",
+                    "ezreal",
+                    "master-yi",
+                    "jinx",
+                    "aurelion-sol",
+                    "gangplank"
+                ],
+                "how": "Fast 8",
+                "tier": "a"
+            },
+            {
+                "name": "Mech Infiltrators",
+                "units": [
+                    "nocturne",
+                    "annie",
+                    "zed",
+                    "rumble",
+                    "shaco",
+                    "fizz",
+                    "viktor"
+                ],
+                "how": "Slow Roll",
+                "tier": "a"
+            },
+            {
+                "name": "Battlecast",
+                "units": [
+                    "illaoi",
+                    "nocturne",
+                    "blitzcrank",
+                    "kogmaw",
+                    "cassiopeia",
+                    "ezreal",
+                    "viktor",
+                    "urgot"
+                ],
+                "how": "Standart",
+                "tier": "b"
+            },
+            {
+                "name": "Sorceres",
+                "units": [
+                    "twisted-fate",
+                    "zoe",
+                    "ahri",
+                    "annie",
+                    "syndra",
+                    "riven",
+                    "viktor",
+                    "janna"
+                ],
+                "how": "Fast 8",
+                "tier": "b"
+            },
+            {
+                "name": "Mech Rebels",
+                "units": [
+                    "twisted-fate",
+                    "ziggs",
+                    "annie",
+                    "zed",
+                    "rumble",
+                    "fizz",
+                    "ezreal",
+                    "jinx"
+                ],
+                "how": "Slow Roll",
+                "tier": "c"
+            },
+            {
+                "name": "Hyperroll Sorceres",
+                "units": [
+                    "poppy",
+                    "twistedfate",
+                    "zoe",
+                    "ahri",
+                    "syndra",
+                    "wukong",
+                    "viktor",
+                    "xerath"
+                ],
+                "how": "Hyperroll",
+                "tier": "c"
+            },
+            {
+                "name": "Mech Sorceres",
+                "units": [
+                    "annie",
+                    "fizz",
+                    "rumble",
+                    "cassiopeia",
+                    "viktor",
+                    "soraka",
+                    "ekko",
+                    "gangplank"
+                ],
+                "how": "Fast 8",
+                "tier": "c"
+            }
+        ],
+        "tierlist_champions": [
+            {
+                "slug": "janna",
+                "tier": "s" 
+            },
+            {
+                "slug": "lulu",
+                "tier": "s"
+            },
+            {
+                "slug": "thresh",
+                "tier": "s"
+            },
+            {
+                "slug": "ashe",
+                "tier": "a"
+            },
+            {
+                "slug": "aurelion-sol",
+                "tier": "a"
+            },
+            {
+                "slug": "cassiopeia",
+                "tier": "a"
+            },
+            {
+                "slug": "ekko",
+                "tier": "a"
+            },
+            {
+                "slug": "fizz",
+                "tier": "a"
+            },
+            {
+                "slug": "gangplank",
+                "tier": "a"
+            },
+            {
+                "slug": "gnar",
+                "tier": "a"
+            },
+            {
+                "slug": "irelia",
+                "tier": "a"
+            },
+            {
+                "slug": "jhin",
+                "tier": "a"
+            },
+            {
+                "slug": "jinx",
+                "tier": "a"
+            },
+            {
+                "slug": "karma",
+                "tier": "a"
+            },
+            {
+                "slug": "lucian",
+                "tier": "a"
+            },
+            {
+                "slug": "soraka",
+                "tier": "a"
+            },
+            {
+                "slug": "syndra",
+                "tier": "a"
+            },
+            {
+                "slug": "teemo",
+                "tier": "a"
+            },
+            {
+                "slug": "urgot",
+                "tier": "a"
+            },
+            {
+                "slug": "viktor",
+                "tier": "a"
+            },
+            {
+                "slug": "xerath",
+                "tier": "a"
+            },
+            {
+                "slug": "ahri",
+                "tier": "b"
+            },
+            {
+                "slug": "bard",
+                "tier": "b"
+            },
+            {
+                "slug": "blitzcrank",
+                "tier": "b"
+            },
+            {
+                "slug": "caitlyn",
+                "tier": "b"
+            },
+            {
+                "slug": "darius",
+                "tier": "b"
+            },
+            {
+                "slug": "ezreal",
+                "tier": "b"
+            },
+            {
+                "slug": "graves",
+                "tier": "b"
+            },
+            {
+                "slug": "jarvan-iv",
+                "tier": "b"
+            },
+            {
+                "slug": "jayce",
+                "tier": "b"
+            },
+            {
+                "slug": "master-yi",
+                "tier": "b"
+            },
+            {
+                "slug": "mordekaiser",
+                "tier": "b"
+            },
+            {
+                "slug": "nautilus",
+                "tier": "b"
+            },
+            {
+                "slug": "neeko",
+                "tier": "b"
+            },
+            {
+                "slug": "rakan",
+                "tier": "b"
+            },
+            {
+                "slug": "riven",
+                "tier": "b"
+            },
+            {
+                "slug": "rumble",
+                "tier": "b"
+            },
+            {
+                "slug": "shen",
+                "tier": "b"
+            },
+            {
+                "slug": "vayne",
+                "tier": "b"
+            },
+            {
+                "slug": "vi",
+                "tier": "b"
+            },
+            {
+                "slug": "wukong",
+                "tier": "b"
+            },
+            {
+                "slug": "xayah",
+                "tier": "b"
+            },
+            {
+                "slug": "xin-zhao",
+                "tier": "b"
+            },
+            {
+                "slug": "zed",
+                "tier": "b"
+            },
+            {
+                "slug": "ziggs",
+                "tier": "b"
+            },
+            {
+                "slug": "annie",
+                "tier": "c"
+            },
+            {
+                "slug": "fiora",
+                "tier": "c"
+            },
+            {
+                "slug": "illaoi",
+                "tier": "c"
+            },
+            {
+                "slug": "leona",
+                "tier": "c"
+            },
+            {
+                "slug": "malphite",
+                "tier": "c"
+            },
+            {
+                "slug": "poppy",
+                "tier": "c"
+            },
+            {
+                "slug": "shaco",
+                "tier": "c"
+            },
+            {
+                "slug": "twisted-fate",
+                "tier": "c"
+            },
+            {
+                "slug": "yasuo",
+                "tier": "c"
+            },
+            {
+                "slug": "zoe",
+                "tier": "c"
+            }
+        ],
+        "tierlist_items": [
+            {
+                "slug": "battlecast-plating",
+                "tier": ""
+            }
+        ]
+    }
+}

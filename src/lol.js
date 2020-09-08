@@ -39,23 +39,15 @@ client.on('guildMemberAdd', member => {
 
 client.on("message", async message => {
     
-    if(message.author.bot || message.channel.type == "dm") 
-        return;
-
-    
+    if(message.author.bot || message.channel.type == "dm") return;
 
     messages(message, client)
     notCommandMusic(message) 
     
-    if(!message.content.toLowerCase().startsWith(bot_prefix))
-        return
+    if(!message.content.toLowerCase().startsWith(bot_prefix)) return
 
     const args = message.content.slice(bot_prefix.length).trim().split(/ +/g)
     const comando = args.shift().toLowerCase()
-    
-
-
-
     
     try {
 
@@ -69,15 +61,7 @@ client.on("message", async message => {
 
             commandsLeague.run(client, message, args)
         } 
-        else if(message.content.startsWith(prefix.tftprefix)) {
-            let args = message.content.slice(prefix.tftprefix.length).trim().split(/ +/g)
-            let comando = args.shift().toLowerCase()
-            
-            const commandstft = require(`./commands/TFT-Commands/${comando}.js`)
 
-            
-            commandstft.run(client, message, args)
-        }
         else {
     
             const commands = require(`./commands/${comando}.js`) 

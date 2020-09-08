@@ -2,7 +2,6 @@ const Giphly = require('../api/gif')
 
 exports.run = async (client, message, args) => {
 
-    
     let msg = args.join(' ')
     let response = await Giphly.data(msg)
     
