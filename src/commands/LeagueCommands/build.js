@@ -50,6 +50,8 @@ exports.run = async (client, message, args) => {
         message.channel.send(embed)
     } else {
 
+        const nameRole = getNameRole(data.roles, role.toUpperCase())
+        
         if(nameRole == '') {
             embed.setTitle('❌ Comando Champion builds')
             .setDescription('Não existe informações para esta rota.')
@@ -57,7 +59,7 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed)
         } else {
     
-            const nameRole = getNameRole(data.roles, role.toUpperCase())
+            
             const runes = nameRole[0].builds.runes;
             const abilities = nameRole[0].builds.abilities;
             const spells = nameRole[0].builds.summoner_spells;

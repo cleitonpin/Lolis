@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const versions = require('../../api/versions')
 const { getChampionEmoji, } = require('../commonFunctions')
 const leagueTierlist = require('../../api/league-tierlist')
-const champ = require('../json/champion.json')
+const champ = require('../../json/champion.json')
 const championApi = require('../../api/champion-api')
 const { prefix } = require('../../config.json')
 

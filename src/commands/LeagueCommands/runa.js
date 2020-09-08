@@ -35,6 +35,5 @@ getDataRunes = async () => {
     const JsonData = await axios.get(url)
     const data = JsonData.data
 
-
     return data.runes
 }
