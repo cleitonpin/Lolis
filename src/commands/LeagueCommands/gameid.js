@@ -11,6 +11,7 @@ const {
     fila
 } = require('../commonFunctions')
 
+
 exports.run = async (client, message, args) => {
 
     let msg = message.channel.send('```Carregando informações...```')
@@ -18,7 +19,7 @@ exports.run = async (client, message, args) => {
     let part = await data(id_game, client)
     let part1 = await dataExtra(id_game, client)
     
-    if(id_game.length < 10 || id_game.length > 10){
+    if(id_game.length !== 10){
         await msg.then(ar => {
             ar.delete()
             message.channel.send('```Partida inexistente.```')
