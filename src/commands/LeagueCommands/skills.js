@@ -1,11 +1,13 @@
 const Discord = require('discord.js')
 const kayn = require('../../kayn')
 const versions = require('../../api/versions')
+const versao = require('../../api/versions')
 
 exports.run = async (client, message, args) => {
     
     let topic = client.emojis.cache.get('733165607159201995')
     let name_champ = titleize(args[0])
+    const version = await versao.data();
     let embed = new Discord.MessageEmbed()
     if(name_champ == 'Drmundo') name_champ = 'DrMundo'
     else if(name_champ == 'Masteryi') name_champ = 'MasterYi'
@@ -33,7 +35,7 @@ exports.run = async (client, message, args) => {
             .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
             .addField(`${topic} Nome`, data.data[name_champ].spells[0].name)
             .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[0].description))
-            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[0].image.full}`)
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${data.data[name_champ].spells[0].image.full}`)
         }
         else if(args[1] == 'w') {
 
@@ -42,7 +44,7 @@ exports.run = async (client, message, args) => {
             .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
             .addField(`${topic} Nome`, data.data[name_champ].spells[1].name)
             .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[1].description, name_champ))
-            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[1].image.full}`)
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${data.data[name_champ].spells[1].image.full}`)
         }
         else if(args[1] == 'e') {
 
@@ -51,7 +53,7 @@ exports.run = async (client, message, args) => {
             .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
             .addField(`${topic} Nome`, data.data[name_champ].spells[2].name)
             .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[2].description))
-            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[2].image.full}`)
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${data.data[name_champ].spells[2].image.full}`)
         }
         else if(args[1] == 'r') {
 
@@ -60,7 +62,7 @@ exports.run = async (client, message, args) => {
             .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1].toUpperCase()}`)
             .addField(`${topic} Nome`, data.data[name_champ].spells[3].name)
             .addField(`${topic} Descrição`, removeD(data.data[name_champ].spells[3].description))
-            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/spell/${data.data[name_champ].spells[3].image.full}`)
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${data.data[name_champ].spells[3].image.full}`)
         }
         else if(args[1] == 'p') {
             args[1] = 'Passiva'
@@ -69,7 +71,7 @@ exports.run = async (client, message, args) => {
             .setDescription(`Informações sobre ${data.data[name_champ].id} ${args[1]}`)
             .addField(`${topic} Nome`, data.data[name_champ].passive.name)
             .addField(`${topic} Descrição`, removeD(data.data[name_champ].passive.description))
-            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/10.14.1/img/passive/${data.data[name_champ].passive.image.full}`)
+            .setThumbnail(`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${data.data[name_champ].passive.image.full}`)
         } 
         else {
             embed.setColor('#170B3B')
