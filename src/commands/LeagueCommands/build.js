@@ -4,7 +4,7 @@ const versao = require('../../api/versions')
 // const skills = require('../../api/skills_abilitys')
 // const runes = require('../../api/rune_builds')
 // const spell = require('../../api/summoner_spells')
-// const item = require('../../api/items_builds')
+//const { getBanRate } = require('../../utils/gettingBanRate')
 const kayn = require('../../kayn')
 const { prefix } = require('../../config.json')
 const { Spells, getRunesEmoji, getRunesName, getEmojiItems, IDtoName, nameToId } = require('../commonFunctions')
@@ -59,17 +59,18 @@ exports.run = async (client, message, args) => {
             message.channel.send(embed)
         } else {
     
-            
             const runes = nameRole[0].builds.runes;
             const abilities = nameRole[0].builds.abilities;
             const spells = nameRole[0].builds.summoner_spells;
             const items = nameRole[0].builds.core_items;
-            const winRate = nameRole[0].stats.winrate * 100
+            const winRate = nameRole[0].stats.winrate * 100;
+            //const { banRate } = await getBanRate(`${titleize(args[0])}`);
     
             embed.setColor('#170B3B')
             .setTitle('Comando Champion builds')
             .setDescription(`Informações sobre **${IDtoName(parseInt(data.champion_id))}**`)
             .addField('Taxa de vitória', `${winRate}%`, true)
+            //.addField('Taxa de banimento', banRate, true)
             .addField('Ordem de habilidades:', [
                 `${skills_emoji(client, abilities[0])} > ${skills_emoji(client, abilities[1])} > ${skills_emoji(client, abilities[2])} > ${skills_emoji(client, abilities[3])} > ${skills_emoji(client, abilities[4])} > ${skills_emoji(client, abilities[5])} > ${skills_emoji(client, abilities[6])} > ${skills_emoji(client, abilities[7])} > ${skills_emoji(client, abilities[8])} > ${skills_emoji(client, abilities[9] )} > ${skills_emoji(client, abilities[10])} > ${skills_emoji(client, abilities[11] )} > ${skills_emoji(client, abilities[12])} > ${skills_emoji(client, abilities[13])} > ${skills_emoji(client, abilities[14])} > ${skills_emoji(client, abilities[15])} > ${skills_emoji(client, abilities[16])} > ${skills_emoji(client, abilities[17])}`,
             ])

@@ -1,9 +1,6 @@
 const Discord = require('discord.js')
 const versions = require('../../api/versions')
 const { getChampionEmoji, IDtoName} = require('../commonFunctions')
-//const leagueTierlist = require('../../api/league-tierlist')
-// const champ = require('../../json/champion.json')
-// const championApi = require('../../api/champion-api')
 const { prefix } = require('../../config.json')
 const axios = require('axios');
 
@@ -65,7 +62,8 @@ exports.run = async (client, message, args) => {
     
     const data = await datae();
     const lane = args.join('');
-    const tierRole = getNameRole(data, lane.toUpperCase())
+    const tierRole = getNameRole(data, lane.toUpperCase());
+    
     const tier = getTierRole(tierRole[0].tiers);
 
     const champsTierS = getChampionIdTier(tier.tierS.champions, client);
