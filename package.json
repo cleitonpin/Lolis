@@ -20,6 +20,7 @@
     "kayn": "^0.10.2",
     "lowdb": "^1.0.0",
     "node-fetch": "^2.6.0",
+    "puppeteer": "^5.2.1",
     "request": "^2.88.2",
     "unirest": "^0.6.0"
   },
