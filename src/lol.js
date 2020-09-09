@@ -11,6 +11,7 @@ const {
     updateRoles 
 } = require('./functions/funcionalidades')
 
+
 client.on('ready', () => {
     console.log(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`)
     status(client)
