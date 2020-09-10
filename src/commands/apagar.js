@@ -3,11 +3,12 @@ const db = require('../database/db')
 exports.run = (client, message, args) => {
 
     try {
-        db.get(message.guild.id).remove({
+        const id = db.get(message.guild.id).remove({
             id_msg: args[0]
         }).write()
 
-        message.channel.send('Anotação apagada com sucesso!')
+		if (id == '' || !args) return message.channel.send('Você digitou o ID errado!')
+		else message.channel.send('Anotação apagada com sucesso!')
     } catch (err) {
         message.channel.send('Erro ao apagar.')
     }
