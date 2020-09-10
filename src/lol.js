@@ -1,9 +1,12 @@
 const Discord = require('discord.js')
+require('dotenv').config()
 const client = new Discord.Client()
 const prefix = require('./config.json')
-require('dotenv').config()
 const bot_prefix = ':'
-const bot_token = process.env.BOT_TOKEN
+const bot_token = process.env.BOT_TOKEN;
+
+
+
 const { 
     messages, 
     notCommandMusic, 
@@ -18,17 +21,11 @@ client.on('ready', () => {
 
 })
 
-// client.on('guildMemberRemove', async member => {
+client.on('guildCreate', guild => {
 
-//     let guildID = member.guild.id
+    console.log(`Entrei no servidor: ${guild.name} (id: ${guild.id}). População: ${guild.memberCount} membros!`)
+})
 
-//     if(member.kickable == true){
-//         member.
-//         client.channels.cache.get(guildID).send(`
-//         ${member.user.username} deixou o servidor!
-//         `)
-//     }
-// })
 client.on('raw', async dados  => {
     updateRoles(client,dados)
 })
@@ -44,7 +41,7 @@ client.on("message", async message => {
 
     messages(message, client)
     notCommandMusic(message) 
-    
+
     if(!message.content.toLowerCase().startsWith(bot_prefix)) return
 
     const args = message.content.slice(bot_prefix.length).trim().split(/ +/g)
