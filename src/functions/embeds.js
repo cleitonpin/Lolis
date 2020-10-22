@@ -217,15 +217,21 @@ const client = new Discord.Client()
 const elo = async (id) => {
     
     var data = await leagueV4.data(id)
+    
     if (data == '') {
         return 'Unranked'
-    } else {
+    } 
+    else {
 
         const datah = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
 
-        const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
-
-        return tier
+        try {
+            const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+            return tier
+        } catch (err) {
+            return 'Unranked'
+        }
+            
     }
 
     
@@ -238,23 +244,28 @@ const eloTranslate = async (id) => {
         return 'Unranked'
     } else {
 
-        const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+        try {
+            const { tier, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+    
+            switch(tier) {
+                case 'IRON': return 'Ferro'
+                case 'BRONZE': return 'Bronze'
+                case 'SILVER': return 'Prata'
+                case 'GOLD': return 'Ouro'
+                case 'PLATINUM': return 'Platina'
+                case 'DIAMOND': return 'Diamante'
+                case 'MASTER': return 'Mestre'
+                case 'GRANDMASTER': return 'Grão-Mestre'
+                case 'CHALLENGER': return 'Desafiante'
+                
+            }
+    
+    
+            return tier
 
-        switch(tier) {
-            case 'IRON': return 'Ferro'
-            case 'BRONZE': return 'Bronze'
-            case 'SILVER': return 'Prata'
-            case 'GOLD': return 'Ouro'
-            case 'PLATINUM': return 'Platina'
-            case 'DIAMOND': return 'Diamante'
-            case 'MASTER': return 'Mestre'
-            case 'GRANDMASTER': return 'Grão-Mestre'
-            case 'CHALLENGER': return 'Desafiante'
-            
+        } catch (err) {
+            return 'Unranked'
         }
-
-
-        return tier
     }
 
     
@@ -266,10 +277,14 @@ const rank = async (id) => {
         return ''
     } else {
 
-        const { rank, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+        try {
+            const { rank, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+    
+            return rank
 
-
-        return rank
+        } catch (err) {
+            return ''
+        }
     }
 
     
@@ -282,11 +297,15 @@ const LP = async (id) => {
         return ''
     } else {
 
-        const { leaguePoints, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
-
-        if(leaguePoints == 0) return '(0 PDL)'
-
-        return `(${leaguePoints} PDL's)`
+        try {
+            const { leaguePoints, } = data.find(fila => fila.queueType == 'RANKED_SOLO_5x5')
+    
+            if(leaguePoints == 0) return '(0 PDL)'
+    
+            return `(${leaguePoints} PDL's)`
+        } catch (err) {
+            return ''
+        }
     }
 
     

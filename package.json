@@ -1,38 +1,34 @@
 {
-  "name": "lolbot",
-  "version": "1.0.0",
-  "main": "src/lol.js",
-  "engines": {
-    "node": "12.x",
-    "vscode": "^1.22.0"
-  },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "discord": "^0.8.2",
-    "discord.js": "^12.2.0",
-    "dotenv": "^8.2.0",
-    "kayn": "^0.10.2",
-    "lowdb": "^1.0.0",
-    "puppeteer": "^5.2.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
-  "scripts": {
-    "build": "npm install",
-    "start": "node src/lol.js",
-    "dev": "nodemon npm run start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cleitonpin/Lolis.git"
-  },
-  "author": "cleitonpin",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cleitonpin/Lolis/issues"
-  },
-  "homepage": "https://github.com/cleitonpin/Lolis#readme",
-  "keywords": [],
-  "description": ""
+	"name": "lolbot",
+	"version": "1.0.0",
+	"main": "src/lol.js",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"discord": "^0.8.2",
+		"discord.js": "^12.2.0",
+		"dotenv": "^8.2.0",
+		"kayn": "^0.10.2",
+		"lowdb": "^1.0.0",
+		"puppeteer": "^5.2.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
+	},
+	"scripts": {
+		"build": "npm install",
+		"start": "node src/lol.js",
+		"dev": "nodemon npm run start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cleitonpin/Lolis.git"
+	},
+	"author": "cleitonpin",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/cleitonpin/Lolis/issues"
+	},
+	"homepage": "https://github.com/cleitonpin/Lolis#readme",
+	"keywords": [],
+	"description": ""
 }

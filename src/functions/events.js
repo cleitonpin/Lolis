@@ -1,0 +1,17 @@
+const { readdirSync } = require('fs');
+const { join } = require('path');
+const eventDir = join(__dirname, "..", "events");
+
+
+module.exports.run = (client) => {
+	const eventFiles = readdirSync(eventDir);
+
+	for (const eventFile of eventFiles) {
+		const event = require(`${eventDir}/${eventFile}`);
+		const eventName = eventFile.split(".").shift();
+		client.on(eventName, event.bind(null, client));
+		delete require.cache[require.resolve(`${eventDir}/${eventFile}`)];
+	}
+	client.event = eventFiles.length;
+	console.log(`${eventFiles.length} eventos carregados!`)
+}
