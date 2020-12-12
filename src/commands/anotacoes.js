@@ -1,9 +1,12 @@
 const db = require('../database/db')
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js');
+const { execute } = require('./anime');
 
-exports.run = async (client, message, args) => {
+module.exports = {
 
-    try {
+	name: 'anotacoes',
+	execute(client, message, args){
+	try {
 		const getDBMsg = db.get(message.guild.id).filter(author_id => author_id.author_id == message.author.id).value();
 
 		if(getDBMsg == '') message.channel.send('Você não tem anotações.')
@@ -24,10 +27,11 @@ exports.run = async (client, message, args) => {
 				.setFooter('Para apagar uma anotação -> :apagar [ID]');
 
 			message.channel.send(embed)
-		}
-    } catch (err) {
+	}
+	} catch (err) {
 		console.log(err)
-        message.channel.send('Erro ao buscar anotações.');
-    }
+		message.channel.send('Erro ao buscar anotações.');
+	}
+}
 
 }

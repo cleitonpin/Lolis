@@ -1,8 +1,12 @@
 const Discord = require('discord.js')
-const kayn = require('../../kayn')
-const { getChampionEmoji, IDtoName } = require('../commonFunctions')
+const kayn = require('../kayn')
+const { getChampionEmoji, IDtoName } = require('./commonFunctions')
 
-exports.run = async (client, message, args) => {
+module.exports = {
+
+    name: 'rotacao',
+    aliases: ['freeweek', 'free', 'week'],
+    execute(client, message, args) {
         kayn.kaynObject.Champion.Rotation.list()
         .region(kayn.regions.BRAZIL)
         .callback(function(error, Champion) {
@@ -19,4 +23,5 @@ exports.run = async (client, message, args) => {
             .setThumbnail('https://opgg-static.akamaized.net/images/gnb/img/icon-navi-lol.png')
             message.channel.send(freerotarions)
         })
+    }
 }

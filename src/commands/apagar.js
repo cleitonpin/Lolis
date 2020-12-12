@@ -1,15 +1,19 @@
 const db = require('../database/db')
 
-exports.run = (client, message, args) => {
+module.exports = {
 
-    try {
-        const id = db.get(message.guild.id).remove({
-            id_msg: args[0]
-        }).write()
+    name: 'apagar',
+    aliases: ['delete'],
+    execute(client, message, args){
+        try {
+            const id = db.get(message.guild.id).remove({
+                id_msg: args[0]
+            }).write()
 
-		if (id == '' || !args) return message.channel.send('Você digitou o ID errado!')
-		else message.channel.send('Anotação apagada com sucesso!')
-    } catch (err) {
-        message.channel.send('Erro ao apagar.')
+            if (id == '' || !args) return message.channel.send('Você digitou o ID errado!')
+            else message.channel.send('Anotação apagada com sucesso!')
+        } catch (err) {
+            message.channel.send('Erro ao apagar.')
+        }
     }
 }

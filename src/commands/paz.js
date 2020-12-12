@@ -1,25 +1,24 @@
 const Giphly = require('../api/gif');
 const { MessageEmbed, Message } = require('discord.js');
 
-module.exports = {
+module.expots = {
 
-	name: 'soco',
-	aliases: ['punch'],
+	name: 'abraco',
+	aliases: ['hug', 'paz'],
 	async execute(client, message, args) {
-		let response = await Giphly.data('punch')
+		let response = await Giphly.data('hug')
 		let numberRandom = response.pagination.count
 		let random = Math.floor(Math.random() * numberRandom)
 		let giphPunch = response.data[random].images.original.url
 	
 		let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-		console.log(member.user.username);
+		
 		const embed = new MessageEmbed()
-			.setTitle('BRIGA!')
 			.setAuthor(message.author.username, message.author.displayAvatarURL())
 			.setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-			.setDescription(`${message.author} te deu um soco ${member} 👊`)
-			.setColor('#0092')
-			.setFooter('Briga Briga Briga')
+			.setDescription(`${message.author} te deu um abraço ❤️ ${member} 🤗`)
+			.setColor('#e60000')
+			.setFooter('Hug')
 			.setImage(giphPunch)
 			.setTimestamp()
 	

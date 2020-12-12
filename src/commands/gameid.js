@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
-const matchInfoV4 = require("../../api/match-info-v4")
-const embeds = require('../../functions/embeds')
+const matchInfoV4 = require("../api/match-info-v4")
+const embeds = require('../functions/embeds')
 const { 
     getEloEmoji, 
     getChampionEmoji, 
@@ -9,51 +9,55 @@ const {
     Spells,
     Teams,
     fila
-} = require('../commonFunctions')
+} = require('./commonFunctions')
 
 
-exports.run = async (client, message, args) => {
+module.exports = {
 
-    let msg = message.channel.send('```Carregando informações...```')
-    let id_game = args.join()
-    let part = await data(id_game, client)
-    let part1 = await dataExtra(id_game, client)
-    
-    if(id_game.length !== 10){
-        await msg.then(ar => {
-            ar.delete()
-            message.channel.send('```Partida inexistente.```')
-        })
-    
-    }
-    await msg.then(async ar => {
-        ar.delete()
-        let embed = await message.channel.send(part)
-                    await embed.react('1️⃣')
-                    await embed.react('2️⃣')
-
-        const filter = (reaction, user) => {
-            switch(reaction.emoji.name) {
-                case "1️⃣":  return user.id === message.author.id
-                case "2️⃣":  return user.id === message.author.id
-            }
+    name: 'gameid',
+    async execute(client, message, args) {
+        let msg = message.channel.send('```Carregando informações...```')
+        let id_game = args.join()
+        let part = await data(id_game, client)
+        let part1 = await dataExtra(id_game, client)
+        
+        if(id_game.length !== 10){
+            await msg.then(ar => {
+                ar.delete()
+                message.channel.send('```Partida inexistente.```')
+            })
+        
         }
-        const collector = embed.createReactionCollector(filter, { max: undefined});
-
-        collector.on('collect', async (reaction, user) => {
-            console.log(1)
-            if(reaction.emoji.name == '1️⃣') {
-                embed.edit(part)
-                
+        await msg.then(async ar => {
+            ar.delete()
+            let embed = await message.channel.send(part)
+                        await embed.react('1️⃣')
+                        await embed.react('2️⃣')
+    
+            const filter = (reaction, user) => {
+                switch(reaction.emoji.name) {
+                    case "1️⃣":  return user.id === message.author.id
+                    case "2️⃣":  return user.id === message.author.id
+                }
             }
-            if(reaction.emoji.name == '2️⃣') {
+            const collector = embed.createReactionCollector(filter, { max: undefined});
+    
+            collector.on('collect', async (reaction, user) => {
                 console.log(1)
-                embed.edit(part1)
-                
-            }
+                if(reaction.emoji.name == '1️⃣') {
+                    embed.edit(part)
+                    
+                }
+                if(reaction.emoji.name == '2️⃣') {
+                    console.log(1)
+                    embed.edit(part1)
+                    
+                }
+            })
+    
         })
 
-    })
+    }
 
 } 
 

@@ -1,54 +1,55 @@
 const axios = require('axios')
 const Discord = require('discord.js')
 
-exports.run = async (client, message, args) => {
+module.exports = {
 
-    let name = args.join(' ').toLowerCase()
-    let full = await data()
-    .catch(err => {})
+    name: 'item',
+    async execute(client, message, args) {
 
-    const embed = new Discord.MessageEmbed()
-    const name_item = full.filter(it => it.name.toLowerCase() == name)
-    let emoji_gold = client.emojis.cache.get("732419646107549806")
+        const name = args.join(' ').toLowerCase()
+        const full = await data()
+        .catch(err => {})
     
-    embed.setColor('#170B3B')
-    .setTitle('Item')
-    .setDescription('Informações do item ')
-
-    if(name_item == '') {
+        const embed = new Discord.MessageEmbed()
+        const name_item = full.filter(it => it.name.toLowerCase() == name)
+        const emoji_gold = client.emojis.cache.get("732419646107549806")
+        
         embed.setColor('#170B3B')
-        .setTitle('❌ Item informado não encontrado')
-        .setDescription('Digite o nome do item corretamente!')
-
-        message.channel.send(embed)
-    } else {
-
-
-        
-        let item_stats = removeD(name_item[0].stats)
-        
-
-        embed.addField('Nome', name_item[0].name, true)
-        .addField('Preços', [
-            `${emoji_gold} Base: ${name_item[0].gold.base}`,
-            `${emoji_gold} Vender: ${name_item[0].gold.sell}`,
-            `${emoji_gold} Total: ${name_item[0].gold.total}`
-        ], true)
-        .addField('Descrição', name_item[0].description)
-        .addField('Status', item_stats, true)
-        .setThumbnail(name_item[0].image_url)
-        
-        message.channel.send(embed)
+        .setTitle('Item')
+        .setDescription('Informações do item ')
+    
+        if(name_item == '') {
+            embed.setColor('#170B3B')
+            .setTitle('❌ Item informado não encontrado')
+            .setDescription('Digite o nome do item corretamente!')
+    
+            message.channel.send(embed)
+        } else {
+    
+    
+            
+            let item_stats = removeD(name_item[0].stats)
+            
+    
+            embed.addField('Nome', name_item[0].name, true)
+            .addField('Preços', [
+                `${emoji_gold} Base: ${name_item[0].gold.base}`,
+                `${emoji_gold} Vender: ${name_item[0].gold.sell}`,
+                `${emoji_gold} Total: ${name_item[0].gold.total}`
+            ], true)
+            .addField('Descrição', name_item[0].description)
+            .addField('Status', item_stats, true)
+            .setThumbnail(name_item[0].image_url)
+            
+            message.channel.send(embed)
+        }
     }
-
 }
 
 removeD = (string) => {
 
     
-    string = string.replace(/<stats>/g, '')
-    string = string.replace(/<\/stats>/g, '')
-    string = string.replace(/<passive>/g, '')
+    string = string.replace(/<stats>|<\/stats|<passive>/g, '')
     string = string.replace(/<\/passive>/g, '')
     string = string.replace(/<br>/g, '\n')
     string = string.replace(/<font color='#CFBF84'>/gi, '')

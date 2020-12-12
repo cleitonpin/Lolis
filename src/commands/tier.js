@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
-const versions = require('../../api/versions')
-const { getChampionEmoji, IDtoName} = require('../commonFunctions')
-const { prefix } = require('../../config.json')
+const versions = require('../api/versions')
+const { getChampionEmoji, IDtoName} = require('./commonFunctions')
 const axios = require('axios');
 
 titleize = (text) => {
@@ -58,27 +57,32 @@ function getChampionIdTier(data, client) {
 
 }
 
-exports.run = async (client, message, args) => {
+module.exports = {
     
-    const data = await datae();
-    const lane = args.join('');
-    const tierRole = getNameRole(data, lane.toUpperCase());
+    name: 'tier',
+    aliases: ['tiers'],
+    async execute(client, message, args) {
+        const data = await datae();
+        const lane = args.join('');
+        const tierRole = getNameRole(data, lane.toUpperCase());
+        
+        const tier = getTierRole(tierRole[0].tiers);
     
-    const tier = getTierRole(tierRole[0].tiers);
+        const champsTierS = getChampionIdTier(tier.tierS.champions, client);
+        const champsTierA = getChampionIdTier(tier.tierA.champions, client);
+        const champsTierB = getChampionIdTier(tier.tierB.champions, client);
+    
+        const embed = new Discord.MessageEmbed()
+    
+        embed.setColor('#170B3B')
+        .setTitle(`Comando Tierlist`)
+        .addField(`S List`, champsTierS.join('\n') , true)
+        .addField(`A List`, champsTierA.join('\n'), true)
+        .addField(`B List`, champsTierB.join('\n'), true)
+    
+        .setFooter(`Patch ${await versions.data()}`)
+        message.channel.send(embed)
 
-    const champsTierS = getChampionIdTier(tier.tierS.champions, client);
-    const champsTierA = getChampionIdTier(tier.tierA.champions, client);
-    const champsTierB = getChampionIdTier(tier.tierB.champions, client);
-
-    const embed = new Discord.MessageEmbed()
-
-    embed.setColor('#170B3B')
-    .setTitle(`Comando Tierlist`)
-    .addField(`S List`, champsTierS.join('\n') , true)
-    .addField(`A List`, champsTierA.join('\n'), true)
-    .addField(`B List`, champsTierB.join('\n'), true)
-
-    .setFooter(`Patch ${await versions.data()}`)
-    message.channel.send(embed)
+    }
 }
 
