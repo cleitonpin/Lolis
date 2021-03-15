@@ -16,7 +16,7 @@
 	},
 	"scripts": {
 		"build": "npm install",
-		"start": "node src/lol.js",
+		"start": "node src/index.js",
 		"dev": "nodemon npm run start"
 	},
 	"repository": {
