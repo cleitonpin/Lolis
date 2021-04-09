@@ -64,7 +64,7 @@ module.exports = {
                 embed.setColor('#170B3B')
                 .setTitle('Comando Champion builds')
                 .setDescription(`Informações sobre **${IDtoName(parseInt(data.champion_id))}**`)
-                .addField('Taxa de vitória', `${winRate}%`, true)
+                .addField('Taxa de vitória', `${winRate.toFixed(2)}%`, true)
                 //.addField('Taxa de banimento', banRate, true)
                 .addField('Ordem de habilidades:', [
                     `${skills_emoji(client, abilities[0])} > ${skills_emoji(client, abilities[1])} > ${skills_emoji(client, abilities[2])} > ${skills_emoji(client, abilities[3])} > ${skills_emoji(client, abilities[4])} > ${skills_emoji(client, abilities[5])} > ${skills_emoji(client, abilities[6])} > ${skills_emoji(client, abilities[7])} > ${skills_emoji(client, abilities[8])} > ${skills_emoji(client, abilities[9] )} > ${skills_emoji(client, abilities[10])} > ${skills_emoji(client, abilities[11] )} > ${skills_emoji(client, abilities[12])} > ${skills_emoji(client, abilities[13])} > ${skills_emoji(client, abilities[14])} > ${skills_emoji(client, abilities[15])} > ${skills_emoji(client, abilities[16])} > ${skills_emoji(client, abilities[17])}`,

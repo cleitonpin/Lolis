@@ -1,22 +1,21 @@
-const db = require('../database/db')
 const { MessageEmbed } = require('discord.js');
-const { execute } = require('./anime');
+const AnotacoesSchema = require('../models/AnotacoesSchema');
 
 module.exports = {
 
 	name: 'anotacoes',
-	execute(client, message, args){
+	async execute(client, message, args){
 	try {
-		const getDBMsg = db.get(message.guild.id).filter(author_id => author_id.author_id == message.author.id).value();
+		const dbmsgs = await AnotacoesSchema.find();
+		const getDBMsg = dbmsgs.filter(author_id => author_id.author_id == message.author.id);
 
 		if(getDBMsg == '') message.channel.send('Você não tem anotações.')
 		else {
-			const msgMap = getDBMsg.map(o => o.msg);
+			const msgMap = getDBMsg.map(o => o.message);
 			const id_msg = getDBMsg.map(o => o.id_msg);
-			const dataMsg = getDBMsg.map(o => o.created)
+			const dataMsg = getDBMsg.map(o => o.created_at)
 
 			const embed = new MessageEmbed()
-			//39 caracteres
 				.setColor('#33001a')
 				.setTitle('Anotações')
 				.setDescription('Veja abaixo todas as suas anotações')

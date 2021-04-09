@@ -10,7 +10,7 @@ const {
 module.exports = async (client, message) => {
 
 
-	let bot_prefix = ':';
+	let bot_prefix = '?';
 
 	if(message.author.bot || message.channel.type == "dm") return;
 
@@ -24,7 +24,6 @@ module.exports = async (client, message) => {
 	const command = client.commands.get(commandName) 
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	console.log(commandName);
 	try {
 
 		if(!command) return;

@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+// require('./utils/connection');
 const { Client, Collection } = require('discord.js')
 const loadEvents = require('./functions/events')
 

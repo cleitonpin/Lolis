@@ -9,10 +9,9 @@ module.exports = {
         const url = `https://cat-fact.herokuapp.com/facts`
         const json = await axios.get(url)
         const response = json.data
+        let random = Math.floor(Math.random() * response.length)        
     
-        let random = Math.floor(Math.random() * 150)
-    
-        message.channel.send(response.all[random].text)
+        message.channel.send(response[random].text)
     }
 
 }

@@ -1,4 +1,4 @@
-const db = require("../database/db")
+const AnotacoesSchema = require('../models/AnotacoesSchema');
 
 function dateToEN(date) {
 	return date.split('/').reverse().join('-');
@@ -8,32 +8,33 @@ module.exports =  {
 
     name: 'anotar',
     aliases: ['write', 'text'],
-    execute(client, message, args) {
+    async execute(client, message, args) {
         const dateNow = new Date()
-        const data = dateToEN(dateNow.toLocaleDateString().toString().replace(/-/gi, '/'));
-        const msgs = db.get(message.guild.id).filter(author_id => author_id.author_id == message.author.id).value();
-        const msgMap = msgs.map(o => o.msg);
+        const date = dateToEN(dateNow.toLocaleDateString().toString().replace(/-/gi, '/'));
 
-        if(msgMap.join('').length > 1024) message.channel.send('Você ultrapassou o limite de anotações!')
-        else {
-            const writeDown = args.join(' ').includes('https://') ? args.join(' ').replace('https://', '') : args.join(' ');
-
-            if (writeDown.length > 39) message.channel.send('Você atingiu o limite de caracteres!')
-            else {
-                try {
-                    db.get(message.guild.id).push({
-                        id_msg: message.id.slice(6, 9),
-                        author_id: message.author.id,
-                        msg: writeDown,
-                        created: data.replace(/-/gi, '/')
-                    }).write();
-
-                    message.channel.send('Mensagem anotada!');
-                } catch (err) {
-                    message.channel.send('Erro ao salvar.');
-                }
+        const msgAll = await AnotacoesSchema.find();
+        const msgs = msgAll.filter(author_id => author_id.author_id == message.author.id);
+        const msgMap = msgs.map(o => o.message);
+        const writeDown = args.join(' ').includes('https://') ? args.join(' ').replace('https://', '') : args.join(' ');
+        
+        if(msgMap.join('').length > 1024) return message.channel.send('Você ultrapassou o limite de anotações!')
+        
+        if (writeDown.length > 39) return message.channel.send('Você digitou demais!');
+        try {
+            const data = {
+                id_msg: message.id.slice(6, 9),
+                author_id: message.author.id,
+                message: writeDown,
+                created_at: date.replace(/-/gi, '/')
             }
+            AnotacoesSchema.create(data, (err) => {
+                if (err) return message.channel.send('Erro ao salvar mensagem, tente novamente.');
 
-        }
+                return message.channel.send('Mensagem anotada!');
+            });
+        } catch (err) {
+            console.log(err);
+            message.channel.send('Erro ao salvar.');
+        } 
     }
 }
