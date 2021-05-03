@@ -1,6 +1,7 @@
 
 const bot_status = [
-    { name: 'WWZ',  type: 0},
+    { name: 'Porante',  type: 0},
+    { name: 'Genshin',  type: 0},
     { name: '🎧' , type: 2},
     { name: '💤',  type: 3},
 
@@ -80,7 +81,7 @@ module.exports = {
             return client.user.setPresence({ activity: randomStatus})
         }
 
-        setInterval(setStatus, 3000)
+        setInterval(setStatus, 5000)
     },
 
     async updateRoles(client, dados){
