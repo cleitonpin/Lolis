@@ -19,8 +19,8 @@ module.exports = {
             return message.channel.send('https://tenor.com/view/stonks-noice-glitch-gif-15021121')
         else if (msg.includes('genio'))
             return message.channel.send(client.emojis.cache.get("589690527742558209").toString())
-        else if (msg.includes('kappa'))
-            return message.channel.send(client.emojis.cache.get("592516025334104086").toString())
+        /* else if (msg.includes('kappa'))
+            return message.channel.send(client.emojis.cache.get("592516025334104086").toString()) */
         else if(msg.includes('nosa'))
             return message.channel.send(client.emojis.cache.get("598994179464364076").toString())
         else if(msg.startsWith('>gen start')) {
